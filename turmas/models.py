@@ -23,5 +23,9 @@ class Turmas(models.Model):
     #responsavel = models.OneToOneField(User, null = True, blank=True)
     periodo = models.CharField('Tipo de peerfil', max_length=1, choices=PERI, default=ESCOLHER,  blank=True, null=True)
 
+    class Meta:
+        verbose_name = "Turma"
+        verbose_name_plural = "turmas"
+        
     def __str__(self):
         return self.turma

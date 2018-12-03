@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 from departamentos.models import Departamentos
 from departamentos.forms import DepartamentoForm
@@ -33,11 +34,9 @@ def editar_departamento(request, nome):
 
 def actualizar_departamento(request, nome):
     instance = get_object_or_404(Departamentos, nome=nome)
-    form = DepartamentoForm(request.POST or None)
+    form = DepartamentoForm(request.POST or None, instance=instance)
     if form.is_valid():
-        instance = form.save(commit=False)
-        print(form.cleaned_data.get("nome"))
-        instance.save()
+        form.save()
 
     contexto = {
         "nome": instance.nome,

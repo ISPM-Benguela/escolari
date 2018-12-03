@@ -1,0 +1,241 @@
+{% extends "layouts/painel.html" %}
+
+{% load i18n %}
+{% load bootstrap %}
+
+{% block title %}{{ request.user.username }} - {% trans "Perfil" %}{% endblock %}
+
+{% load staticfiles %}
+
+{% block principal %}
+<div class="main-content">
+      <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+          <ul class="breadcrumb">
+            <li>
+              <i class="ace-icon fa fa-home home-icon"></i>
+              <a href="{% url 'inicio' %}">{% trans "Inicio" %}</a>
+            </li>
+
+            <li>
+              <a href="#">{% trans "Departamento" %}</a>
+            </li>
+            <li class="active">{{ departamento.nome }}</li>
+          </ul><!-- /.breadcrumb -->
+
+          <div class="nav-search" id="nav-search">
+            <form class="form-search">
+              <span class="input-icon">
+                <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                <i class="ace-icon fa fa-search nav-search-icon"></i>
+              </span>
+            </form>
+          </div><!-- /.nav-search -->
+        </div>
+
+        <div class="page-content">
+          <div class="ace-settings-container" id="ace-settings-container">
+
+          </div><!-- /.ace-settings-container -->
+
+          <div class="page-header">
+            <h1>
+              {% trans "Departamento" %}
+              <small>
+                <i class="ace-icon fa fa-angle-double-right"></i>
+                 {{ departamento.nome }}
+              </small>
+            </h1>
+            <!-- start-modal -->
+            <div id="modal-table" class="modal fade" tabindex="-1">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header no-padding">
+                    <div class="table-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <span class="white">&times;</span>
+                      </button>
+                      {% trans "Adicionar departamento" %}
+                    </div>
+                  </div>
+
+                  <div class="modal-body no-padding" style="margin: 10px;">
+
+                      <form class="form" action="" method="post">
+                        {% csrf_token %}
+                        {{ form|bootstrap }}
+                        <input type="hidden" name="depart" value="{{ departamento.nome }}">
+                        <div class="form-group pull-right">
+                          <input type="submit" class="btn btn-default" value="{% trans 'Criar Turma' %}">
+                        </div>
+                        <div class="clearfix"></div>
+                      </form>
+
+                  </div>
+
+                  <div class="modal-footer no-margin-top">
+                    
+
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- modal-end -->
+            <!-- ./ end-modal -->
+          </div><!-- /.page-header -->
+
+          <div class="row">
+            <div class="col-xs-12">
+              <a href="#modal-table" role="button" class="green btn btn-success" data-toggle="modal"> <span class="fa fa-plus"></span></a>
+
+              <!-- PAGE CONTENT BEGINS -->
+              <div class="clearfix">
+                <!--
+                <div class="pull-left alert alert-success no-margin alert-dismissable">
+                  <button type="button" class="close" data-dismiss="alert">
+                    <i class="ace-icon fa fa-times"></i>
+                  </button>
+
+                  <i class="ace-icon fa fa-umbrella bigger-120 blue"></i>
+                  Click on the image below or on profile fields to edit them ...
+                </div>
+              -->
+                <div class="pull-right">
+                  <span class="green middle bolder">{% trans "Escolhe o perfil:" %} &nbsp;</span>
+
+                  <div class="btn-toolbar inline middle no-margin">
+                    <div data-toggle="buttons" class="btn-group no-margin">
+                      <label class="btn btn-sm btn-yellow active">
+                        <span class="bigger-110">1</span>
+
+                        <input type="radio" value="1" />
+                      </label>
+
+                      <label class="btn btn-sm btn-yellow">
+                        <span class="bigger-110">2</span>
+
+                        <input type="radio" value="2" />
+                      </label>
+
+                      <label class="btn btn-sm btn-yellow">
+                        <span class="bigger-110">3</span>
+
+                        <input type="radio" value="3" />
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div>
+                <div id="user-profile-1" class="user-profile row">
+                  <div class="col-xs-12 col-sm-3 center">
+                    <div>
+                      <span class="profile-picture">
+                          <img src="{% static 'img/log.png' %}"  class="img-responsive" alt="">
+                      </span>
+
+                      <div class="space-4"></div>
+
+                      <div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+                        <div class="inline position-relative">
+                          <a href="#" class="user-title-label dropdown-toggle" data-toggle="dropdown">
+                            <i class="ace-icon fa fa-circle light-green"></i>
+                            &nbsp;
+                            <span class="white">{{ request.user }}</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="space-6"></div>
+
+                    <div class="profile-contact-info">
+                      <div class="profile-contact-links align-left">
+                        <a href="#" class="btn btn-link">
+                          <i class="ace-icon fa fa-edit bigger-120 green"></i>
+                          {% trans "Editar departamento" %}
+                        </a>
+
+                        <a href="#" class="btn btn-link">
+                          <i class="ace-icon fa fa-envelope bigger-120 pink"></i>
+                          {% trans "Enviar mensagem" %}
+                        </a>
+                      </div>
+
+                      <div class="space-6"></div>
+                    </div>
+
+                    <div class="hr hr12 dotted"></div>
+                  </div>
+
+                  <div class="col-xs-12 col-sm-9">
+
+                    <div class="space-12"></div>
+
+
+                    <div class="space-20"></div>
+
+                    <div class="widget-box transparent">
+                      <div class="widget-header widget-header-small">
+                        <h4 class="widget-title blue smaller">
+                          <i class="ace-icon fa fa-building sucess"></i>
+                         Actualizar Departamento {{ departamento.nome }}
+                          <small>Total de funcionarios: {{ funcionarios.count }} </small>
+                        </h4>
+
+                        <div class="widget-toolbar action-buttons">
+                          <a href="#" data-action="reload">
+                            <i class="ace-icon fa fa-refresh blue"></i>
+                          </a>
+&nbsp;
+                          <a href="#" class="pink">
+                            <i class="ace-icon fa fa-trash-o"></i>
+                          </a>
+                        </div>
+                      </div>
+
+                      <div class="widget-body">
+                        <div class="widget-main padding-8">
+                           <!-- formulario -->
+                           <form class="form" action="" method="post">
+                            {% csrf_token %}
+                            {{ form|bootstrap }}
+                            <input type="hidden" name="depart" value="{{ departamento.nome }}">
+                            <div class="form-group pull-right">
+                              <input type="submit" class="btn btn-default" value="{% trans 'Criar Turma' %}">
+                            </div>
+                            <div class="clearfix"></div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="hr hr2 hr-double"></div>
+
+                    <div class="space-6"></div>
+
+                    <div class="center">
+                      <button type="button" class="btn btn-sm btn-primary btn-white btn-round">
+                        <i class="ace-icon fa fa-rss bigger-150 middle orange2"></i>
+                        <span class="bigger-110">{% trans "Ver mais" %}</span>
+
+                        <i class="icon-on-right ace-icon fa fa-arrow-right"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div><!-- /.well -->
+
+
+                  </div><!-- /.span -->
+                </div><!-- /.user-profile -->
+              </div>
+
+              <!-- PAGE CONTENT ENDS -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.page-content -->
+      </div>
+{% endblock %}

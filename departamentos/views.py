@@ -28,7 +28,7 @@ def editar_departamento(request, nome):
         'departamento': departamento,
         'departamentos': Departamentos.objects.all(),
         'forms' : DepartamentoForm(),
-        'funcionarios' : departasmento.funcionario.all(),
+        'funcionarios' : departamento.funcionario.all(),
     })    
 
 def actualizar_departamento(request, nome):

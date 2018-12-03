@@ -1,6 +1,6 @@
 
 
-{% extends "padrao/painel.html" %}
+{% extends "layouts/painel.html" %}
 {% load staticfiles %}
 {% load bootstrap %}
 {% block title %}painel de cateorias{% endblock %}
@@ -131,7 +131,6 @@
                         </th>
                         <th class="detail-col">Detalhes</th>
                         <th>Nome</th>
-                        <th>Funcionario</th>
 
                         <th></th>
                       </tr>
@@ -163,21 +162,17 @@
                           <a href="#">{{ departamento.nome }}</a>
                         </td>
 
-                        <td>{{ departamento.funcionario.username }}</td>
 
                         <td>
                           <div class="hidden-sm hidden-xs btn-group">
-                            <button class="btn btn-xs btn-success">
-                              <i class="ace-icon fa fa-check bigger-120"></i>
-                            </button>
 
-                            <button class="btn btn-xs btn-info">
+                            <a href="{% url 'editardeparta' departamento.nome %}" class="btn btn-xs btn-info">
                               <i class="ace-icon fa fa-pencil bigger-120"></i>
-                            </button>
+                            </a>
 
-                            <button class="btn btn-xs btn-danger">
+                            <a href="" class="btn btn-xs btn-danger">
                               <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                            </button>
+                            </a>
 
                             <button class="btn btn-xs btn-warning">
                               <i class="ace-icon fa fa-flag bigger-120"></i>
@@ -1894,8 +1889,6 @@
                     <div class="modal-body ">
                       <form action="{% url 'criadeparta' %}" method="post">
                           {% csrf_token %}
-                            {{ forms|bootstrap }}
-
 
 
                           <input type="submit" class="btn btn-success" value="Cadastrar" />

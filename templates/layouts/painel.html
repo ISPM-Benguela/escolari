@@ -442,7 +442,9 @@
 						<b class="arrow"></b>
 
 						<ul class="submenu">
+							
 							{% if departamentos %}
+							<li><a href="{% url 'departamentos' %}">Todos departamentoss</a></li>
 							{% for departamento in departamentos %}
 							<li class="">
 								<a href="{% url 'editardeparta' departamento.nome %} ">

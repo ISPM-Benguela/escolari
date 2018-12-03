@@ -22,7 +22,7 @@ def cradastrar_departamento(request):
 def editar_departamento(request, nome):
 
     departamento = Departamentos.objects.get(nome=nome)
-    funcionarios = departamento.funcionario.all();
+    funcionarios = departamento.funcionario.all()
 
     return render(request, 'departamentos/editar.html', {
         'departamento': departamento,

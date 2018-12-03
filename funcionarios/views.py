@@ -1,4 +1,5 @@
 from django.shortcuts import render , HttpResponse
+from django.shortcuts import redirect
 from  django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from departamentos.models import Departamentos
@@ -17,8 +18,8 @@ def cadastrar_funcionario(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('funcionarios')
-    return HttpResponse('cadastrar funcio')
+            
+    return redirect('/funcionarios')
 
 def editar_funcionario(request, nome):
     funcionario = User.objects.get(username=nome)

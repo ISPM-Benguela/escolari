@@ -28,5 +28,20 @@ def editar_departamento(request, nome):
         'departamento': departamento,
         'departamentos': Departamentos.objects.all(),
         'forms' : DepartamentoForm(),
-        'funcionarios' : departamento.funcionario.all(),
+        'funcionarios' : departasmento.funcionario.all(),
     })    
+
+def actualizar_departamento(request, nome):
+    instance = get_object_or_404(Departamentos, nome=nome)
+    form = DepartamentoForm(request.POST or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        print(form.cleaned_data.get("nome"))
+        instance.save()
+
+    contexto = {
+        "nome": instance.nome,
+        "instance" : instance,
+        "form" : form,
+    }
+    return render(request, "departamentos/actualizar.html", contexto)

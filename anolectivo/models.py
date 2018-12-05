@@ -6,6 +6,8 @@ class AnoLectivo(models.Model):
     class Meta:
         verbose_name = "Ano Lectivo"
         verbose_name_plural = "Ano lectivo"
+        ordering = ('ano',)
+        
     def __str__(self):
-        return self.ano
+        return ("%s"  % format(self.ano))
 

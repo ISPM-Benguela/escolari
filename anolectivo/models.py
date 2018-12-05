@@ -7,5 +7,5 @@ class AnoLectivo(models.Model):
         verbose_name = "Ano Lectivo"
         verbose_name_plural = "Ano lectivo"
     def __str__(self):
-        return sefl.ano
+        return self.ano
 

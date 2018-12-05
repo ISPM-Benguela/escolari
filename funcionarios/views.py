@@ -1,5 +1,6 @@
 from django.shortcuts import render , HttpResponse
 from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404
 from  django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from departamentos.models import Departamentos
@@ -22,8 +23,17 @@ def cadastrar_funcionario(request):
     return redirect('/funcionarios')
 
 def editar_funcionario(request, nome):
-    funcionario = User.objects.get(username=nome)
-    return render(request, 'funcionarios/editar.html', {
-        'funcionario' : funcionario,
-        'departamentos' : Departamentos.objects.all(),
-    })
+    instance = get_object_or_404(User, username=nome)
+    form = UserCreationForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        form.save()
+    contexto = {
+        "instance" : instance,
+        "form" : form,
+        "departamentos" : Departamentos.objects.all(),
+    }
+    
+    return render(request, 'funcionarios/editar.html', contexto )
+
+def actualizar_funcionario(request, nome):
+    return HttpResponse("%s" . format(nome))

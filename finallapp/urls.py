@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^entrar/', include('sessao.urls')),
     url(r'^funcionarios/', include('funcionarios.urls')),
     url(r'^departamentos/', include('departamentos.urls')),
-    url(r'^turmas/', include('turmas.urls')),
+    url(r'^turmas/', include('salas.urls')),
     url(r'^cursos/', include('cursos.urls')),
     url(r'^admin/', admin.site.urls),
 ]

@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from turmas.models import Turmas
+
+admin.site.register(Turmas)

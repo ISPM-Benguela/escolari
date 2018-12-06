@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'usuarios',
     'funcionarios',
     'departamentos',
-    
+    'turmas',
     'cursos',
     'nivel',
     'eventos',

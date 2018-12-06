@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cursos.models import Cursos
+from disciplinas.models import Disciplina
 
 class Turmas(models.Model):
 
@@ -20,6 +21,7 @@ class Turmas(models.Model):
     turma = models.CharField(max_length=255)
     curso = models.ForeignKey(Cursos)
     estudante = models.ManyToManyField(User, null=True, blank=True)
+    disciplina = models.ManyToManyField(Disciplina, blank=True)
     responsavel = models.IntegerField(default=0, blank=True)
     periodo = models.CharField('Tipo de peerfil', max_length=1, choices=PERI, default=ESCOLHER,  blank=True, null=True)
 

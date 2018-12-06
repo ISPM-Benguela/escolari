@@ -5,6 +5,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from departamentos.models import Departamentos
+from disciplinas.models import Disciplina
 
 class Perfil(models.Model):
 
@@ -27,6 +28,7 @@ class Perfil(models.Model):
     tipo_perfil = models.CharField(_('Tipo de peerfil'), max_length=1, choices=PERFIL, default=ESTUDANTE,  blank=True, null=True)
     morada  = models.CharField(_('nome da turma'), max_length=250, blank=True, null=True, default="")
     foto = models.FileField(default='perfil/default.jpg', upload_to='perfil/', blank=True, null=True)
+    disciplina = models.ManyToManyField(Disciplina, blank=True)
 
    
 

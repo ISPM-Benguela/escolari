@@ -30,6 +30,7 @@ def editar_departamento(request, nome):
         'departamentos': Departamentos.objects.all(),
         'forms' : DepartamentoForm(),
         'funcionarios' : departamento.funcionario.all(),
+        'departamentos': Departamentos.objects.all(),
     })    
 
 def actualizar_departamento(request, nome):
@@ -42,5 +43,6 @@ def actualizar_departamento(request, nome):
         "nome": instance.nome,
         "instance" : instance,
         "form" : form,
+        'departamentos': Departamentos.objects.all(),
     }
     return render(request, "departamentos/actualizar.html", contexto)

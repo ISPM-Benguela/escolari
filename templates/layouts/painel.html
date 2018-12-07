@@ -502,7 +502,7 @@
 						</a>
 					</li>
 					<li class="">
-						<a href="">
+						<a href="{% url 'eventos' %}">
 							<i class="menu-icon fa  fa-stack-overflow"></i>
 							<span class="menu-text">
 								Eventos
@@ -800,5 +800,7 @@
 
 			})
 		</script>
+
+		{% block js %}{% endblock %}
 	</body>
 </html>

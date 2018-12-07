@@ -2,6 +2,7 @@ from django.db import models
 
 class Eventos(models.Model):
     titulo = models.CharField(max_length=255)
+    local = models.CharField(max_length=255, default="", blank=True)
     imagem = models.FileField(upload_to="eventos/", blank=True)
     data_inicio = models.DateTimeField()
     data_termino = models.DateField()

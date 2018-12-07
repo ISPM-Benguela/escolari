@@ -4,15 +4,15 @@
 {% block title %}painel de funcionarios{% endblock %}
 
 {% block principal %}
-<div class="main-content">
+    <div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
 						<ul class="breadcrumb">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Home</a>
+								<a href="#">Inicio</a>
 							</li>
-							<li class="active">Gallery</li>
+							<li class="active">Eventos</li>
 						</ul><!-- /.breadcrumb -->
 
 						<div class="nav-search" id="nav-search">
@@ -95,10 +95,10 @@
 
 						<div class="page-header">
 							<h1>
-								Turmas disponeis
+								Eventos
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									lista das turmas disponiveis
+									lista de eventos
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
@@ -106,9 +106,10 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
-                                <button type="submit" data-toggle="modal" data-target="#myModal" class="btn btn-primary" style="margin-bottom: 20px;" >Cadastrar turma <i class="fa fa-plus"></i></button>
+
+                                <button type="submit" data-toggle="modal" data-target="#myModal" style="margin-bottom: 20px;" class="btn btn-primary">Cadastrar evento</button>
 								
-                               
+                                
                                 
                                 <!-- Modal -->
                                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -116,7 +117,7 @@
                                     <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" id="myModalLabel">Cadastrar turma</h4>
+                                        <h4 class="modal-title" id="myModalLabel">Cadastrar evento</h4>
                                     </div>
                                     <div class="modal-body">
                                         ...
@@ -130,30 +131,50 @@
                                 </div>
                                 <div>
 									<ul class="ace-thumbnails clearfix">
+                                      {% for evento in eventos %}
 										<li>
-											<div style="width: 250px; height: 250px;" class="thumbnail">
-                                            </div>
+											<a href="{% static 'assets/images/gallery/image-1.jpg' %}" title="Photo Title" data-rel="colorbox">
+												<img width="250" height="250" alt="150x150" src="/media/{{ evento.imagem }}" />
+											</a>
+
+											<div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">Local: {{ evento.local }}</span>
+												</span>
+
+												<span class="label-holder">
+													<span class="label label-danger">{{ evento.data_inicio }}</span>
+												</span>
+
+												<span class="label-holder">
+													<span class="label label-success">{{ evento.data_termino }}</span>
+												</span>
+
+												<span class="label-holder">
+													<span class="label label-warning arrowed-in">{{ evento.titulo }}</span>
+												</span>
+											</div>
+
+											<div class="tools">
+												<a href="#">
+													<i class="ace-icon fa fa-link"></i>
+												</a>
+
+												<a href="#">
+													<i class="ace-icon fa fa-paperclip"></i>
+												</a>
+
+												<a href="#">
+													<i class="ace-icon fa fa-pencil"></i>
+												</a>
+
+												<a href="#">
+													<i class="ace-icon fa fa-times red"></i>
+												</a>
+											</div>
 										</li>
-                                        <li>
-											<div style="width: 250px; height: 250px;" class="thumbnail">
-                                            </div>
-										</li>
-                                        <li>
-											<div style="width: 250px; height: 250px;" class="thumbnail">
-                                            </div>
-										</li>
-                                        <li>
-											<div style="width: 250px; height: 250px;" class="thumbnail">
-                                            </div>
-										</li>
-                                        <li>
-											<div style="width: 250px; height: 250px;" class="thumbnail">
-                                            </div>
-										</li>
-                                        <li>
-											<div style="width: 250px; height: 250px;" class="thumbnail">
-                                            </div>
-										</li>
+                                      {% endfor %}
+										
 									</ul>
 								</div><!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
@@ -161,4 +182,69 @@
 					</div><!-- /.page-content -->
 				</div>
 			</div><!-- /.main-content -->
+
+			
+		</div><!-- /.main-container -->
+
+		<!-- basic scripts -->
+
+		<!--[if !IE]> -->
+		<script src="assets/js/jquery-2.1.4.min.js"></script>
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+<script src="assets/js/jquery-1.11.3.min.js"></script>
+<![endif]-->
+		<script type="text/javascript">
+			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+		<script src="assets/js/bootstrap.min.js"></script>
+
+		<!-- page specific plugin scripts -->
+		<script src="assets/js/jquery.colorbox.min.js"></script>
+
+		<!-- ace scripts -->
+		<script src="assets/js/ace-elements.min.js"></script>
+		<script src="assets/js/ace.min.js"></script>
+
+		<!-- inline scripts related to this page -->
+		<script type="text/javascript">
+			jQuery(function($) {
+	var $overflow = '';
+	var colorbox_params = {
+		rel: 'colorbox',
+		reposition:true,
+		scalePhotos:true,
+		scrolling:false,
+		previous:'<i class="ace-icon fa fa-arrow-left"></i>',
+		next:'<i class="ace-icon fa fa-arrow-right"></i>',
+		close:'&times;',
+		current:'{current} of {total}',
+		maxWidth:'100%',
+		maxHeight:'100%',
+		onOpen:function(){
+			$overflow = document.body.style.overflow;
+			document.body.style.overflow = 'hidden';
+		},
+		onClosed:function(){
+			document.body.style.overflow = $overflow;
+		},
+		onComplete:function(){
+			$.colorbox.resize();
+		}
+	};
+
+	$('.ace-thumbnails [data-rel="colorbox"]').colorbox(colorbox_params);
+	$("#cboxLoadingGraphic").html("<i class='ace-icon fa fa-spinner orange fa-spin'></i>");//let's add a custom loading icon
+
+
+	$(document).one('ajaxloadstart.page', function(e) {
+		$('#colorbox, #cboxOverlay').remove();
+   });
+})
+		</script>
+{% endblock %}
+{% block js %}
+   
 {% endblock %}

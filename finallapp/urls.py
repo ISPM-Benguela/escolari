@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^departamentos/', include('departamentos.urls')),
     url(r'^turmas/', include('salas.urls')),
     url(r'^cursos/', include('cursos.urls')),
+    url(r'^eventos/', include('eventos.urls')),
     url(r'^admin/', admin.site.urls),
 ]
 

@@ -167,41 +167,41 @@
                         </td>
 
                         <td>
-                          <a href="/funcionarios/actualiza/{{ funcionario.username }}">{{ funcionario.username }}</a>
+                          <a href="/funcionarios/actualiza/{{ funcionario.user.username }}">{{ funcionario.user.username }}</a>
                         </td>
 
-                        {% if funcionario.perfil.tipo_perfil == 'F' %}
+                        {% if funcionario.tipo_perfil == 'F' %}
                           <td>Funcionario nao docente</td>
 
-                        {% elif funcionario.perfil.tipo_perfil == 'A' %}
+                        {% elif funcionario.tipo_perfil == 'A' %}
                           <td>Admin</td>
-                        {% elif funcionario.perfil.tipo_perfil == 'P' %}
+                        {% elif funcionario.tipo_perfil == 'P' %}
                             <td>Professor</td>
-                        {% elif funcionario.perfil.tipo_perfil == 'S' %}
+                        {% elif funcionario.tipo_perfil == 'S' %}
                             <td>Nao tem categoria</td>
                         {% endif %}
                         <td class="hidden-480">
-                          {% if funcionario.perfil.tipo_perfil == 'A' %}
+                          {% if funcionario.tipo_perfil == 'A' %}
                             Faz todos CRUDs
-                          {% elif funcionario.perfil.departamento == None  %}
+                          {% elif funcionario.departamento == None  %}
                             Nao tem departamento
                           {% else %}
-                            {{ funcionario.perfil.departamento }}
+                            {{ funcionario.departamento }}
                           {% endif %}
                         </td>
                         <td>
-                          {% if funcionario.perfil.email == None %}
+                          {% if funcionario.email == None %}
                             Sem Informacao <span class="badge badge-danger"><i class="fa fa-thumbs-o-down"></i></span>
                           {% else %}
-                            {{ funcionario.perfil.email }}
+                            {{ funcionario.email }}
                           {% endif %}
                         </td>
 
                         <td>
-                          {% if funcionario.perfil.morada == None %}
+                          {% if funcionario.morada == None %}
                             Sem Informacao <span class="badge badge-danger"><i class="fa fa-thumbs-o-down"></i></span>
                           {% else %}
-                            {{ funcionario.perfil.morada }}
+                            {{ funcionario.morada }}
                           {% endif %}
                         </td>
 
@@ -211,7 +211,7 @@
                               <i class="ace-icon fa fa-check bigger-120"></i>
                             </button>
 
-                            <a href="{% url 'editarusuario' funcionario.username %}" class="btn btn-xs btn-info">
+                            <a href="{% url 'editarusuario' funcionario.user.username %}" class="btn btn-xs btn-info">
                               <i class="ace-icon fa fa-pencil bigger-120"></i>
                             </a>
 
@@ -273,7 +273,7 @@
                                       <a class="user-title-label" href="#">
                                         <i class="ace-icon fa fa-circle light-green"></i>
                                         &nbsp;
-                                        <span class="white">{{ funcionario.username }}</span>
+                                        <span class="white">{{ funcionario.user.username }}</span>
                                       </a>
                                     </div>
                                   </div>
@@ -288,7 +288,7 @@
                                     <div class="profile-info-name"> Username </div>
 
                                     <div class="profile-info-value">
-                                      <span>{{ funcionario.username }}</span>
+                                      <span>{{ funcionario.user.username }}</span>
                                     </div>
                                   </div>
 

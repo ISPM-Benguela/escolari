@@ -107,11 +107,24 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
-
-                                <button type="submit" data-toggle="modal" data-target="#myModal" style="margin-bottom: 20px;" class="btn btn-primary">Cadastrar evento</button>
+							    
+									{% if error %}
+									<div class="alert alert-danger" role="alert">
+								   	 <ul>
+										{% for mensagem in mensagens %}
+										<li>{{ mensagem }}</li>
+										{% endfor %}
+									  <ul>
+								  </div>
+								{% endif %}
+								{% if sucesso %}
+									<div class="alert alert-success" role="alert">
+										<label>Cadastro com sucesso</label>
+									</div>
+								{% endif %}
 								
-                                
-                                
+                                <button type="submit" data-toggle="modal" data-target="#myModal" style="margin-bottom: 20px;" class="btn btn-primary">Cadastrar evento</button>
+			
                                 <!-- Modal -->
                                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                 <div class="modal-dialog" role="document">

@@ -13,15 +13,32 @@ def todos(request):
         'form' : EventoForm,
         'mensagens' : mensagens,
         'error' : False,
-        'sucesso': True,
+        'sucesso': False,
 
     }
     return render(request, 'eventos/index.html', contexto)
 
 def cadastrar_evento(request):
-    if request.method == 'POST':
+    mensagens = []
+    erro = False 
+    sucesso = False 
+
+    if request.method == 'POST' and request.FILES['imagem']:
         form = EventoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            
-    return redirect('/eventos')
+        return redirect('/eventos')
+    else:
+        mensagens.append('Algo ocorreu mal')
+        erro = True 
+        return render(request, 'eventos/index.html',{
+            'erro': erro,
+            'mensagens': mensagens,
+        })
+      
+        
+
+        
+        
+
+   # return redirect('/eventos')

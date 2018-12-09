@@ -14,7 +14,7 @@ def todos(request):
 
 def cadastrar_evento(request):
     if request.method == 'POST':
-        form = EventoForm(request.POST)
+        form = EventoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             

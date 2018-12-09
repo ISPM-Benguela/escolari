@@ -123,8 +123,23 @@
                                     <div class="modal-body">
                                         <form action="{% url 'cadastraevento' %}"  method="post">
 											{% csrf_token %}
-											{{ form|bootstrap }}
-											<div class="group-form">
+											<div class="form-group">
+												<input type="text" name="titulo" class="form-control" placeholder="titulo do evento" />
+											</div>
+
+											<div class="form-group">
+												<input type="text" class="form-control" name="local" placeholder="Local doevento" />
+											</div>
+											<div class="form-group">
+												<input type="file" name="imagem" class="form-control" placeholder="Escolher uma imagem do evento" />
+											</div>
+											<div class="form-group">
+												<input type="date" name="dataInicio" class="form-control" placeholder="Data de inicio" />
+											</div>
+											<div class="form-group">
+												<input type="date" name="dataTerminar" class="form-control" placeholder="Data de inicio" />
+											</div>
+											<div class="form-group">
 												<input type="submit" class="btn btn-primary" value="Cadastrar evento" />
 											</div>
 										</form>

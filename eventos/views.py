@@ -1,4 +1,5 @@
 from django.shortcuts import render,  HttpResponse
+from django.shortcuts import get_object_or_404
 from departamentos.models import Departamentos
 from eventos.models import Eventos
 from django.shortcuts import redirect
@@ -35,6 +36,36 @@ def cadastrar_evento(request):
             'erro': erro,
             'mensagens': mensagens,
         })
+def editar_eventos(request, num):
+    obj = get_object_or_404(Eventos, num)
+    mensagens = []
+    erro = False 
+    sucesso = False 
+
+    if obj:
+        sucesso = True 
+        mensagens.append("Evento removido com sucesso!")
+        obj.delete()
+    return render(request, 'eventos/index.html',{
+        'sucesso' : sucesso,
+        'mensagens' : mensagens,
+    })
+
+def remover_eventos(request, num):
+    
+    mensagens = []
+    erro = False 
+    sucesso = False 
+    obj = Eventos.objects.get(id=num)
+    obj.delete()
+        
+    return render(request, 'eventos/index.html', {
+        'sucesso' : True,
+        'messagem': 'Evento Eliminado com sucesso',
+        'form': EventoForm,
+        'eventos' : Eventos.objects.all(),
+    })
+
       
         
 

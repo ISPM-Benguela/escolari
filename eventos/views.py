@@ -37,18 +37,17 @@ def cadastrar_evento(request):
             'mensagens': mensagens,
         })
 def editar_eventos(request, num):
-    obj = get_object_or_404(Eventos, num)
-    mensagens = []
-    erro = False 
-    sucesso = False 
+    instance = Eventos.objects.get(id=num)
 
-    if obj:
-        sucesso = True 
-        mensagens.append("Evento removido com sucesso!")
-        obj.delete()
-    return render(request, 'eventos/index.html',{
-        'sucesso' : sucesso,
-        'mensagens' : mensagens,
+    if request.method == 'POST' and request.FILES:
+        return HttpResponse("vem do form")
+
+    form = EventoForm(request.POST or None, instance=instance)
+    return render(request, 'eventos/editar.html', {
+        'instance': instance,
+        'messagem': 'Evento Eliminado com sucesso',
+        'form': form,
+        'eventos' : Eventos.objects.all(),
     })
 
 def remover_eventos(request, num):
@@ -66,7 +65,8 @@ def remover_eventos(request, num):
         'eventos' : Eventos.objects.all(),
     })
 
-      
+def actualizar_eventos(request, num):
+    return HttpResponse("actualizar evtnto")
         
 
         

@@ -7,6 +7,6 @@ urlpatterns = [
     url(r'^cadastrar/', apresenta.cadastrar_evento, name="cadastraevento"),
     url(r'^editar/(?P<num>[0-9]+)/$', apresenta.editar_eventos , name="editarevento"),
     url(r'^remover/(?P<num>[0-9]+)/$', apresenta.remover_eventos , name="removerevento"),
-    # url(r'^actualizar/(?P<nome>[-\w]+)/$', apresenta.editar_funcionario , name="editarfuncionario"),
+    url(r'^actualizar/(?P<num>[0-9]+)/$', apresenta.actualizar_eventos , name="actualizarevento"),
     #url(r'^(?P<funcionario>\w+)', apresenta.sozinho, name="single"),
 ]

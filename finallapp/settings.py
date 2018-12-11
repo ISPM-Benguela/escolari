@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'funcionarios',
     'departamentos',
     'salas',
+    'estudantes',
     'cursos',
     'nivel',
     'eventos',

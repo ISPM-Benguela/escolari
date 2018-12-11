@@ -32,8 +32,8 @@ class Perfil(models.Model):
     disciplina = models.ManyToManyField(Disciplina, blank=True)
     # perfil do estudante
 
-    turma = models.ForeignKey(Turmas, blank=True, null=True)
-    
+    turma = models.ManyToManyField(Turmas, blank=True)
+
    
 
     @receiver(post_save, sender=User)

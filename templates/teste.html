@@ -1,12 +1,10 @@
 <html>
     <head><title>{{ title }}</title></head>
     <body>
-      <h2>{{ title }}</h2>
-      <p>No. {{ estudNo }}
-       <ul>
-       {% for query in queryset %}
-         <li>{{ query.user.username }}</li>
-       {% endfor %}
-       </ul>
+      <ul>
+      {% for estudante in estudantes %}
+        <li>{{ estudante.turma.get_curso }}</li>
+      {% endfor %}
+      <ul>
     </body>
 </html>

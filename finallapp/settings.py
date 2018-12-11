@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'nivel',
     'eventos',
     'disciplinas',
-    'anolectivo',
 ]
 
 MIDDLEWARE = [

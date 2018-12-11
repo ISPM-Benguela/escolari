@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^turmas/', include('salas.urls')),
     url(r'^estudantes/', include('estudantes.urls')),
     url(r'^cursos/', include('cursos.urls')),
+    url(r'^ano/', include('anolectivo.urls')),
     url(r'^eventos/', include('eventos.urls')),
     url(r'^admin/', admin.site.urls),
 ]

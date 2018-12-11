@@ -6,6 +6,7 @@ from django.dispatch import receiver
 
 from departamentos.models import Departamentos
 from disciplinas.models import Disciplina
+from salas.models import Turmas
 
 class Perfil(models.Model):
 
@@ -29,7 +30,10 @@ class Perfil(models.Model):
     morada  = models.CharField(_('nome da turma'), max_length=250, blank=True, null=True, default="")
     foto = models.FileField(default='perfil/default.jpg', upload_to='perfil/', blank=True, null=True)
     disciplina = models.ManyToManyField(Disciplina, blank=True)
+    # perfil do estudante
 
+    turma = models.ForeignKey(Turmas, blank=True, null=True)
+    
    
 
     @receiver(post_save, sender=User)

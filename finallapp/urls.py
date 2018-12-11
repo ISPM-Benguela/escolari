@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^funcionarios/', include('funcionarios.urls')),
     url(r'^departamentos/', include('departamentos.urls')),
     url(r'^turmas/', include('salas.urls')),
+    url(r'^estudantes/', include('estudantes.urls')),
     url(r'^cursos/', include('cursos.urls')),
     url(r'^eventos/', include('eventos.urls')),
     url(r'^ano/', include('anolectivo.urls')),

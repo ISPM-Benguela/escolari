@@ -1,3 +1,8 @@
 from django.shortcuts import render
+from departamentos.models import Departamentos
 
-# Create your views here.
+def inicio(request):
+    contexto = {
+        'departamentos' : Departamentos.objects.all(),
+    }
+    return render(request, 'estudantes/inicio.html', contexto)

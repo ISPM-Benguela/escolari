@@ -1,9 +1,9 @@
 from django.conf.urls import url, include
 
-from . import views
+from estudantes import views as visao
 
 urlpatterns = [
 
-    url(r'^$', views.inicio, name="inicio"),
+    url(r'^$', visao.inicio, name="estudantes"),
 
 ]

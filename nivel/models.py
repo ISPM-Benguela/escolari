@@ -4,5 +4,5 @@ class Nivel(models.Model):
     nome = models.CharField(max_length=255)
 
     def __str__(self):
-        return "%s " % format(self.nome)
+        return "%s " % self.nome
 

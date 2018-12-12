@@ -21,7 +21,7 @@ class Turmas(models.Model):
     turma = models.CharField(max_length=255)
     curso = models.ForeignKey(Cursos, blank=True, null=True)
     disciplina = models.ManyToManyField(Disciplina, blank=True)
-    responsavel = models.OneToOneField(User, blank=True)
+    responsavel = models.OneToOneField(User, blank=True, null=True)
     periodo = models.CharField('Tipo de peerfil', max_length=1, choices=PERI, default=ESCOLHER,  blank=True, null=True)
 
     class Meta:

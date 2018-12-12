@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from cursos.models import Cursos
 from disciplinas.models import Disciplina
 from anolectivo.models import AnoLectivo
+from nivel.models import Nivel
 
 class Turmas(models.Model):
 
@@ -22,6 +23,7 @@ class Turmas(models.Model):
     nome = models.CharField(max_length=255)
     curso = models.ForeignKey(Cursos, blank=True, null=True)
     ano = models.ForeignKey(AnoLectivo, blank=True, null=True)
+    nivel = models.ForeignKey(Nivel, blank=True, null=True)
     disciplina = models.ManyToManyField(Disciplina, blank=True)
     responsavel = models.OneToOneField(User, blank=True, null=True)
     periodo = models.CharField('Tipo de peerfil', max_length=1, choices=PERI, default=ESCOLHER,  blank=True, null=True)
@@ -41,3 +43,7 @@ class Turmas(models.Model):
     @property
     def get_ano(self):
          return "%s" % format(self.ano)
+    
+    @property
+    def get_nivel(self):
+         return "%s" % self.nivel

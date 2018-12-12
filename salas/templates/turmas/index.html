@@ -146,6 +146,7 @@
 												<img src="{% static 'img/log.png' %}" />
 												<div class="caption">
 													<h3>Sala: {{ turma.get_turma }}</h3>
+													<h3>Nivel: {{ turma.get_nivel }}</h3>
 													 <p>Curso: <span class="badge">{{ turma.curso }}</span></p>
 													 <p>Periodo: <span class="badge">
 													 	{% if turma.periodo == 'N' %}

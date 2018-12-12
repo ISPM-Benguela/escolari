@@ -32,7 +32,7 @@ class Turmas(models.Model):
         return " %s" % self.turma
 
     def get_turma(self):
-        return "%s" % self.c
+        return "%s" % self.turma
     
     def get_curso(self):
          return "%s" % self.curso

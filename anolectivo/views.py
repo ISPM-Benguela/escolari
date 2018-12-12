@@ -22,4 +22,25 @@ def cadastrar_anolectivo(request):
     return HttpResponseRedirect('/ano')
 
 def editar_anolectivo(request, nome):
-    return HttpResponse(nome)
+    instance = get_object_or_404(AnoLectivo, ano=nome)
+    form = AnolectivoForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        form.save()
+    contexto = {
+        "instance" : instance,
+        "form" : form,
+        "departamentos" : Departamentos.objects.all(),
+    }
+    
+    return render(request, 'ano/editar.html', contexto )
+
+def eliminar_anolectivo(request, nome):
+    mensagens = []
+    erro = False 
+    sucesso = False 
+    obj = AnoLectivo.objects.get(ano=nome)
+    if obj:
+        obj.delete()
+        return HttpResponseRedirect('/ano')
+    return HttpResponseRedirect('/ano')
+

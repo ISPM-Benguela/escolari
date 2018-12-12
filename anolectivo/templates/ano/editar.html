@@ -115,20 +115,7 @@
               <!-- PAGE CONTENT BEGINS -->
               <div class="row">
                 <div class="col-xs-12">
-                    {% if error %}
-					     <div class="alert alert-danger" role="alert">
-							 <ul>
-								{% for mensagem in mensagens %}
-					     	<li>{{ mensagem }}</li>
-							{% endfor %}
-						  <ul>
-						  </div>
-						{% endif %}
-						{% if sucesso %}
-						<div class="alert alert-success" role="alert">
-							<label>{{ messagem }}</label>
-						</div>
-					{% endif %}
+
                   <h4 class="pink">
 
                     <a href="#modal-table" role="button" class="green btn btn-success" data-toggle="modal"><i class="fa fa-group"></i> Cadastrar Ano lectivo</a>
@@ -172,9 +159,9 @@
                               <i class="ace-icon fa fa-pencil bigger-120"></i>
                             </a>
 
-                            <a href="{% url 'eliminarano' cada.ano %}" class="btn btn-xs btn-danger">
+                            <button class="btn btn-xs btn-danger">
                               <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                            </a>
+                            </button>
 
                             <button class="btn btn-xs btn-warning">
                               <i class="ace-icon fa fa-flag bigger-120"></i>

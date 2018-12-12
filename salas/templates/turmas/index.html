@@ -11,9 +11,9 @@
 						<ul class="breadcrumb">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Home</a>
+								<a href="#">painel de  controle</a>
 							</li>
-							<li class="active">Gallery</li>
+							<li class="active">gestao de turmas</li>
 						</ul><!-- /.breadcrumb -->
 
 						<div class="nav-search" id="nav-search">
@@ -120,7 +120,7 @@
                                         <h4 class="modal-title" id="myModalLabel">Cadastrar turmas</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="" method="post">
+                                        <form action="{% url 'cadastrturma' %}" method="post">
 											{% csrf_token %}
 											{{ form|bootstrap  }}
 

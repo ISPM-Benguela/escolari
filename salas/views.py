@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from departamentos.models import Departamentos
 from salas.models import Turmas
@@ -13,4 +13,10 @@ def todos(request):
     })
 
 def cadastrar_turma(request):
-    return HttpResponse("vamos cadastrar")
+    form = TurmaForm(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+        else:
+            return HttpResponse("nao e validao")
+    return HttpResponseRedirect("/turmas")

@@ -32,7 +32,7 @@ class Perfil(models.Model):
     disciplina = models.ManyToManyField(Disciplina, blank=True)
     # perfil do estudante
 
-    turma = models.ManyToManyField(Turmas, null=True)
+    turma = models.ForeignKey(Turmas, blank=True,  null=True)
 
     def __str__(self):
         return self.user.username

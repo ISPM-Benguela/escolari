@@ -1,6 +1,7 @@
 
 {% extends "layouts/painel.html" %}
 {% load staticfiles %}
+{% load bootstrap %}
 {% block title %}painel de funcionarios{% endblock %}
 
 {% block principal %}
@@ -119,7 +120,14 @@
                                         <h4 class="modal-title" id="myModalLabel">Cadastrar turmas</h4>
                                     </div>
                                     <div class="modal-body">
-                                        ...
+                                        <form action="" method="post">
+											{% csrf_token %}
+											{{ form|bootstrap  }}
+
+											<div class="form-group">
+												<input type="submit" class="btn btn-primary" value="Cadastrar turma" />
+											</div>
+										</div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

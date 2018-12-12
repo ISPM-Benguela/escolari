@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^cadastrar/', visao.cadastrar_anolectivo , name="cadastranolectivo"),
     url(r'^editar/(?P<nome>[-\w]+)/$', visao.editar_anolectivo , name="editarano"),
     url(r'^eliminar/(?P<nome>[-\w]+)/$', visao.eliminar_anolectivo , name="eliminarano"),
+    url(r'^actualizar/(?P<num>[0-9]+)/$', visao.actualizar_anolectivo , name="actualizaranolectivo"),
 ]

@@ -24,8 +24,11 @@ def cadastrar_anolectivo(request):
 def editar_anolectivo(request, nome):
     instance = get_object_or_404(AnoLectivo, ano=nome)
     form = AnolectivoForm(request.POST or None, instance=instance)
-    if form.is_valid():
-        form.save()
+    
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/ano')
     contexto = {
         "instance" : instance,
         "form" : form,
@@ -44,3 +47,5 @@ def eliminar_anolectivo(request, nome):
         return HttpResponseRedirect('/ano')
     return HttpResponseRedirect('/ano')
 
+def actualizar_anolectivo(request, nome):
+    return HttpResponse("actualizar")

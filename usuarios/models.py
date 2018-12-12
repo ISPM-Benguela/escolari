@@ -32,7 +32,7 @@ class Perfil(models.Model):
     disciplina = models.ManyToManyField(Disciplina, blank=True)
     # perfil do estudante
 
-    turma = models.ManyToManyField(Turmas, blank=True)
+    turma = models.ManyToManyField(Turmas, null=True)
 
    
 

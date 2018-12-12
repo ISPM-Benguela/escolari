@@ -11,4 +11,4 @@ def inicio(request):
         'form' : EstudanteForm,
         'estudantes': queryset,
     }
-    return render(request, 'estudantes/inicio.html', contexto)
+    return render(request, 'teste.html', contexto)

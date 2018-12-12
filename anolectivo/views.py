@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from departamentos.models import Departamentos
 from anolectivo.models import AnoLectivo
+from django.shortcuts import get_object_or_404
 from anolectivo.forms import AnolectivoForm
 
 def inicio(request):
@@ -19,3 +20,6 @@ def cadastrar_anolectivo(request):
         if form.is_valid():
             form.save()
     return HttpResponseRedirect('/ano')
+
+def editar_anolectivo(request, nome):
+    return HttpResponse(nome)

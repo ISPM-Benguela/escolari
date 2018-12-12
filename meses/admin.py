@@ -1,3 +1,4 @@
 from django.contrib import admin
+from meses.models import Meses
 
-# Register your models here.
+admin.site.register(Meses)

@@ -9,3 +9,6 @@ def todos(request):
         'departamentos': Departamentos.objects.all(),
         'turmas' : turmas,
     })
+
+def cadastrar_turma(request):
+    return HttpResponse("vamos cadastrar")

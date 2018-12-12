@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'propinas',
     'meses',
     'eventos',
+    'candidato',
     'disciplinas',
 ]
 

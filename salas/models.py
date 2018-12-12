@@ -29,10 +29,10 @@ class Turmas(models.Model):
         verbose_name_plural = "turmas"
         
     def __str__(self):
-        return "turma: %s, curso: %s" % (self.get_turma(), self.get_curso(),)
+        return " %s" % self.turma
 
     def get_turma(self):
-        return self.turma
+        return "%s" % self.c
     
     def get_curso(self):
-         return self.curso
+         return "%s" % self.curso

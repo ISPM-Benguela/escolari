@@ -5,10 +5,10 @@ from estudantes.forms import EstudanteForm
 from usuarios.models import Perfil
 
 def inicio(request):
-    queryset = Perfil.objects.filter(Q(tipo_perfil__startswith='E'))
+    queryset = Perfil.objects.filter(tipo_perfil='E')
     contexto = {
         'departamentos' : Departamentos.objects.all(),
         'form' : EstudanteForm,
         'estudantes': queryset,
     }
-    return render(request, 'teste.html', contexto)
+    return render(request, 'estudantes/inicio.html', contexto)

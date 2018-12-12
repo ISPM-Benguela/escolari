@@ -2,7 +2,7 @@
     <head><title>{{ title }}</title></head>
     <body>
       <ul>
-      {% for estudante in estudantes %}
+      {% for estudante in estudantes  %}
         <li>{{ estudante.turma.get_curso }}</li>
       {% endfor %}
       <ul>

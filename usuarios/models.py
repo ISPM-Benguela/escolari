@@ -34,6 +34,8 @@ class Perfil(models.Model):
 
     turma = models.ManyToManyField(Turmas, null=True)
 
+    def __str__(self):
+        return self.user.username
    
 
     @receiver(post_save, sender=User)

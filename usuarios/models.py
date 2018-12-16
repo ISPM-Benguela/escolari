@@ -7,6 +7,7 @@ from django.dispatch import receiver
 from departamentos.models import Departamentos
 from disciplinas.models import Disciplina
 from salas.models import Turmas
+from propinas.models import Propinas
 
 class Perfil(models.Model):
 
@@ -33,6 +34,7 @@ class Perfil(models.Model):
     # perfil do estudante
 
     turma = models.ForeignKey(Turmas, blank=True,  null=True)
+    propinas = models.ManyToManyField(Propinas, blank=True)
 
     def __str__(self):
         return self.user.username
@@ -45,3 +47,8 @@ class Perfil(models.Model):
     @receiver(post_save, sender=User)
     def save_user_perfil(sender, instance, **kwargs):
         instance.perfil.save()
+
+    def get_propina(self, id):
+       # return Propinas.objects.latest()
+        return Propinas.objects.filter(estundante=id)
+       

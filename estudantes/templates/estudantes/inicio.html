@@ -151,7 +151,7 @@
 															<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
 															curso
 														</th>
-														<th class="hidden-480">estado propina</th>
+														<th class="hidden-480">Ultima propina</th>
 
 														<th></th>
 													</tr>
@@ -175,7 +175,8 @@
 														<td>{{ estudante.turma.get_curso }}</td>
 
 														<td class="hidden-480">
-															<span class="label label-sm label-warning">Expiring</span>
+															<!-- <span class="label label-sm label-warning">Expiring</span> -->
+															 {{ estudante.get_propina }}
 														</td>
 
 														<td>

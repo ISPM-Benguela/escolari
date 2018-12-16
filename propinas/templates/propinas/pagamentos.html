@@ -149,17 +149,18 @@
                       <div class="widget-body">
                         <div class="widget-main padding-8">
                           {% if propinas %}
-                          <div id="profile-feed-1" class="profile-feed">
+                          {% for propina in propinas %}
+                            <div id="profile-feed-1" class="profile-feed">
                             <div class="profile-activity clearfix">
                               <div>
-                                <img class="pull-left" alt="{{ funcionario }}" width="100" height="50" src="/media/perfil/default.jpg" />
-                                <a class="user" href=""> NOme aqui </a>
-                                changed his profile photo.
-                                <a href="#">Take a look</a>
+                                Propina do mes
+                                <a class="user" href=""> {{ propina.mes }} </a>
+                                .
+                                Pago
 
                                 <div class="time">
-                                  <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                  an hour ago
+                                  <i class="ace-icon fa fa-money bigger-110"></i>
+                                  Valor: {{ propina.propina }}
                                 </div>
 
                               </div>
@@ -176,6 +177,7 @@
                               </div>
                             </div>
                           </div>
+                          {% endfor %}
                           {% else %}
                             <h3>Ainda nao pagou nenhuma propina</h3>
                           {% endif %}
@@ -183,17 +185,9 @@
                       </div>
                     </div>
 
-                    <div class="hr hr2 hr-double"></div>
-
                     <div class="space-6"></div>
 
                     <div class="center">
-                      <button type="button" class="btn btn-sm btn-primary btn-white btn-round">
-                        <i class="ace-icon fa fa-rss bigger-150 middle orange2"></i>
-                        <span class="bigger-110">{% trans "Ver mais" %}</span>
-
-                        <i class="icon-on-right ace-icon fa fa-arrow-right"></i>
-                      </button>
                     </div>
                   </div>
                 </div>

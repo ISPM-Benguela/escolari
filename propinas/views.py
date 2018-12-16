@@ -23,5 +23,10 @@ def pagar_propinas(request, nome):
 def cadastrar_pagamento(request):
 
     if request.method == 'POST':
-        return HttpResponse("vem do formulario")
+        aluno = request.POST.get('estudante')
+        ano = request.POST.get('ano')
+        mes = request.POST.get('mes')
+        propina = request.POST.get('propina')
+
+        return HttpResponse("estudante: %s, anolectivo: %s, mes: %s, propina: %s" % (aluno, ano, mes, propina))
     return HttpResponse("pagamento")

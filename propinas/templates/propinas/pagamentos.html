@@ -99,6 +99,7 @@
                       <div class="widget-header widget-header-small">
 
                         <form action="{% url 'pagamento' %}" method="POST">
+                        {% csrf_token %}
                         <fieldset>
                             <legend>Preencher o formulario de propinas</legend>
                             <div class="form-group">

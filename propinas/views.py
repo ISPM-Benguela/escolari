@@ -19,3 +19,6 @@ def pagar_propinas(request, nome):
         'meses': Meses.objects.all(),
         'anolectivos': AnoLectivo.objects.all(),
     })
+
+def cadastrar_pagamento(request):
+    return HttpResponse("pagamento")

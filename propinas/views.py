@@ -21,4 +21,7 @@ def pagar_propinas(request, nome):
     })
 
 def cadastrar_pagamento(request):
+
+    if request.method == 'POST':
+        return HttpResponse("vem do formulario")
     return HttpResponse("pagamento")

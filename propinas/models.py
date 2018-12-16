@@ -12,3 +12,7 @@ class Propinas(models.Model):
 
     def __str__(self):
         return self.estundante
+    
+    class Meta:
+        verbose_name = "Pronina"
+        verbose_name_plural = "Propinas"

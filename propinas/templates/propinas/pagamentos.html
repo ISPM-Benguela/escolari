@@ -98,15 +98,17 @@
                     <div class="widget-box transparent">
                       <div class="widget-header widget-header-small">
 
-                        <form action="{% url 'pagamento' %}" method="POST">
+                        <form action="/propinas/pagamento/" method="POST">
                         {% csrf_token %}
                         <fieldset>
-                            <legend>Preencher o formulario de propinas</legend>
+                            <legend>Preencher o formulario de propinas de ({{ mes_actual|date:"M, Y" }} )</legend>
                             <div class="form-group">
-                                <input type="text" name="estudante" class="form-control" value="{{ estudante.username }}" disable>
-                            </div>
+                                <input type="text" class="form-control" value="{{ estudante.username }}" disabled>
+                                <input type="hidden" name="estudante" value="{{ estudante.username }}" />
+                             </div>
                             <div class="form-group">
                                 <select name="ano"  class="form-control">
+                                    
                                     {% for anolectivo in anolectivos %}
                                         <option value="{{ anolectivo.id }}">{{ anolectivo.ano }}<option>
                                     {% endfor %}

@@ -10,8 +10,6 @@ class Propinas(models.Model):
     propina = models.IntegerField(default=0)
    # propina = models.DecimalField(decimal_places=2, default=0)
 
-    def __str__(self):
-        return self.estundante
     
     class Meta:
         verbose_name = "Pronina"

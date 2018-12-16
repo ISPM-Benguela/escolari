@@ -176,7 +176,9 @@
 
 														<td class="hidden-480">
 															<!-- <span class="label label-sm label-warning">Expiring</span> -->
-															 {{ estudante.get_propina }}
+															{% for p in estudante.propina %}
+																{{ p.propina }}
+															{% endfor %}
 														</td>
 
 														<td>

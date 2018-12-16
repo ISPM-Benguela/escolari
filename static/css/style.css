@@ -65,11 +65,11 @@ label{
     margin-right: 0;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-    color:#ffb71c;
+    color:#DD5A43;
     background:none;
 }
 .navbar-default .navbar-nav > .active > a:before{
-	background: #ffb71c;
+	background: #DD5A43;
 	transform: translateX(0);
 	-webkit-transform: translateX(0);
 	-moz-transform: translateX(0);
@@ -86,10 +86,10 @@ label{
     text-transform: uppercase;
 }
 .navbar-default .navbar-nav > li > a:hover{
-    color:#ffb71c;
+    color:#DD5A43;
 }
 .navbar-default .navbar-nav > li > a:focus {
-    color: #ffb71c;
+    color: #DD5A43;
 	outline:none;
 }
 nav.navbar.navbar-default {
@@ -116,7 +116,7 @@ a.navbar-brand {
     font-style: italic;
 }
 a.navbar-brand i{
-	color:#ffb71c;
+	color:#DD5A43;
 }
 .navbar-right {
     float: left !important;
@@ -153,7 +153,7 @@ div#bs-example-navbar-collapse-1 {
 	bottom: 0;
 	width: 100%;
 	height: 2px;
-	background:#ffb71c;
+	background:#DD5A43;
 	content: '';
     position: absolute;
     transition: transform .5s ease;
@@ -179,7 +179,7 @@ ul.agile_forms {
     padding-top: .5em;
 }
 ul.agile_forms li a {
-    background:#ffb71c;
+    background:#DD5A43;
     color: #fff;
     font-size: 0.9em;
     padding: 8px 1em;
@@ -319,7 +319,7 @@ h3.tittle.why {
 .w3layouts_header_right input[type="submit"] {
     outline: none;
     border: none;
-    background: #ffb71c url(../images/search.png)no-repeat 12px 5px;
+    background: #DD5A43 url(../images/search.png)no-repeat 12px 5px;
     color: #fff;
     padding: 8px 0;
     width: 20%;
@@ -367,7 +367,7 @@ li.agileits-main i {
     letter-spacing: 1px;
     color: #fff;
     cursor: pointer;
-    background: #ffb71c;
+    background: #DD5A43;
     transition: 0.5s all;
     -webkit-transition: 0.5s all;
     -o-transition: 0.5s all;
@@ -395,7 +395,7 @@ li.agileits-main i {
 }
 .header-w3l h4 {
     font-size: 1.6em;
-    color: #ffb71c;
+    color: #DD5A43;
     text-transform: uppercase;
     letter-spacing: 2px;
     text-align: center;
@@ -505,7 +505,7 @@ h3.agileinfo_sign  {
     color: #FFFFFF;
 	text-transform:uppercase;
     cursor: pointer;
-    background: #ffb71c;
+    background: #DD5A43;
     box-shadow: 0px 2px 1px rgba(28, 28, 29, 0.42);
 }
 .signin-form input[type="submit"]:hover {
@@ -663,7 +663,7 @@ h3.w3l-title {
 }
 .w3layouts_header p {
     font-size: 2em !important;
-    color: #ffb71c;
+    color: #DD5A43;
     position: relative;
     margin: .5em 0 1em !important;
     text-align: center;
@@ -703,7 +703,7 @@ h3.w3l-title {
     text-transform: uppercase;
     letter-spacing: 1px;
     margin: 0 0 1em;
-    color: #ffb71c;
+    color: #DD5A43;
 }
 a.trend-w3l {
     font-size: .9em;
@@ -758,7 +758,7 @@ a.trend-w3l:hover {
     letter-spacing: 2px;
     text-align: center;
     font-weight: 600;
-    background: #ffb71c;
+    background: #DD5A43;
     padding: .5em;
     border-right: 5px solid #fff;
     border-radius: 13px 0;
@@ -807,7 +807,7 @@ h4.stats-info {
 }
 .services-grid.agileits-w3layouts span {
     font-size: 4em;
-    color: #ffb71c;
+    color: #DD5A43;
 	margin-bottom: .8em;
 }
 span.grid-w3l-ser {
@@ -883,7 +883,7 @@ span.grid-w3l-ser {
     -ms-transform: translateY(0);
     -webkit-transform: translateY(0);
     transform: translateY(0);
-    background: #ffb71c;
+    background: #DD5A43;
     color: #fff;
 }
 .about_opa p {
@@ -904,7 +904,7 @@ span.grid-w3l-ser {
     width: 32px;
     height: 32px;
     display: inline-block;
-    border: 1px solid #ffb71c;
+    border: 1px solid #DD5A43;
 	line-height: 2;
     color: #fff;
 }
@@ -1036,7 +1036,7 @@ text-align:center;
 	margin-bottom: 0.5em;
 }
 .contact-top1 {
-    background: #ffb71c;
+    background: #DD5A43;
     padding: 3em 3em 4em;
     margin-top: 3em;
 }
@@ -1113,7 +1113,7 @@ text-align:center;
 }
 .wthree_footer_grid_left1 h4:after{	
 	content: '';
-    background: #ffb71c;
+    background: #DD5A43;
     height: 2px;
     width: 20%;
     position: absolute;
@@ -1126,7 +1126,7 @@ text-align:center;
 }
 .wthree_footer_grid_left1 ul li {
     list-style-type: none;
-    color: #ffb71c;
+    color: #DD5A43;
     margin-bottom: 1em;
     letter-spacing: 1px;
 }
@@ -1141,7 +1141,7 @@ text-align:center;
 	text-decoration:none;
 }
 .wthree_footer_grid_left1 ul li a:hover{
-	color:#ffb71c;
+	color:#DD5A43;
 }
 .wthree_footer_grid_right1 ul li{
 	list-style-type:none;
@@ -1151,10 +1151,10 @@ text-align:center;
 }
 .wthree_footer_grid_right1 ul li i {
     padding-right: 1em;
-    color: #ffb71c;
+    color: #DD5A43;
 }
 .wthree_footer_grid_right1 ul li a:hover{
-	color:#ffb71c;
+	color:#DD5A43;
 }
 .wthree_footer_grid_right2_w3{
 	float:left;
@@ -1568,7 +1568,7 @@ text-align:center;
 		width: 91%;
 	}
 	.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-		background:#ffb71c;
+		background:#DD5A43;
 	}
 	.navbar-default .navbar-toggle .icon-bar {
 		background-color: #002147;

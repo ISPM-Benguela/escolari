@@ -50,5 +50,5 @@ class Perfil(models.Model):
 
     def get_propina(self, id):
        # return Propinas.objects.latest()
-        return Propinas.objects.filter(estundante=id)
+        return Propinas.objects.all()
        

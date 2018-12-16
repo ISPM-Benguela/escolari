@@ -17,5 +17,5 @@ def pagar_propinas(request, nome):
         'departamentos' : Departamentos.objects.all(),
         'estudante' : estudante,
         'meses': Meses.objects.all(),
-        'anolectivo': AnoLectivo.objects.all(),
+        'anolectivos': AnoLectivo.objects.all(),
     })

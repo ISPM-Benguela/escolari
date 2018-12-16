@@ -34,9 +34,6 @@
         </div>
 
         <div class="page-content">
-          <div class="ace-settings-container" id="ace-settings-container">
-             
-          </div><!-- /.ace-settings-container -->
 
           <div class="page-header">
             <h1>
@@ -54,31 +51,6 @@
               <!-- PAGE CONTENT BEGINS -->
               <div class="clearfix">
                 
-                <div class="pull-right">
-                  <span class="green middle bolder">{% trans "Escolhe o perfil:" %} &nbsp;</span>
-
-                  <div class="btn-toolbar inline middle no-margin">
-                    <div data-toggle="buttons" class="btn-group no-margin">
-                      <label class="btn btn-sm btn-yellow active">
-                        <span class="bigger-110">1</span>
-
-                        <input type="radio" value="1" />
-                      </label>
-
-                      <label class="btn btn-sm btn-yellow">
-                        <span class="bigger-110">2</span>
-
-                        <input type="radio" value="2" />
-                      </label>
-
-                      <label class="btn btn-sm btn-yellow">
-                        <span class="bigger-110">3</span>
-
-                        <input type="radio" value="3" />
-                      </label>
-                    </div>
-                  </div>
-                </div>
               </div>
 
 
@@ -125,6 +97,29 @@
 
                     <div class="widget-box transparent">
                       <div class="widget-header widget-header-small">
+
+                        <form action="" method="">
+                        <fieldset>
+                            <legend>Preencher o formulario de propinas</legend>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="{{ estudante.username }}" disable>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    {% for anolectivo in anolectivos %}
+                                        <option value="">{{ anolectivo.ano }}<option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control">
+                                   {% for cada in meses %}
+                                     <option value="">{{ cada.mes }}</option>
+                                   {% endfor %}
+                                </select>
+                            </div>
+                            </fieldset>
+                        </form>
                         <h4 class="widget-title blue smaller">
                           <i class="ace-icon fa fa-money"></i>
                           {% trans "Registo de propinas do estudante" %} {{ estudante.username }} 
@@ -145,33 +140,6 @@
                       <div class="widget-body">
                         <div class="widget-main padding-8">
                           
-                          <div id="profile-feed-1" class="profile-feed">
-                            <div class="profile-activity clearfix">
-                              <div>
-                                <img class="pull-left" alt="{{ funcionario }}" width="100" height="50" src="/media/perfil/default.jpg" />
-                                <a class="user" href=""> NOme aqui </a>
-                                changed his profile photo.
-                                <a href="#">Take a look</a>
-
-                                <div class="time">
-                                  <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                  an hour ago
-                                </div>
-
-                              </div>
-
-
-                              <div class="tools action-buttons">
-                                <a href="#" class="blue">
-                                  <i class="ace-icon fa fa-edit bigger-125"></i>
-                                </a>
-
-                                <a href="#" class="red">
-                                  <i class="ace-icon fa fa-times bigger-125"></i>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
                         </div>
                       </div>
                     </div>

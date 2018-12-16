@@ -1,3 +1,4 @@
 from django.contrib import admin
+from propinas.models import Propinas
 
-# Register your models here.
+admin.site.register(Propinas)

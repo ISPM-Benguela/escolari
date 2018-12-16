@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from departamentos.models import Departamentos
 
-# Create your views here.
+def inicio(request):
+    return render(request, 'propinas/inicio.html',{
+        'departamentos' : Departamentos.objects.all(),
+    })

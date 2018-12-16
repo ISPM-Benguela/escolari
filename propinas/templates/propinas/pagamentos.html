@@ -98,7 +98,7 @@
                     <div class="widget-box transparent">
                       <div class="widget-header widget-header-small">
 
-                        <form action="" method="">
+                        <form action="{% url 'pagamento' %}" method="POST">
                         <fieldset>
                             <legend>Preencher o formulario de propinas</legend>
                             <div class="form-group">
@@ -107,22 +107,28 @@
                             <div class="form-group">
                                 <select class="form-control">
                                     {% for anolectivo in anolectivos %}
-                                        <option value="">{{ anolectivo.ano }}<option>
+                                        <option value="{{ anolectivo.id }}">{{ anolectivo.ano }}<option>
                                     {% endfor %}
                                 </select>
                             </div>
                             <div class="form-group">
                                 <select class="form-control">
                                    {% for cada in meses %}
-                                     <option value="">{{ cada.mes }}</option>
+                                     <option value="{{ cada.id }}">{{ cada.mes }}</option>
                                    {% endfor %}
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Valor a pagar" />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary" value="Confirmar pagamento" />
                             </div>
                             </fieldset>
                         </form>
                         <h4 class="widget-title blue smaller">
                           <i class="ace-icon fa fa-money"></i>
-                          {% trans "Registo de propinas do estudante" %} {{ estudante.username }} 
+                          {% trans "Registo do meses pagos por estudante" %} {{ estudante.username }} 
                         </h4>
                         
 
@@ -130,7 +136,7 @@
                           <a href="#" data-action="reload">
                             <i class="ace-icon fa fa-refresh blue"></i>
                           </a>
-&nbsp;
+                            &nbsp;
                           <a href="#" class="pink">
                             <i class="ace-icon fa fa-trash-o"></i>
                           </a>
@@ -139,7 +145,37 @@
 
                       <div class="widget-body">
                         <div class="widget-main padding-8">
-                          
+                          {% if propinas %}
+                          <div id="profile-feed-1" class="profile-feed">
+                            <div class="profile-activity clearfix">
+                              <div>
+                                <img class="pull-left" alt="{{ funcionario }}" width="100" height="50" src="/media/perfil/default.jpg" />
+                                <a class="user" href=""> NOme aqui </a>
+                                changed his profile photo.
+                                <a href="#">Take a look</a>
+
+                                <div class="time">
+                                  <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                  an hour ago
+                                </div>
+
+                              </div>
+
+
+                              <div class="tools action-buttons">
+                                <a href="#" class="blue">
+                                  <i class="ace-icon fa fa-edit bigger-125"></i>
+                                </a>
+
+                                <a href="#" class="red">
+                                  <i class="ace-icon fa fa-times bigger-125"></i>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                          {% else %}
+                            <h3>Ainda nao pagou nenhuma propina</h3>
+                          {% endif %}
                         </div>
                       </div>
                     </div>

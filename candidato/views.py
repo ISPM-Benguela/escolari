@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 
-# Create your views here.
+
+def inicio(request):
+    return HttpResponse("candidato")
+
+def enviar_candidatura(request):
+    return HttpResponse("candidatura")

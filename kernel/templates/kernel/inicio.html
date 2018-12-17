@@ -20,7 +20,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-      <h1><a class="navbar-brand" href="index.html"><i class="fa fa-leanpub" aria-hidden="true"></i> Poli Disciplinar</a></h1>
+      <h5 style="font-size: 14px;"><a class="navbar-brand" href="{% url 'inicio' %}"><img style="margin: 3px;" src="{% static 'img/log.png' %}" width="50" height="50" />Poli Disciplinar</a></h5>
 
       </div>
       <ul class="agile_forms">
@@ -60,7 +60,8 @@
       <div class="header-w3l">
         <h2>Candidaturas</h2>
         <h4>Antes de candidatar - se verifica se há dispunivel</h4>
-        <form action="#" method="post" class="mod2">
+        <form action="{% url 'enviarcandidatura' %}" method="post" class="mod2">
+         {% csrf_token %}
           <div class="col-md-6 col-xs-6 w3l-left-mk">
             <ul>
               <li class="text">Nome :  </li>

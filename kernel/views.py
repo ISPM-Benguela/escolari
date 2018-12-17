@@ -28,7 +28,7 @@ def inicio(request):
         'estudanteNo' : contaEstudante,
         'funcionarioNo' : contaFuncionario,
         })
-    return render(request,'kernel/inicio.html',, {
+    return render(request,'kernel/inicio.html',{
 
         'departNo' : Departamentos.objects.all().count(),
         'turmaNo' : Turmas.objects.all().count(),

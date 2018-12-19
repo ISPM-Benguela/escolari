@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from mensagem.models import Mensagem
 from departamentos.models import Departamentos
+from candidato.models import Candidato
 
 def inicio(request):
     
@@ -30,6 +31,9 @@ def inicio(request):
 
     return render(request, 'mensagem/index.html', {
         'departamentos' : Departamentos.objects.all(),
-        'mensagens': Mensagem.objects.filter(por_ler=True),
+        
         'feed': Mensagem.objects.filter(por_ler=True).count(),
+        'mensagens': Mensagem.objects.filter(por_ler=True),
+        'feedcandidato': Candidato.objects.filter(novo=True).count(),
+        'candidatos': Candidato.objects.filter(novo=True),
     })

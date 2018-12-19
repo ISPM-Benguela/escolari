@@ -17,7 +17,7 @@
             </li>
 
             <li>
-              <a href="#">Funcionarios</a>
+              <a href="#">Candidatos</a>
             </li>
             <li class="active">todos</li>
           </ul><!-- /.breadcrumb -->
@@ -105,7 +105,7 @@
               Painel de controle
               <small>
                 <i class="ace-icon fa fa-angle-double-right"></i>
-                todos funcionarios
+                todos candidatos
               </small>
             </h1>
           </div><!-- /.page-header -->
@@ -116,20 +116,10 @@
               <div class="row">
                 <div class="col-xs-12">
 
-                  <h4 class="pink">
-
-                    <a href="#modal-table" role="button" class="green btn btn-success" data-toggle="modal"><i class="fa fa-group"></i> Cadastrar Funcionario</a>
-                  </h4>
 
                   <table id="simple-table" class="table  table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th class="center">
-                          <label class="pos-rel">
-                            <input type="checkbox" class="ace" />
-                            <span class="lbl"></span>
-                          </label>
-                        </th>
                         <th>Nome</th>
                         <th>Sobrenome</th>
                         <th class="hidden-480">Candidatura</th>
@@ -143,12 +133,6 @@
                       {% for  candidato in candidatos %}
 
                       <tr>
-                        <td class="center">
-                          <label class="pos-rel">
-                            <input type="checkbox" class="ace" />
-                            <span class="lbl"></span>
-                          </label>
-                        </td>
 
                         <td>
                           <a href="/funcionarios/actualiza/{{ funcionario.username }}">{{ candidato.nome }}</a>
@@ -169,19 +153,14 @@
                           <div class="hidden-sm hidden-xs btn-group">
                             <a href="/candidato/aprovar/{{ candidato.nome }}" class="btn btn-xs btn-success">
                               <i class="ace-icon fa fa-check bigger-120"></i>
-                            </button>
-
-                            <a href="" class="btn btn-xs btn-info">
-                              <i class="ace-icon fa fa-pencil bigger-120"></i>
                             </a>
+
+                            
 
                             <button class="btn btn-xs btn-danger">
                               <i class="ace-icon fa fa-trash-o bigger-120"></i>
                             </button>
 
-                            <button class="btn btn-xs btn-warning">
-                              <i class="ace-icon fa fa-flag bigger-120"></i>
-                            </button>
                           </div>
 
                           <div class="hidden-md hidden-lg">

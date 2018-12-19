@@ -8,6 +8,7 @@ from usuarios.models import Perfil
 from candidato.forms import CandidatoForm
 from eventos.models import Eventos
 from mensagem.models import Mensagem
+from candidato.models import Candidato
 
 def inicio(request):
     queryset = Perfil.objects.filter(
@@ -32,6 +33,8 @@ def inicio(request):
         'funcionarioNo' : contaFuncionario,
         'feed': Mensagem.objects.filter(por_ler=True).count(),
         'mensagens': Mensagem.objects.filter(por_ler=True),
+        'feedcandidato': Candidato.objects.filter(novo=True).count(),
+        'candidatos': Candidato.objects.filter(novo=True),
         })
     return render(request,'kernel/inicio.html',{
 

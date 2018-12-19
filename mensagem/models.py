@@ -5,8 +5,8 @@ from django.db import models
 class Mensagem(models.Model):
     nome = models.CharField(max_length=255)
     email = models.EmailField()
-    telefone = models.CharField(13)
-    assunto = models.CharField(255)
+    telefone = models.CharField(max_length=13)
+    assunto = models.CharField(max_length=255)
     mensagem = models.TextField()
 
     def __str__(self):

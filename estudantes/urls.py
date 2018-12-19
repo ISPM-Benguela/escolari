@@ -5,5 +5,6 @@ from estudantes import views as visao
 urlpatterns = [
 
     url(r'^$', visao.inicio, name="estudantes"),
+    url(r'^cadastrar/', visao.cadastrar_estudante , name="cadastraestudante"),
 
 ]

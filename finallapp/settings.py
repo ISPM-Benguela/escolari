@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'eventos',
     'candidato',
     'disciplinas',
+    'mensagem',
 ]
 
 MIDDLEWARE = [

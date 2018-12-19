@@ -1,3 +1,6 @@
 from django.contrib import admin
+from mensagem.models import Mensagem
 
-# Register your models here.
+admin.site.register(Mensagem)
+
+

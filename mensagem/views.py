@@ -30,5 +30,6 @@ def inicio(request):
 
     return render(request, 'mensagem/index.html', {
         'departamentos' : Departamentos.objects.all(),
-        'mensagens': Mensagem.objects.all(),
+        'mensagens': Mensagem.objects.filter(por_ler=True),
+        'feed': Mensagem.objects.filter(por_ler=True).count(),
     })

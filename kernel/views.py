@@ -7,6 +7,7 @@ from salas.models import Turmas
 from usuarios.models import Perfil
 from candidato.forms import CandidatoForm
 from eventos.models import Eventos
+from mensagem.models import Mensagem
 
 def inicio(request):
     queryset = Perfil.objects.filter(
@@ -29,6 +30,8 @@ def inicio(request):
         'turmaNo' : Turmas.objects.all().count(),
         'estudanteNo' : contaEstudante,
         'funcionarioNo' : contaFuncionario,
+        'feed': Mensagem.objects.filter(por_ler=True).count(),
+        'mensagens': Mensagem.objects.filter(por_ler=True),
         })
     return render(request,'kernel/inicio.html',{
 

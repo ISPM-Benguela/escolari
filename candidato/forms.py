@@ -2,6 +2,7 @@ from django import forms
 from candidato.models import Candidato
 
 class CandidatoForm(forms.ModelForm):
-    model = Candidato
-    fields = ('nome', 'sobrenome','noBI','candidatura','dataCandidatura',)
+   class Meta:
+        model = Candidato
+        fields = ('nome', 'sobrenome','noBI','candidatura',)
     

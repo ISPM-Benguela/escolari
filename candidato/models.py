@@ -15,7 +15,7 @@ class Candidato(models.Model):
     sobrenome = models.CharField(max_length=255)
     noBI = models.CharField(max_length=100)
     candidatura = models.CharField( max_length=1, choices=CANDIDATURA, default=ESTUDANTE,  blank=True, null=True)
-    dataCandidatura = models.DateTimeField(auto_now_add=True)
+    data = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = "Candidatura"

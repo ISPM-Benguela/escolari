@@ -4,6 +4,6 @@ from candidato import views as visao
 
 urlpatterns = [
 
-    url(r'^$', visao.inicio, name="inicio"),
+    url(r'^$', visao.inicio, name="candidatos"),
     url(r'^enviar/', visao.enviar_candidatura , name="enviarcandidatura"),
 ]

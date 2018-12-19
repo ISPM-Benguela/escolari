@@ -8,6 +8,8 @@ from mensagem.models import Mensagem
 from candidato.models import Candidato
 from django.contrib.auth.forms import UserCreationForm
 from usuarios.forms import EstudanteForm
+from candidato.models import Candidato
+from mensagem.models import Mensagem
 
 def todos(request):
     turmas = Turmas.objects.all()
@@ -15,6 +17,10 @@ def todos(request):
         'departamentos': Departamentos.objects.all(),
         'turmas' : turmas,
         'form' : TurmaForm,
+        'feed': Mensagem.objects.filter(por_ler=True).count(),
+        'mensagens': Mensagem.objects.filter(por_ler=True),
+        'feedcandidato': Candidato.objects.filter(novo=True).count(),
+        'candidatos': Candidato.objects.filter(novo=True),
     })
 
 def cadastrar_turma(request):

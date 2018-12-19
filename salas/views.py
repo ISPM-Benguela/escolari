@@ -22,4 +22,7 @@ def cadastrar_turma(request):
     return HttpResponseRedirect("/turmas")
 
 def visualizar_turma(request, turma):
-    return HttpResponse('visualizar turma')
+    return render(request, 'turmas/index.html',{
+        'departamentos' : Departamentos.objects.all(),
+        'form' : TurmaForm,
+    })

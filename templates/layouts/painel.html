@@ -231,7 +231,7 @@
 										{% for mensagem in mensagens %}
 										<li>
 											<a href="#" class="clearfix">
-												<img src="{% static 'assets/images/avatars/avatar.png' %} " class="msg-photo" alt="Alex's Avatar" />
+												
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">{{ mensagem.nome }} </span>
@@ -240,7 +240,7 @@
 
 													<span class="msg-time">
 														<i class="ace-icon fa fa-clock-o"></i>
-														<span>um instante atras</span>
+														<span>{{ mensagem.enviado }}</span>
 													</span>
 												</span>
 											</a>

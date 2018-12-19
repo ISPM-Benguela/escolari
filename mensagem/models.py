@@ -1,5 +1,5 @@
 from django.db import models
-
+import datetime
 
 
 class Mensagem(models.Model):
@@ -9,6 +9,7 @@ class Mensagem(models.Model):
     assunto = models.CharField(max_length=255)
     mensagem = models.TextField()
     por_ler = models.BooleanField(default=True)
+    enviado = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.nome 

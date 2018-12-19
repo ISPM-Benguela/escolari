@@ -172,7 +172,7 @@
 
 														<td>
 															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="{% url 'pagarpropina' estudante.user.username %}">
+																<a class="blue" href="">
 																	<i class="ace-icon fa fa-money bigger-130"></i>
 																</a>
 
@@ -227,60 +227,30 @@
 									</div>
 								</div>
 
-								<div id="modal-table" class="modal fade" tabindex="-1">
-									<div class="modal-dialog">
+								<div class="modal fade" id="modal-table" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+									<div class="modal-dialog" role="document">
 										<div class="modal-content">
-											<div class="modal-header no-padding">
-												<div class="table-header">
-													<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-														<span class="white">&times;</span>
-													</button>
-													Results for "Latest Registered Domains
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+											<h4 class="modal-title" id="myModalLabel">Cadastra o estudante</h4>
+										</div>
+										<div class="modal-body">
+											<form action="" method="POST">
+												{% csrf_token %}
+												<div class="form-group">
+													<input type="text" class="form-control" name="nome" placeholder="Nome do estudante" />
 												</div>
-											</div>
-
-											<div class="modal-body no-padding">
-												<form action="" method="post">
-													{% csrf_token %}
-													{{ form|bootstrap }}
-												</form>
-											</div>
-
-											<div class="modal-footer no-margin-top">
-												<button class="btn btn-sm btn-danger pull-left" data-dismiss="modal">
-													<i class="ace-icon fa fa-times"></i>
-													Close
-												</button>
-
-												<ul class="pagination pull-right no-margin">
-													<li class="prev disabled">
-														<a href="#">
-															<i class="ace-icon fa fa-angle-double-left"></i>
-														</a>
-													</li>
-
-													<li class="active">
-														<a href="#">1</a>
-													</li>
-
-													<li>
-														<a href="#">2</a>
-													</li>
-
-													<li>
-														<a href="#">3</a>
-													</li>
-
-													<li class="next">
-														<a href="#">
-															<i class="ace-icon fa fa-angle-double-right"></i>
-														</a>
-													</li>
-												</ul>
-											</div>
-										</div><!-- /.modal-content -->
-									</div><!-- /.modal-dialog -->
-								</div>
+												<div class="form-group">
+													<input type="password" class="form-control" name="senha" placeholder="Senha do estudante" />
+												</div>
+												<div class="form-group">
+													<input type="submit" class="btn btn-primary"  value="Cadastrar estudante" />
+												</div>
+											</form>
+										</div>
+										</div>
+									</div>
+									</div>
 
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->

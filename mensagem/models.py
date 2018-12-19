@@ -8,6 +8,7 @@ class Mensagem(models.Model):
     telefone = models.CharField(max_length=13)
     assunto = models.CharField(max_length=255)
     mensagem = models.TextField()
+    lido = models.BooleanField(default=True)
 
     def __str__(self):
         return self.nome 

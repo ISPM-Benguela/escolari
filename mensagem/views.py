@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from mensagem.models import Mensagem
+from departamentos.models import Departamentos
 
 def inicio(request):
     
@@ -27,4 +28,7 @@ def inicio(request):
 
 
 
-    return HttpResponse("nao guarda este dados nao e segura tira fora este usuario mau")
+    return render(request, 'mensagem/index.html', {
+        'departamentos' : Departamentos.objects.all(),
+        'mensagens': Mensagem.objects.all(),
+    })

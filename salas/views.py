@@ -7,6 +7,7 @@ from salas.forms import TurmaForm
 from mensagem.models import Mensagem
 from candidato.models import Candidato
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login , authenticate
 from usuarios.forms import EstudanteForm
 from candidato.models import Candidato
 from mensagem.models import Mensagem
@@ -27,10 +28,11 @@ def cadastrar_turma(request):
     if request.method == 'POST':
         _nome = request.POST.get('nome')
         _sobrenome = request.POST.get('sobrenome')
-        _nome = request.POST.get('nome')
-        _nome = request.POST.get('nome')
+        _turma = request.POST.get('turma')
+        _email = request.POST.get('email')
 
-        return HttpResponse("form")
+
+        return HttpResponse("%s %s %s %s" % (_nome, _sobrenome, _email, _turma))
     return HttpResponse("nao")
     
 

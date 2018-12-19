@@ -2,11 +2,13 @@ from django.shortcuts import render, HttpResponse
 from candidato.models import Candidato
 from departamentos.models import Departamentos
 from candidato.forms import CandidatoForm
+from candidato.models import Candidato
 
 def inicio(request):
     return render(request, 'candidato/inicio.html', {
         'departamento': Departamentos.objects.all(),
         'form': CandidatoForm,
+        'candidatos' : Candidato.objects.all(),
     })
 
 def enviar_candidatura(request):

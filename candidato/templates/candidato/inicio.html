@@ -130,16 +130,9 @@
                             <span class="lbl"></span>
                           </label>
                         </th>
-                        <th class="detail-col">Detalhes</th>
                         <th>Nome</th>
-                        <th>Categoria</th>
-                        <th class="hidden-480">Departamentos</th>
-
-                        <th>
-                          <i class="ace-icon fa fa-envelope-o bigger-110 hidden-480"></i>
-                          Email
-                        </th>
-                        <th class="hidden-480">Morada</th>
+                        <th>Sobrenome</th>
+                        <th class="hidden-480">Candidatura</th>
 
                         <th></th>
                       </tr>
@@ -147,7 +140,7 @@
 
                     <tbody>
                     
-                      {% for  funcionario in funcionarios %}
+                      {% for  candidato in candidatos %}
 
                       <tr>
                         <td class="center">
@@ -157,53 +150,20 @@
                           </label>
                         </td>
 
-                        <td class="center">
-                          <div class="action-buttons">
-                            <a href="#" class="green bigger-140 show-details-btn" title="Show Details">
-                              <i class="ace-icon fa fa-angle-double-down"></i>
-                              <span class="sr-only">Details</span>
-                            </a>
-                          </div>
-                        </td>
-
                         <td>
-                          <a href="/funcionarios/actualiza/{{ funcionario.username }}">{{ funcionario.username }}</a>
-                        </td>
-
-                        {% if funcionario.perfil.tipo_perfil == 'F' %}
-                          <td>Funcionario nao docente</td>
-
-                        {% elif funcionario.perfil.tipo_perfil == 'A' %}
-                          <td>Admin</td>
-                        {% elif funcionario.perfil.tipo_perfil == 'P' %}
-                            <td>Professor</td>
-                        {% elif funcionario.perfil.tipo_perfil == 'S' %}
-                            <td>Nao tem categoria</td>
-                        {% endif %}
-                        <td class="hidden-480">
-                          {% if funcionario.perfil.tipo_perfil == 'A' %}
-                            Faz todos CRUDs
-                          {% elif funcionario.perfil.departamento == None  %}
-                            Nao tem departamento
-                          {% else %}
-                            {{ funcionario.perfil.departamento }}
-                          {% endif %}
+                          <a href="/funcionarios/actualiza/{{ funcionario.username }}">{{ candidato.nome }}</a>
                         </td>
                         <td>
-                          {% if funcionario.perfil.email == None %}
-                            Sem Informacao <span class="badge badge-danger"><i class="fa fa-thumbs-o-down"></i></span>
+                           {{ candidato.sobrenome }}
+                        </td>
+                        <td>
+                          {% if candidato.Candidatura == 'F' %}
+                            Funcionario <span class="badge badge-danger"><i class="fa fa-thumbs-o-down"></i></span>
                           {% else %}
-                            {{ funcionario.perfil.email }}
+                            Estudante
                           {% endif %}
                         </td>
 
-                        <td>
-                          {% if funcionario.perfil.morada == None %}
-                            Sem Informacao <span class="badge badge-danger"><i class="fa fa-thumbs-o-down"></i></span>
-                          {% else %}
-                            {{ funcionario.perfil.morada }}
-                          {% endif %}
-                        </td>
 
                         <td>
                           <div class="hidden-sm hidden-xs btn-group">
@@ -211,7 +171,7 @@
                               <i class="ace-icon fa fa-check bigger-120"></i>
                             </button>
 
-                            <a href="{% url 'editarusuario' funcionario.username %}" class="btn btn-xs btn-info">
+                            <a href="" class="btn btn-xs btn-info">
                               <i class="ace-icon fa fa-pencil bigger-120"></i>
                             </a>
 

@@ -20,3 +20,6 @@ def cadastrar_turma(request):
         else:
             return HttpResponse("nao e validao")
     return HttpResponseRedirect("/turmas")
+
+def visualizar_turma(request, turma):
+    return HttpResponse('visualizar turma')

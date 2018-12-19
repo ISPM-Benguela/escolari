@@ -1,5 +1,6 @@
 {% extends "layouts/base.html" %}
 
+{% load bootstrap %}
 {% load staticfiles %}
 
 {% block head %}
@@ -59,30 +60,11 @@
     <div class="abt-w3l">
       <div class="header-w3l">
         <h2>Candidaturas</h2>
-        <h4>Antes de candidatar - se verifica se há vaga disponivel</h4>
         <form action="{% url 'enviarcandidatura' %}" method="post" class="mod2">
          {% csrf_token %}
-          <div class="col-md-6 col-xs-6 w3l-left-mk">
-            <ul>
-              <li class="text">Nome :  </li>
-              <li class="agileits-main"><i class="fa fa-user" aria-hidden="true"></i><input name="nome" type="text" required=""></li>
-              <li class="text">Numero do BI :  </li>
-              <li class="agileits-main"><i class="fa fa-barcode" aria-hidden="true"></i><input name="nobi" type="text" required=""></li>
-            </ul>
-          </div>
-          <div class="col-md-6 col-xs-6 w3l-right-mk">
-            <ul>
-              <li class="text">Sobre nome  :  </li>
-              <li class="agileits-main"><i class="fa fa-child" aria-hidden="true"></i><input name="sobrenome" type="text" required=""></li>
-              <li class="text">Candidatura  :  </li>
-              <li class="agileits-main">
-                  <select name="candidatura" style="background: #002147; color: #fff; width: 100%; margin-top: 8px; height: 39px;">
-                    <option value="Estudante" style="background: #fff; color: #000;">Estudante</option>
-                    <option value="Funcionario" style="background: #fff; color: #000;">Funcionario</option>
-                </select>
-              </li>
-            </ul>
-          </div>
+          <div class="col-md-12 col-xs-12 w3l-left-mk">
+             {{ form|bootstrap }}
+          </div> 
           <div class="clearfix"></div>
           <div class="agile-submit">
             <input type="submit" value="Submiter">
@@ -185,7 +167,17 @@
       <div class="modal-body">
         <img src="{% static 'img/g10.jpg' %}" alt="">
         <h2>Colegio Disciplinar</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rutrum iaculis enim, non convallis felis mattis at. Donec fringilla lacus eu pretium rutrum. Cras aliquet congue ullamcorper. Etiam mattis eros eu ullamcorper volutpat. Proin ut dui a urna efficitur varius. uisque molestie cursus mi et congue consectetur adipiscing elit cras rutrum iaculis enim, Lorem ipsum dolor sit amet, non convallis felis mattis at. Maecenas sodales tortor ac ligula ultrices dictum et quis urna. Etiam pulvinar metus neque, eget porttitor massa vulputate. </p>
+        <p>O Instituto Médio Politécnico Privado Poli Disciplinar 
+        – Catumbela é uma instituição do ensino Secundário do II ciclo,
+         localizada na Província de Benguela município da Catumbela,
+          no bairro da Santa Cruz na zona da Vila Real. A Sul da 
+          Instituição encontra-se o Complexo Escolar Multi-Forma isto 
+          é a 40 metros, a Norte encontramos várias instituições como 
+          o Complexo Escolar Evangélico da Galileia, estádio do Buraco,
+           a Oeste a Empresa Enertel, Trirumo e a 100 metros a Estrada 
+           nº 100 que liga Lobito à Catumbela, já a Este a Estrada
+            tradicional que 
+        liga o Mercado Informal da Calumba (Lobito) à Catumbela.  </p>
       </div>
     </div>
   </div>
@@ -262,102 +254,17 @@
     <div class="w3layouts_header">
       <p><i class="fa fa-graduation-cap" aria-hidden="true"></i></p>
     </div>
+       {% for evento in eventos %}
         <div class="col-md-3 col-xs-3 gallery-grid gallery1">
-          <a href="{% static 'img/g1.jpg' %}" class="swipebox"><img src="{% static 'img/g1.jpg' %}" class="img-responsive" alt="/">
+          <a href="/media/{{ evento.imagem }}" class="swipebox"><img width="350" height="350" src="{% static 'img/g1.jpg' %}" width="600" height="420" class="img-responsive" alt="{{ evento.nome }}">
             <div class="textbox">
-            <h4>scholarly</h4>
+            <h4>{{ evento.titulo }}</h4>
+             <small style="color: #fff;">{{ evento.local }}</small>
               <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
             </div>
         </a>
         </div>
-        <div class="col-md-3 col-xs-3 gallery-grid gallery1">
-          <a href="{% static 'img/g2.jpg' %}" class="swipebox"><img src="{% static 'img/g2.jpg' %}" class="img-responsive" alt="/">
-            <div class="textbox">
-            <h4>scholarly</h4>
-              <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
-            </div>
-        </a>
-        </div>
-        <div class="col-md-3 col-xs-3 gallery-grid gallery1">
-          <a href="{% static 'img/g3.jpg' %}" class="swipebox"><img src="{% static 'img/g3.jpg' %}" class="img-responsive" alt="/">
-            <div class="textbox">
-            <h4>scholarly</h4>
-              <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
-            </div>
-        </a>
-        </div>
-        <div class="col-md-3 col-xs-3 gallery-grid gallery1">
-          <a href="{% static 'img/g7.jpg' %}" class="swipebox"><img src="{% static 'img/g7.jpg' %}" class="img-responsive" alt="/">
-            <div class="textbox">
-            <h4>scholarly</h4>
-              <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
-            </div>
-        </a>
-        </div>
-        <div class="col-md-3 col-xs-3 gallery-grid gallery1">
-          <a href="{% static 'img/g5.jpg' %}" class="swipebox"><img src="{% static 'img/g5.jpg' %}" class="img-responsive" alt="/">
-            <div class="textbox">
-            <h4>scholarly</h4>
-              <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-3 col-xs-3 gallery-grid gallery1">
-          <a href="{% static 'img/g6.jpg' %}" class="swipebox"><img src="{% static 'img/g6.jpg' %}" class="img-responsive" alt="/">
-            <div class="textbox">
-            <h4>scholarly</h4>
-              <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
-             </div>
-           </a>
-        </div>
-        <div class="col-md-3 col-xs-3 gallery-grid gallery1">
-          <a href="{% static 'img/g11.jpg' %}" class="swipebox"><img src="{% static 'img/g11.jpg' %}" class="img-responsive" alt="/">
-            <div class="textbox">
-            <h4>scholarly</h4>
-              <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
-             </div>
-           </a>
-        </div>
-        <div class="col-md-3 col-xs-3 gallery-grid gallery1">
-          <a href="{% static 'img/g8.jpg' %}" class="swipebox"><img src="{% static 'img/g8.jpg' %}" class="img-responsive" alt="/">
-            <div class="textbox">
-            <h4>scholarly</h4>
-              <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
-             </div>
-           </a>
-        </div>
-          <div class="col-md-3 col-xs-3 gallery-grid gallery1">
-          <a href="{% static 'img/g9.jpg' %}" class="swipebox"><img src="{% static 'img/g9.jpg' %}" class="img-responsive" alt="/">
-            <div class="textbox">
-            <h4>scholarly</h4>
-              <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
-            </div>
-        </a>
-        </div>
-        <div class="col-md-3 col-xs-3 gallery-grid gallery1">
-          <a href="{% static 'img/g10.jpg' %}" class="swipebox"><img src="{% static 'img/g10.jpg' %}" class="img-responsive" alt="/">
-            <div class="textbox">
-            <h4>scholarly</h4>
-              <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
-            </div>
-        </a>
-        </div>
-        <div class="col-md-3 col-xs-3 gallery-grid gallery1">
-          <a href="img/g4.jpg" class="swipebox"><img src="img/g4.jpg" class="img-responsive" alt="/">
-            <div class="textbox">
-            <h4>scholarly</h4>
-              <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
-            </div>
-        </a>
-        </div>
-        <div class="col-md-3 col-xs-3 gallery-grid gallery1">
-          <a href="{% static 'img/g12.jpg' %}" class="swipebox"><img src="{% static 'img/g12.jpg' %}" class="img-responsive" alt="/">
-            <div class="textbox">
-            <h4>scholarly</h4>
-              <p><i class="fa fa-picture-o" aria-hidden="true"></i></p>
-            </div>
-        </a>
-        </div>
+       {% endfor %}
         <div class="clearfix"> </div>
 </section>
 <!-- //gallery -->
@@ -370,7 +277,7 @@
     </div>
     <div class="team-w3l-grid">
       <div class="col-md-4 col-xs-4 about-poleft t1">
-        <div class="about_img"><img src="{% static 'img/t1.jpg' %}" alt="">
+        <div class="about_img"><img width="350" height="350" src="{% static 'img/docentes/1.jpeg' %}" alt="">
           <h5>Victoria</h5>
           <div class="about_opa">
           <p>Professor</p>
@@ -385,7 +292,7 @@
         </div>
       </div>
       <div class="col-md-4 col-xs-4 about-poleft t2">
-        <div class="about_img"><img src="{% static 'img/t2.jpg' %}" alt="">
+        <div class="about_img"><img width="350" height="350" src="{% static 'img/docentes/2.jpeg' %}" alt="">
           <h5>Darponia</h5>
           <div class="about_opa">
           <p>Senior Lecturers</p>
@@ -400,7 +307,7 @@
         </div>
       </div>
       <div class="col-md-4 col-xs-4 about-poleft t3">
-        <div class="about_img"><img src="{% static 'img/t3.jpg' %}" alt="">
+        <div class="about_img"><img width="350" height="350" src="{% static 'img/docentes/3.jpeg'%}" alt="">
           <h5>Kylie</h5>
           <div class="about_opa">
           <p>Lecturers</p>
@@ -418,12 +325,12 @@
     </div>
     <div class="team-w3l-grid grid-2-team">
       <div class="col-md-4 col-xs-4 about-poleft t1">
-        <div class="about_img"><img src="{% static 'img/t4.jpg' %}" alt="">
+        <div class="about_img"><img width="350" height="350" src="{% static 'img/docentes/4.jpeg' %}" alt="">
           <h5>Cameron</h5>
           <div class="about_opa">
           <p>Professor</p>
           <ul class="fb_icons2 text-center">
-            <li><a class="fa fa-facebook" href="#"></a></li>
+            <li><a class="fa fa-facebook" href="https://www.facebook.com/jose.tandavala"></a></li>
             <li><a class="fa fa-twitter" href="#"></a></li>
             <li><a class="fa fa-google" href="#"></a></li>
             <li><a class="fa fa-linkedin" href="#"></a></li>
@@ -433,7 +340,7 @@
         </div>
       </div>
       <div class="col-md-4 col-xs-4 about-poleft t2">
-        <div class="about_img"><img src="{% static 'img/t5.jpg' %}" alt="">
+        <div class="about_img"><img width="350" height="350" src="{% static 'img/docentes/5.jpeg'%}" alt="">
           <h5>Darponia</h5>
           <div class="about_opa">
           <p>Senior Lecturers</p>
@@ -448,7 +355,7 @@
         </div>
       </div>
       <div class="col-md-4 col-xs-4 about-poleft t3">
-        <div class="about_img"><img src="{% static 'img/t6.jpg' %}" alt="">
+        <div class="about_img"><img width="350" height="350" src="{% static 'img/docentes/6.jpeg' %}" alt="">
           <h5>Austin</h5>
           <div class="about_opa">
           <p>Lecturers</p>
@@ -470,7 +377,7 @@
 <!-- contact -->
 <div id="mail" class="contact">
   <div class="container">
-    <h3 class="w3l-title">Contate - nos</h3>
+    <h3 class="w3l-title">Contacte - nos</h3>
     <div class="w3layouts_header">
       <p><i class="fa fa-graduation-cap" aria-hidden="true"></i></p>
     </div>
@@ -481,8 +388,8 @@
         </div>
         <div class="agile_contact_grid_right agilew3_contact">
           <h4>Endereço</h4>
-          <p>435 City hall,</p>
-          <p>NewYork City SD092.</p>
+          <p>Benguela - Catumbela,</p>
+          <p>Santa-Cruz,</p>
         </div>
       </div>
       <div class="col-md-4 col-xs-4 w3_agile_contact_grid">
@@ -491,7 +398,7 @@
         </div>
         <div class="agile_contact_grid_right agileits_w3layouts_right">
           <h4>Telefone</h4>
-          <p>+(1234) 2332 232 <span>+(1236) 2334 232</span></p>
+          <p>+(27222) 33 79 <span>+(244) 926 142 559</span></p>
         </div>
       </div>
       <div class="col-md-4 col-xs-4 w3_agile_contact_grid">
@@ -500,8 +407,8 @@
         </div>
         <div class="agile_contact_grid_right agileits_w3layouts_right1">
           <h4>Email</h4>
-          <p><a href="mailto:info@example.com">info@example1.com</a>
-            <span><a href="mailto:info@example.com">info@example2.com</a></span></p>
+          <p><a href="mailto:info@example.com">info@polidisciplinar.com</a>
+            <span><a href="mailto:info@example.com">executivo@polidisciplinar.com</a></span></p>
         </div>
         <div class="clearfix"> </div>
       </div>
@@ -542,8 +449,10 @@
     <div class="wthree_footer_grid_left">
       <div class="col-md-3 col-xs-3 wthree_footer_grid_left1">
         <h4>Sobre Nós</h4>
-        <p>Donec viverra nunc eu neque porta, quis laoreet nisl gravida. Proin gravida,
-          diam ut consectetur porttitor.</p>
+        <p style="text-align: justify">O Instituto Médio Politécnico Privado Poli Disciplinar
+         – Catumbela é uma instituição do ensino Secundário do II
+          ciclo, localizada na Província de Benguela município da Catumbela,
+         no bairro da Santa Cruz na zona da Vila Real.</p>
       </div>
       <div class="col-md-3 col-xs-3 wthree_footer_grid_left1">
         <h4>Navegação</h4>
@@ -553,7 +462,7 @@
           <li><i class="fa fa-angle-double-right" aria-hidden="true"></i><a href="#services" class="scroll">Nossos Serviços</a></li>
           <li><i class="fa fa-angle-double-right" aria-hidden="true"></i><a href="#team" class="scroll">Nossa Equipe</a></li>
           <li><i class="fa fa-angle-double-right" aria-hidden="true"></i><a href="#gallery" class="scroll">Galeria</a></li>
-          <li><i class="fa fa-angle-double-right" aria-hidden="true"></i><a href="#mail" class="scroll">Cntacte - nos</a></li>
+          <li><i class="fa fa-angle-double-right" aria-hidden="true"></i><a href="#mail" class="scroll">Contacte - nos</a></li>
         </ul>
       </div>
       <div class="col-md-3 col-xs-3 wthree_footer_grid_left1 w3l-3">
@@ -567,7 +476,7 @@
       <div class="col-md-3 col-xs-3 wthree_footer_grid_left1 wthree_footer_grid_right1">
         <h4>Contactos</h4>
         <ul>
-          <li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
+          <li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:info@example.com">info@polidisciplinar.com</a></li>
           <li><i class="fa fa-phone" aria-hidden="true"></i>+(000) 123 311</li>
           <li><i class="fa fa-fax" aria-hidden="true"></i>+123 421</li>
         </ul>

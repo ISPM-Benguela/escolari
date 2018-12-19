@@ -5,6 +5,8 @@ from django.db.models import Q
 from departamentos.models import Departamentos
 from salas.models import Turmas
 from usuarios.models import Perfil
+from candidato.forms import CandidatoForm
+from eventos.models import Eventos
 
 def inicio(request):
     queryset = Perfil.objects.filter(
@@ -34,5 +36,7 @@ def inicio(request):
         'turmaNo' : Turmas.objects.all().count(),
         'estudanteNo' : contaEstudante,
         'funcionarioNo' : contaFuncionario,
+        'form' : CandidatoForm,
+        'eventos' : Eventos.objects.all(), 
         })
     

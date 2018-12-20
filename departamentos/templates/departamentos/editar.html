@@ -86,7 +86,7 @@
           <div class="row">
             <div class="col-xs-12">
               <a href="#modal-table" role="button" class="green btn btn-success" data-toggle="modal"> <span class="fa fa-plus"></span></a>
-
+              <div style="padding-bottom: 15px;"></div>
               <!-- PAGE CONTENT BEGINS -->
               <div class="clearfix">
                 <!--
@@ -100,29 +100,8 @@
                 </div>
               -->
                 <div class="pull-right">
-                  <span class="green middle bolder">{% trans "Escolhe o perfil:" %} &nbsp;</span>
 
-                  <div class="btn-toolbar inline middle no-margin">
-                    <div data-toggle="buttons" class="btn-group no-margin">
-                      <label class="btn btn-sm btn-yellow active">
-                        <span class="bigger-110">1</span>
-
-                        <input type="radio" value="1" />
-                      </label>
-
-                      <label class="btn btn-sm btn-yellow">
-                        <span class="bigger-110">2</span>
-
-                        <input type="radio" value="2" />
-                      </label>
-
-                      <label class="btn btn-sm btn-yellow">
-                        <span class="bigger-110">3</span>
-
-                        <input type="radio" value="3" />
-                      </label>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
 
@@ -201,11 +180,11 @@
                                 <img class="pull-left" alt="{{ funcionario }}" width="100" height="50" src="/media/{{ funcionario.perfil.foto }}" />
                                 <a class="user" href=""> {{ funcionario }} </a>
                               
-                                <a href="#">Take a look</a>
+                                <a href="#">pagina unica do funcionario</a>
 
                                 <div class="time">
                                   <i class="ace-icon fa fa-clock-o bigger-110"></i>
-                                  an hour ago
+                                  
                                 </div>
 
                               </div>
@@ -224,7 +203,7 @@
                           </div>
                           {% endfor %}
                           {% else %}
-                          <h3>Ainda nao existem funcionarios para Adicionar click aqui</h3>
+                          <h3>Ainda nao existem funcionarios</h3>
                           {% endif %}
                         </div>
                       </div>

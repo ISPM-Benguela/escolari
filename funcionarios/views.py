@@ -7,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from departamentos.models import Departamentos
 from funcionarios.forms import FuncionarioForm
 from usuarios.models import Perfil
+from usuarios.forms import FunciornarioForm
 from mensagem.models import Mensagem
 from candidato.models import Candidato
 
@@ -41,14 +42,20 @@ def cadastrar_funcionario(request):
             
     return redirect('/funcionarios')
 
-def editar_funcionario(request, nome):
-    instance = get_object_or_404(User, username=nome)
+def editar_funcionario(request, num):
+    instance = get_object_or_404(User, id=num)
+    perfil = get_object_or_404(Perfil, user=instance)
+
     form = UserCreationForm(request.POST or None, instance=instance)
-    if form.is_valid():
-        form.save()
+    funcform = FuncionarioForm(request.POST or None, instance=perfil)
+
+    if funcform.is_valid():
+        funcform.save()
+
     contexto = {
         "instance" : instance,
-        "form" : form,
+        #"form" : form,
+        'funcform' : funcform, 
         "departamentos" : Departamentos.objects.all(),
     }
     

@@ -146,7 +146,6 @@
 															<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
 															curso
 														</th>
-														<th class="hidden-480">Ultima propina</th>
 
 														<th></th>
 													</tr>
@@ -163,20 +162,14 @@
 														<td class="hidden-480">{{ estudante.turma.get_nivel }} </td>
 														<td>{{ estudante.turma.get_curso }}</td>
 
-														<td class="hidden-480">
-															<!-- <span class="label label-sm label-warning">Expiring</span> -->
-															{% for p in estudante.propina %}
-																{{ p.propina }}
-															{% endfor %}
-														</td>
 
 														<td>
 															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="">
+																<a class="blue" href=" ">
 																	<i class="ace-icon fa fa-money bigger-130"></i>
 																</a>
 
-																<a class="green" href="">
+																<a class="green" href="/estudantes/apagar/{{ estudante.user }}/">
 																	<i class="ace-icon fa fa-pencil bigger-130"></i>
 																</a>
 

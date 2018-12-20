@@ -17,6 +17,9 @@ def todos(request):
         'sucesso': False,
 
     }
+
+    if request.method == 'POST':
+        return HttpResponse('cadastro')
     return render(request, 'eventos/index.html', contexto)
 
 def cadastrar_evento(request):

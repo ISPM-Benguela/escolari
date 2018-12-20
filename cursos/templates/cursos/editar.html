@@ -4,7 +4,7 @@
 {% load staticfiles %}
 {% load bootstrap %}
 
-{% block title %}painel de cursos{% endblock %}
+{% block title %}painel de funcionarios{% endblock %}
 
 {% block principal %}
 <div class="main-content">
@@ -17,7 +17,7 @@
             </li>
 
             <li>
-              <a href="#">Cursos</a>
+              <a href="#">Ano lectivo</a>
             </li>
             <li class="active">todos</li>
           </ul><!-- /.breadcrumb -->
@@ -105,7 +105,7 @@
               Painel de controle
               <small>
                 <i class="ace-icon fa fa-angle-double-right"></i>
-                todos cursos
+                todos anos lectivos
               </small>
             </h1>
           </div><!-- /.page-header -->
@@ -116,189 +116,19 @@
               <div class="row">
                 <div class="col-xs-12">
 
-                  <form action="/cursos/cadastrar/" method="POST">
+                  <h4 class="pink">
+
+                    <a href="#modal-table" role="button" class="green btn btn-success" data-toggle="modal"><i class="fa fa-group"></i> Cadastrar Ano lectivo</a>
+                  </h4>
+
+                 <form action="{% url 'editarcurso' instance.id %}" method="post">
                     {% csrf_token %}
+                    {{ form|bootstrap }}
+
                     <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Cadastrar curso" />
+                        <input type="submit" class="btn btn-primary" value="Actualizar" />
                     </div>
-                  </form>
-
-                  <table id="simple-table" class="table  table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th>Nome do curso</th>
-                        <th></th>
-                      </tr>
-
-                    </thead>
-
-                    <tbody>
-                    
-                      {% for  curso in cursos %}
-
-                      <tr>
-
-                        <td>
-                          <a href="{% url 'editarcurso' curso.id %}">{{ curso.nome }}</a>
-                        </td>
-
-                        <td>
-                          <div class="hidden-sm hidden-xs btn-group">
-
-                            <a href="{% url 'editarcurso' curso.id %}" class="btn btn-xs btn-info">
-                              <i class="ace-icon fa fa-pencil bigger-120"></i>
-                            </a>
-
-                            <a href="{% url 'eliminarcurso' curso.id %}" class="btn btn-xs btn-danger">
-                              <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                            </a>
-                          </div>
-
-                          <div class="hidden-md hidden-lg">
-                            <div class="inline pos-rel">
-                              <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
-                                <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
-                              </button>
-
-                              <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                                <li>
-                                  <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-                                    <span class="blue">
-                                      <i class="ace-icon fa fa-search-plus bigger-120"></i>
-                                    </span>
-                                  </a>
-                                </li>
-
-                                <li>
-                                  <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-                                    <span class="green">
-                                      <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-                                    </span>
-                                  </a>
-                                </li>
-
-                                <li>
-                                  <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-                                    <span class="red">
-                                      <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                    </span>
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-
-                      <tr class="detail-row">
-                        <td colspan="8">
-                          <div class="table-detail">
-                            <div class="row">
-                              <div class="col-xs-12 col-sm-2">
-                                <div class="text-center">
-                                  <img height="150" class="thumbnail inline no-margin-bottom" alt="Domain Owner's Avatar" src="/media/{{ funcionario.profile.imagem }}" />
-                                  <br />
-                                  <div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
-                                    <div class="inline position-relative">
-                                      <a class="user-title-label" href="#">
-                                        <i class="ace-icon fa fa-circle light-green"></i>
-                                        &nbsp;
-                                        <span class="white">{{ funcionario.username }}</span>
-                                      </a>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div class="col-xs-12 col-sm-7">
-                                <div class="space visible-xs"></div>
-
-                                <div class="profile-user-info profile-user-info-striped">
-                                  <div class="profile-info-row">
-                                    <div class="profile-info-name"> Username </div>
-
-                                    <div class="profile-info-value">
-                                      <span>{{ funcionario.username }}</span>
-                                    </div>
-                                  </div>
-
-                                  <div class="profile-info-row">
-                                    <div class="profile-info-name"> Location </div>
-
-                                    <div class="profile-info-value">
-                                      <i class="fa fa-map-marker light-orange bigger-110"></i>
-                                      <span>Netherlands, Amsterdam</span>
-                                    </div>
-                                  </div>
-
-                                  <div class="profile-info-row">
-                                    <div class="profile-info-name"> Age </div>
-
-                                    <div class="profile-info-value">
-                                      <span>38</span>
-                                    </div>
-                                  </div>
-
-                                  <div class="profile-info-row">
-                                    <div class="profile-info-name"> Joined </div>
-
-                                    <div class="profile-info-value">
-                                      <span>2010/06/20</span>
-                                    </div>
-                                  </div>
-
-                                  <div class="profile-info-row">
-                                    <div class="profile-info-name"> Last Online </div>
-
-                                    <div class="profile-info-value">
-                                      <span>3 hours ago</span>
-                                    </div>
-                                  </div>
-
-                                  <div class="profile-info-row">
-                                    <div class="profile-info-name"> About Me </div>
-
-                                    <div class="profile-info-value">
-                                      <span>Bio</span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div class="col-xs-12 col-sm-3">
-                                <div class="space visible-xs"></div>
-                                <h4 class="header blue lighter less-margin">Send a message to Alex</h4>
-
-                                <div class="space-6"></div>
-
-                                <form>
-                                  <fieldset>
-                                    <textarea class="width-100" resize="none" placeholder="Type something…"></textarea>
-                                  </fieldset>
-
-                                  <div class="hr hr-dotted"></div>
-
-                                  <div class="clearfix">
-                                    <label class="pull-left">
-                                      <input type="checkbox" class="ace" />
-                                      <span class="lbl"> Email me a copy</span>
-                                    </label>
-
-                                    <button class="pull-right btn btn-sm btn-primary btn-white btn-round" type="button">
-                                      Submit
-                                      <i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
-                                    </button>
-                                  </div>
-                                </form>
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      {% endfor %}
-
-                    </tbody>
-                  </table>
+                 </form>
                 </div><!-- /.span -->
               </div><!-- /.row -->
 
@@ -1954,28 +1784,38 @@
                 </div>
               </div>
 
-              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Cadastrar curso</h4>
-                  </div>
-                  <div class="modal-body">
-                     <form action="/cursos/cadastrar/" method="POST" >
-                     {% csrf_token %}
-                        {{ form|bootstrap }}
+              <div id="modal-table" class="modal fade" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header no-padding">
+                      <div class="table-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                          <span class="white">&times;</span>
+                        </button>
+                        Cadastrar Funcionario
+                      </div>
+                    </div>
 
-                     <div class="form-group">
-                      <input type="submit" class="btn btn-primary" value="Cadastrar curso" />
-                     </div>
-                     </form>
-                  </div>
-                  <div class="modal-footer">
-                  </div>
-                </div>
+                    <div class="modal-body ">
+                      <form action="{% url 'cadastranolectivo' %}" method="post">
+                            {% csrf_token %}
+                            {{form|bootstrap }}
+                          <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Cadastrar" />
+                          </div>
+                      </form>
+                    </div>
+
+                    <div class="modal-footer no-margin-top">
+                      <button class="btn btn-sm btn-danger pull-left" data-dismiss="modal">
+                        <i class="ace-icon fa fa-times"></i>
+                        Fechar
+                      </button>
+
+                    </div>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
               </div>
-            </div>
 
               <!-- PAGE CONTENT ENDS -->
             </div><!-- /.col -->

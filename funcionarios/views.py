@@ -1,4 +1,4 @@
-from django.shortcuts import render , HttpResponse
+from django.shortcuts import render , HttpResponse, redirect
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
 from  django.contrib.auth.models import User
@@ -12,6 +12,12 @@ from usuarios.models import Perfil
 
 # Create your views here.
 def todos(request):
+
+    if request.method == 'POST':
+        f = UserCreationForm(request.POST)
+        if f.is_valid():
+            f.save()
+            return HttpResponse(f.username)
     queryset = Perfil.objects.filter(
         Q(tipo_perfil__startswith='F')
     )
@@ -22,7 +28,7 @@ def todos(request):
     })
 def cadastrar_funcionario(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserCreationForm(request.POST or None)
         if form.is_valid():
             form.save()
             

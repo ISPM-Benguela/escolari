@@ -2037,7 +2037,7 @@
                     </div>
 
                     <div class="modal-body ">
-                      <form action="{% url 'cadastrafuncionario' %}" method="post">
+                      <form action="{% url 'funcionarios' %}" method="post">
                             {% csrf_token %}
                             {{ form|bootstrap }}
                           <div class="form-group">

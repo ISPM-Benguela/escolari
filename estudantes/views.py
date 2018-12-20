@@ -1,5 +1,5 @@
 import datetime
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.db.models import Q
 from departamentos.models import Departamentos
 from estudantes.forms import EstudanteForm
@@ -37,11 +37,21 @@ def cadastrar_estudante(request):
         estudante = User(username=_nome)
         estudante.save()
         estudante.set_password(_senha)
+        estudante.save()
 
-        instance = get_object_or_404(Perfil, user=estudante)
-        form = EstudanteForm(request.POST or None, instance=instance)
+        if estudante:
+            instance = get_object_or_404(Perfil, user=estudante)
+            form = EstudanteForm(request.POST or None, instance=instance)
         
         return render(request, 'estudantes/turma.html',{
             'form' : form,
+            'instance': instance,
         })
+def cadastrar_estudante_turma(request):
+    form = EstudanteForm(request.POST)
+
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('/estudantes')
+
     

@@ -6,5 +6,5 @@ urlpatterns = [
 
     url(r'^$', visao.inicio, name="estudantes"),
     url(r'^cadastrar/', visao.cadastrar_estudante , name="cadastraestudante"),
-
+    url(r'^inserir/', visao.cadastrar_estudante , name="criarestudante"),
 ]

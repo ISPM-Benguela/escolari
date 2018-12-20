@@ -63,3 +63,10 @@ def editar_funcionario(request, num):
 
 def actualizar_funcionario(request, nome):
     return HttpResponse("%s" . format(nome))
+
+def eliminar_funcionario(request, num):
+    usuario = get_object_or_404(User, id=num)
+    usuario.delete()
+
+    return redirect('funcionarios')
+    

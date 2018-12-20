@@ -16,13 +16,11 @@ from candidato.models import Candidato
 def todos(request):
 
     if request.method == 'POST':
-        f = UserCreationForm(request.POST)
-        if f.is_valid():
-            f.save()
-            return HttpResponse(f.username)
-    queryset = Perfil.objects.filter(
-        Q(tipo_perfil__startswith='P') 
-    )
+        form = UserCreationForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+            return redirect('/funcionarios')
+    
     return render(request, 'funcionarios/index.html', {
         'funcionarios' : Perfil.objects.filter(
             Q(tipo_perfil__startswith='F') |  Q(tipo_perfil__startswith='P')

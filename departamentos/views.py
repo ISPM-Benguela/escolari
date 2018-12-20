@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, HttpResponse
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 from departamentos.models import Departamentos
@@ -13,12 +13,11 @@ def todos(request):
     })
 def cradastrar_departamento(request):
     if request.method == 'POST':
-        forms = DepartamentoForm(request.POST)
-        if forms.is_valid():
-             #return HttpResponse(forms.cleaned_data['nome'])
-             forms.save()
-             return redirect('departamentos')
-        return HttpResponse("virou opps")
+        form = DepartamentoForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+        return redirect('/deparmentos')
+    return HttpResponse("NO OK")
 
 def editar_departamento(request, nome):
 
@@ -28,7 +27,7 @@ def editar_departamento(request, nome):
     return render(request, 'departamentos/editar.html', {
         'departamento': departamento,
         'departamentos': Departamentos.objects.all(),
-        'forms' : DepartamentoForm(),
+        'form' : DepartamentoForm(),
         'funcionarios' : departamento.funcionario.all(),
         'departamentos': Departamentos.objects.all(),
     })    

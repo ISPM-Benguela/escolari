@@ -4,6 +4,8 @@ from departamentos.models import Departamentos
 from eventos.models import Eventos
 from django.shortcuts import redirect
 from eventos.forms import EventoForm
+from candidato.models import Candidato
+from mensagem.models import Mensagem
 
 def todos(request):
     mensagens = ['temos' , 'outro qui','mais outro']
@@ -15,6 +17,10 @@ def todos(request):
         'mensagens' : mensagens,
         'error' : False,
         'sucesso': False,
+        'feed': Mensagem.objects.filter(por_ler=True).count(),
+        'mensagens': Mensagem.objects.filter(por_ler=True),
+        'feedcandidato': Candidato.objects.filter(novo=True).count(),
+        'candidatos': Candidato.objects.filter(novo=True),
 
     }
 

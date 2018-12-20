@@ -54,4 +54,9 @@ def cadastrar_estudante_turma(request):
         form.save()
         return HttpResponseRedirect('/estudantes')
 
-    
+
+def visualizar_estudante(request, num):
+    estudante = get_object_or_404(User, id=num)
+
+    contex
+    return HttpResponse(num) 

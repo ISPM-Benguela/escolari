@@ -61,7 +61,7 @@
 
                   <div class="modal-body no-padding" style="margin: 10px;">
 
-                      <form class="form" action="/departamentos/cadastrar/" method="post">
+                      <form class="form" action="{% url 'criadeparta' %}" method="post">
                         {% csrf_token %}
                         {{ form|bootstrap }}
                         <input type="hidden" name="depart" value="{{ departamento.nome }}">

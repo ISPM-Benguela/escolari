@@ -3,20 +3,26 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 from departamentos.models import Departamentos
 from departamentos.forms import DepartamentoForm
-
+from candidato.models import Candidato
+from mensagem.models import Mensagem
 
 def todos(request):
 
     return render(request, 'departamentos/todos.html', {
         'funcionarios': User.objects.all(),
         'departamentos': Departamentos.objects.all(),
+
+        'feed': Mensagem.objects.filter(por_ler=True).count(),
+        'mensagens': Mensagem.objects.filter(por_ler=True),
+        'feedcandidato': Candidato.objects.filter(novo=True).count(),
+        'candidatos': Candidato.objects.filter(novo=True),
     })
 def cradastrar_departamento(request):
     if request.method == 'POST':
         form = DepartamentoForm(request.POST or None)
         if form.is_valid():
             form.save()
-        return redirect('/deparmentos')
+        return redirect('deparmentos')
     return HttpResponse("NO OK")
 
 def editar_departamento(request, nome):

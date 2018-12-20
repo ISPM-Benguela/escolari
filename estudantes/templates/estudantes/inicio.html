@@ -152,11 +152,11 @@
 												</thead>
 
 												<tbody>
-												 {% for estudante in estudantes %}
+												 {% for estudante in departamentos %}
 													<tr>
 
 														<td>
-															<a href="#">{{ estudante.user.username }} </a>
+															<a href="#">{{ estudante.funcionario.username }} </a>
 														</td>
 														<td>{{ estudante.turma.get_turma }}</td>
 														<td class="hidden-480">{{ estudante.turma.get_nivel }} </td>
@@ -165,11 +165,11 @@
 
 														<td>
 															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href=" ">
+																<a class="blue" href="{% url 'pagarpropina' estudante.user %}">
 																	<i class="ace-icon fa fa-money bigger-130"></i>
 																</a>
 
-																<a class="green" href="/estudantes/apagar/{{ estudante.user }}/">
+																<a class="green" href="{% url 'pagamento' %}">
 																	<i class="ace-icon fa fa-pencil bigger-130"></i>
 																</a>
 

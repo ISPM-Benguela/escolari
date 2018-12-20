@@ -11,15 +11,13 @@ from mensagem.models import Mensagem
 from candidato.models import Candidato
 
 def inicio(request):
-    queryset = Perfil.objects.filter(
-        Q(tipo_perfil__startswith='E')
-    )
+   
     contaEstudante = Perfil.objects.filter(
         Q(tipo_perfil__startswith='E')
     ).count()
 
     contaFuncionario = Perfil.objects.filter(
-        Q(tipo_perfil__startswith='F')
+        Q(tipo_perfil__startswith='F') and Q(tipo_perfil__startswith='P')
     ).count()
 
     

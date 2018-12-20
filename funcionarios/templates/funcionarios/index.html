@@ -124,22 +124,10 @@
                   <table id="simple-table" class="table  table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th class="center">
-                          <label class="pos-rel">
-                            <input type="checkbox" class="ace" />
-                            <span class="lbl"></span>
-                          </label>
-                        </th>
-                        <th class="detail-col">Detalhes</th>
                         <th>Nome</th>
                         <th>Categoria</th>
                         <th class="hidden-480">Departamentos</th>
 
-                        <th>
-                          <i class="ace-icon fa fa-envelope-o bigger-110 hidden-480"></i>
-                          Email
-                        </th>
-                        <th class="hidden-480">Morada</th>
 
                         <th></th>
                       </tr>
@@ -147,27 +135,12 @@
 
                     <tbody>
                     
-                      {% for  funcionario in funcionarios %}
+                      {% for  funcionario in departamentos %}
 
                       <tr>
-                        <td class="center">
-                          <label class="pos-rel">
-                            <input type="checkbox" class="ace" />
-                            <span class="lbl"></span>
-                          </label>
-                        </td>
-
-                        <td class="center">
-                          <div class="action-buttons">
-                            <a href="#" class="green bigger-140 show-details-btn" title="Show Details">
-                              <i class="ace-icon fa fa-angle-double-down"></i>
-                              <span class="sr-only">Details</span>
-                            </a>
-                          </div>
-                        </td>
 
                         <td>
-                          <a href="/funcionarios/actualiza/{{ funcionario.user.username }}">{{ funcionario.user.username }}</a>
+                          <a href="/funcionarios/actualiza/{{ funcionario.user.username }}">{{ funcionario.username }}</a>
                         </td>
 
                         {% if funcionario.tipo_perfil == 'F' %}
@@ -189,29 +162,11 @@
                             {{ funcionario.departamento }}
                           {% endif %}
                         </td>
-                        <td>
-                          {% if funcionario.email == None %}
-                            Sem Informacao <span class="badge badge-danger"><i class="fa fa-thumbs-o-down"></i></span>
-                          {% else %}
-                            {{ funcionario.email }}
-                          {% endif %}
-                        </td>
 
-                        <td>
-                          {% if funcionario.morada == None %}
-                            Sem Informacao <span class="badge badge-danger"><i class="fa fa-thumbs-o-down"></i></span>
-                          {% else %}
-                            {{ funcionario.morada }}
-                          {% endif %}
-                        </td>
 
                         <td>
                           <div class="hidden-sm hidden-xs btn-group">
-                            <button class="btn btn-xs btn-success">
-                              <i class="ace-icon fa fa-check bigger-120"></i>
-                            </button>
-
-                            <a href="{% url 'editarusuario' funcionario.user.username %}" class="btn btn-xs btn-info">
+                            <a href="" class="btn btn-xs btn-info">
                               <i class="ace-icon fa fa-pencil bigger-120"></i>
                             </a>
 
@@ -2039,7 +1994,10 @@
                     <div class="modal-body ">
                       <form action="{% url 'funcionarios' %}" method="post">
                             {% csrf_token %}
-                            {{ form|bootstrap }}
+                            <div class="form-group">
+                             <label>Nome</label>
+                              <input type="text" name="nome" class="form-control" />
+                            </div>
                           <div class="form-group">
                             <input type="submit" class="btn btn-primary" value="Cadastrar" />
                           </div>
@@ -2047,10 +2005,6 @@
                     </div>
 
                     <div class="modal-footer no-margin-top">
-                      <button class="btn btn-sm btn-danger pull-left" data-dismiss="modal">
-                        <i class="ace-icon fa fa-times"></i>
-                        Fechar
-                      </button>
 
                     </div>
                   </div><!-- /.modal-content -->

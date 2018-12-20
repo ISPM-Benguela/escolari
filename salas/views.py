@@ -48,11 +48,15 @@ def cadastrar_turma(request):
 
 def visualizar_turma(request, turma):
     turma = get_object_or_404(Turmas, nome=turma)
+
+    estudantes = turma.estudante.all()
+    
     return render(request, 'turmas/turma.html',{
         'departamentos' : Departamentos.objects.all(),
         'form' : TurmaForm,
         'estudanteform' : EstudanteForm,
         'turma' : turma,
+        'estudantes' : estudantes,
         'feed': Mensagem.objects.filter(por_ler=True).count(),
         'mensagens': Mensagem.objects.filter(por_ler=True),
         'feedcandidato': Candidato.objects.filter(novo=True).count(),

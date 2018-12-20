@@ -69,7 +69,7 @@
                           <a href="#" class="user-title-label dropdown-toggle" data-toggle="dropdown">
                             <i class="ace-icon fa fa-circle light-green"></i>
                             &nbsp;
-                            <span class="white">Nome da turma: {{ turma.nome }}</span>
+                            <span class="white">Turma: {{ turma.nome }}</span>
                           </a>
                         </div>
                       </div>
@@ -121,9 +121,11 @@
                             <input type="submit" class="btn btn-primary" value="Cadastrar">  
                           </div>
                         </form>
+
+                        <div style="margin-bottom: 10px;"></div>
                         <h4 class="widget-title blue smaller">
-                          <i class="ace-icon fa fa-money"></i>
-                          {% trans "Registo do meses pagos por estudante" %} {{ estudante.username }} 
+                          <i class="ace-icon fa fa-users"></i>
+                          {% trans "Lista de estudantes da turma " %} ({{ turma.nome }} ) 
                         </h4>
                         
 
@@ -140,26 +142,24 @@
 
                       <div class="widget-body">
                         <div class="widget-main padding-8">
-                          {% if propinas %}
-                          {% for propina in propinas %}
+                          {% if estudantes %}
+                          {% for estudante in estudantes %}
                             <div id="profile-feed-1" class="profile-feed">
                             <div class="profile-activity clearfix">
                               <div>
-                                Propina do mes
-                                <a class="user" href=""> {{ propina.mes }} </a>
-                                .
-                                Pago
-
+                                Estudante:
+                                <a class="user" href=""> {{ estudante.username }} </a>
                                 <div class="time">
-                                  <i class="ace-icon fa fa-money bigger-110"></i>
-                                  Valor: {{ propina.propina }}
+                                  <i class="ace-icon fa fa-clock bigger-110"></i>
+                                  Numero de matricula: {{ estudante.id }}
                                 </div>
+                                
 
                               </div>
 
 
                               <div class="tools action-buttons">
-                                <a href="#" class="blue">
+                                <a href="/estudantes/visualizar/{{ estudante.id }}" class="blue">
                                   <i class="ace-icon fa fa-edit bigger-125"></i>
                                 </a>
 

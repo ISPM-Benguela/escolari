@@ -1962,12 +1962,12 @@
                     <h4 class="modal-title" id="myModalLabel">Cadastrar curso</h4>
                   </div>
                   <div class="modal-body">
-                     <form action="/cursos/cadastrar/" method="POST" >
+                     <form action="" method="POST" >
                      {% csrf_token %}
                         {{ form|bootstrap }}
 
                      <div class="form-group">
-                      <input type="submit" class="btn btn-primary" value="Cadastrar curso" />
+                      <button type="submit" class="btn btn-primary">cadastrar</button>
                      </div>
                      </form>
                   </div>

@@ -87,7 +87,7 @@
 										{% for candidato in candidatos %}
 
 										<li>
-											<a href="#">
+											<a href="{% url 'candidatos' %}">
 												<i class="btn btn-xs btn-primary fa fa-user"></i>
 												{{ candidato.nome }} enviou uma candidatura
 											</a>
@@ -138,8 +138,8 @@
 								</li>
 
 								<li class="dropdown-footer">
-									<a href="inbox.html">
-										See all messages
+									<a href="{% url 'mensagem' %}">
+										Ver todas mensagens
 										<i class="ace-icon fa fa-arrow-right"></i>
 									</a>
 								</li>

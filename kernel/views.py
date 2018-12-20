@@ -17,7 +17,7 @@ def inicio(request):
     ).count()
 
     contaFuncionario = Perfil.objects.filter(
-        Q(tipo_perfil__startswith='F') and Q(tipo_perfil__startswith='P')
+        Q(tipo_perfil__startswith='F') |  Q(tipo_perfil__startswith='P')
     ).count()
 
     

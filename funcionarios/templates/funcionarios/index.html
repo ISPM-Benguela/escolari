@@ -135,33 +135,29 @@
 
                     <tbody>
                     
-                      {% for  funcionario in departamentos %}
+                      {% for  funcionario in funcionarios %}
 
                       <tr>
 
                         <td>
-                          <a href="/funcionarios/actualiza/{{ funcionario.user.username }}">{{ funcionario.username }}</a>
+                          <a href="/funcionarios/actualiza/{{ funcionario.user.username }}">{{ funcionario.user.username }}</a>
                         </td>
 
                         {% if funcionario.tipo_perfil == 'F' %}
-                          <td>Funcionario nao docente</td>
+                              <td>Funcionario nao docente</td>
 
-                        {% elif funcionario.tipo_perfil == 'A' %}
-                          <td>Admin</td>
-                        {% elif funcionario.tipo_perfil == 'P' %}
-                            <td>Professor</td>
-                        {% elif funcionario.tipo_perfil == 'S' %}
-                            <td>Nao tem categoria</td>
                         {% endif %}
-                        <td class="hidden-480">
-                          {% if funcionario.tipo_perfil == 'A' %}
-                            Faz todos CRUDs
-                          {% elif funcionario.departamento == None  %}
-                            Nao tem departamento
-                          {% else %}
-                            {{ funcionario.departamento }}
-                          {% endif %}
-                        </td>
+                        {% if funcionario.tipo_perfil == 'A' %}
+                              <td>Administrador</td>
+
+                        {% endif %}
+                        {% if funcionario.tipo_perfil == 'P' %}
+                              <td>Professor</td>
+
+                        {% else %}      
+                          Sem departamento
+                        {% endif %}
+
 
 
                         <td>
@@ -172,10 +168,6 @@
 
                             <button class="btn btn-xs btn-danger">
                               <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                            </button>
-
-                            <button class="btn btn-xs btn-warning">
-                              <i class="ace-icon fa fa-flag bigger-120"></i>
                             </button>
                           </div>
 

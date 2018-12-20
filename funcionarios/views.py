@@ -23,7 +23,9 @@ def todos(request):
         Q(tipo_perfil__startswith='P') 
     )
     return render(request, 'funcionarios/index.html', {
-        'funcionarios' : queryset,
+        'funcionarios' : Perfil.objects.filter(
+            Q(tipo_perfil__startswith='F') |  Q(tipo_perfil__startswith='P')
+        ),
         'form' : UserCreationForm,
         'departamentos' : Departamentos.objects.all(),
         'feed': Mensagem.objects.filter(por_ler=True).count(),

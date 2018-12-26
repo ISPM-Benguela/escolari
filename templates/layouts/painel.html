@@ -175,7 +175,7 @@
 								<li class="divider"></li>
 
 								<li>
-									<a href="#">
+									<a href="">
 										<i class="ace-icon fa fa-power-off"></i>
 										Sair
 									</a>
@@ -212,7 +212,7 @@
 						<span class="btn btn-danger"></span>
 					</div>
 				</div><!-- /.sidebar-shortcuts -->
-
+			   {% if request.user.is_superuser %}
 				<ul class="nav nav-list">
 					<li class="active">
 						<a href="{% url 'inicio' %}">
@@ -327,6 +327,36 @@
 						</a>
 					</li>
 				</ul><!-- /.nav-list -->
+			   {% else %}
+                  {% if request.user.perfil.tipo_perfil == 'E' %}
+							estudante 
+
+				  {% endif %}
+
+				  {% if request.user.perfil.tipo_perfil == 'F' %}
+					
+						<!-- nao docente  -->
+						<ul class="nav nav-list">
+							
+							{% if departamentos %}
+							<li><a href="{% url 'departamentos' %}">Todos departamentoss</a></li>
+							{% for departamento in departamentos %}
+							<li class="">
+								<a href="{% url 'editardeparta' departamento.nome %} ">
+									<i class="menu-icon fa-tags"></i>
+									{{ departamento.nome }}
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							{% endfor %}
+							{% else %}
+								<li><a href="">Cirar Departamento</a></li>
+							{% endif %}
+
+						</ul>
+				  {% endif %}
+			   {% endif %}
 
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 					<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>

@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from django.contrib.auth.decorators import login_required
 from departamentos.models import Departamentos
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
@@ -7,12 +8,16 @@ from anolectivo.models import AnoLectivo
 from propinas.models import Propinas
 import datetime
 
+
+@login_required
 def inicio(request):
     return render(request, 'propinas/inicio.html',{
         'departamentos' : Departamentos.objects.all(),
     })
 
+@login_required
 def pagar_propinas(request, nome):
+
     estudante = get_object_or_404(User, username=nome)
 
     return render(request, 'propinas/pagamentos.html',{
@@ -24,6 +29,7 @@ def pagar_propinas(request, nome):
         'mes_actual' : datetime.date.today(),
     })
 
+@login_required
 def cadastrar_pagamento(request):
     pagamento = None
 

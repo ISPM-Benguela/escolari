@@ -6,6 +6,7 @@ from candidato.models import Candidato
 from mensagem.models import Mensagem
 from cursos.forms import CursoForm
 
+
 def todos(request):
     return render(request, 'cursos/index.html', {
         'departamentos' : Departamentos.objects.all(),

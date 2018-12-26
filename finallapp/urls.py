@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^ano/', include('anolectivo.urls')),
     url(r'^eventos/', include('eventos.urls')),
     url(r'^admin/', admin.site.urls),
+    #url(r'^sair/$', auth_views.logout,name='sair'),
 ]
 
 

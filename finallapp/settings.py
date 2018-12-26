@@ -91,6 +91,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'finallapp.wsgi.application'
 
+LOGIN_REDIRECT_URL = '/'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases

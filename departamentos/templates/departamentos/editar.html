@@ -85,7 +85,10 @@
 
           <div class="row">
             <div class="col-xs-12">
+
+            {% if request.user.is_superuser %}
               <a href="#modal-table" role="button" class="green btn btn-success" data-toggle="modal"> <span class="fa fa-plus"></span></a>
+            {% endif %}  
               <div style="padding-bottom: 15px;"></div>
               <!-- PAGE CONTENT BEGINS -->
               <div class="clearfix">

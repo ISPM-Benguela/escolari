@@ -25,7 +25,13 @@
 
       </div>
       <ul class="agile_forms">
-        <li><a class="active" href="{% url 'entrar' %}" ><i class="fa fa-sign-in" aria-hidden="true"></i> Entrar</a> </li>
+        {% if request.user.is_authenticated %}
+        <li><a href="">{{ request.user.username }} </a></li>
+            <li><a href="{% url 'painel'  %}">Painel de controle</a></li>
+        {% else %}
+          <li><a class="active" href="{% url 'entrar' %}" ><i class="fa fa-sign-in" aria-hidden="true"></i> Entrar</a> </li>
+
+        {% endif %}
       </ul>
 
       <!-- Collect the nav links, forms, and other content for toggling -->

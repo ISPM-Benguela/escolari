@@ -28,6 +28,7 @@
         {% if request.user.is_authenticated %}
         <li><a href="">{{ request.user.username }} </a></li>
             <li><a href="{% url 'painel'  %}">Painel de controle</a></li>
+            <li><a href="/logout">Sair</a></li>
         {% else %}
           <li><a class="active" href="{% url 'entrar' %}" ><i class="fa fa-sign-in" aria-hidden="true"></i> Entrar</a> </li>
 

@@ -326,6 +326,14 @@
 							</span>
 						</a>
 					</li>
+					<li class="">
+						<a href="{% url 'inicio' %}">
+							<i class="menu-icon fa  fa-eye"></i>
+							<span class="menu-text">
+								Visuar o site
+							</span>
+						</a>
+					</li>
 				</ul><!-- /.nav-list -->
 			   {% else %}
                   {% if request.user.perfil.tipo_perfil == 'E' %}

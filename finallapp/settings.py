@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'candidato',
     'disciplinas',
     'mensagem',
+    'painel',
 ]
 
 MIDDLEWARE = [

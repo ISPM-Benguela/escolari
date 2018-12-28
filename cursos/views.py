@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404
 from departamentos.models import Departamentos
 from cursos.models import Cursos
@@ -19,7 +19,14 @@ def todos(request):
     })
 
 def cadastrar_curso(request):
-    return HttpResponseRedirect('acadad')
+
+    
+    if request.method == 'POST':
+        form = CursoForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return HttpResponseRedirect('/painel/cursos')
+    return HttpResponse('acadad')
     
 def editar_curso(request, id):
     instance = get_object_or_404(Cursos, id=id)
@@ -28,7 +35,7 @@ def editar_curso(request, id):
     if request.method == 'POST':
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/cursos')
+            return HttpResponseRedirect('/painel/cursos')
     contexto = {
         "instance" : instance,
         "form" : form,

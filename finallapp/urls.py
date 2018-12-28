@@ -18,11 +18,13 @@ from django.conf.urls.static import static
 from django.conf.urls import url , include
 from django.contrib import admin
 
+from kernel import views
 
 urlpatterns = [
 
     url(r'^$', include('kernel.urls')),
     url(r'^entrar/', include('sessao.urls')),
+    url(r'^sair/', views.sair, name="sair"),
     url(r'^painel/', include('painel.urls')),
     url(r'^admin/', admin.site.urls),
     #url(r'^sair/$', auth_views.logout,name='sair'),

@@ -1,6 +1,7 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.decorators import login_required
 from  django.contrib.auth.models import User
+from django.contrib.auth import logout
 from django.db.models import Q
 from departamentos.models import Departamentos
 from salas.models import Turmas
@@ -29,4 +30,10 @@ def inicio(request):
         'form' : CandidatoForm,
         'eventos' : Eventos.objects.all(), 
         })
+
+def sair(request):
+    logout(request)
+
+    return redirect('/')
+    
     

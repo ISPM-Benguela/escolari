@@ -153,12 +153,10 @@
                         {% endif %}
                         {% if funcionario.tipo_perfil == 'P' %}
                               <td>Professor</td>
-
-                        {% else %}      
-                          <td>Sem departamento</td>
                         {% endif %}
                             
-                      <td>{{ funcionario.departamento.nome }}</td>
+                      <td>
+                         {{ funcionario.departamento.nome }}</td>
 
                         <td>
                           <div class="hidden-sm hidden-xs btn-group">

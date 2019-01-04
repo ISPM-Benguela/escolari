@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
+from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
 from mensagem.models import Mensagem
@@ -46,6 +47,6 @@ def marcar_lido(request, num):
     mensagem.save()
 
     
-    
+    messages.success(request, 'Messagem marcada como lida')
 
     return redirect('/painel/mensagem')

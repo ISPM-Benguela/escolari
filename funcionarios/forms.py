@@ -7,4 +7,4 @@ from usuarios.models import Perfil
 class FuncionarioForm(forms.ModelForm):
     class Meta:
         model = Perfil 
-        fields = ("user","primeiro_nome","segundo_nome","tipo_perfil","morada","foto")
+        fields = ("user","departamento","tipo_perfil","morada","foto")

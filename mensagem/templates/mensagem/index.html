@@ -43,6 +43,10 @@
               <div class="row">
                 <div class="col-xs-12">
                    
+                  <h4 class="pink">
+
+                    <a href="" role="button" class="green btn btn-primary" ><i class="fa fa-envelope"></i> Ver todas Mensagens</a>
+                  </h4>
 
                   <table id="simple-table" class="table  table-bordered table-hover">
                     <thead>
@@ -51,11 +55,11 @@
                         <th>Assunto</th>
 
                         <th></th>
-                      </tr>s
+                      </tr>
                     </thead>
 
                     <tbody>
-                    
+                    {% if mensagens %}
                       {% for  cada in mensagens %}
 
                       <tr>
@@ -266,6 +270,14 @@
                         </td>
                       </tr>
                       {% endfor %}
+                    {% else %}
+                      <tr>
+                         <td>
+                          <h3>Sem mensagem nova desponivel</h3>
+                          </td>
+                          <td></td><td></td>
+                      </tr>
+                    {% endif %}
 
                     </tbody>
                   </table>

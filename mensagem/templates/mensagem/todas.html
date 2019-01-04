@@ -42,11 +42,7 @@
               {% include "includes/mensagens.html" %}
               <div class="row">
                 <div class="col-xs-12">
-                   
-                  <h4 class="pink">
-
-                    <a href="{% url 'todasmensagens' %}" role="button" class="green btn btn-primary" ><i class="fa fa-envelope"></i> Ver todas Mensagens</a>
-                  </h4>
+             
 
                   <table id="simple-table" class="table  table-bordered table-hover">
                     <thead>
@@ -73,8 +69,8 @@
                         </td>
                         <td>
 
-                            <a href="#" class="btn btn-xs btn-info"  data-toggle="modal" data-target="#verModal">
-                              <i class="ace-icon fa fa-eye bigger-120"></i> Visualizar
+                            <a href="{% url 'eliminarmensagem' cada.id %}" class="btn btn-xs btn-danger" >
+                              <i class="ace-icon fa fa-trash bigger-120"></i> Eliminar
                             </a>
 
                             <a href="" class="btn btn-xs btn-success"  data-toggle="modal" data-target="#respModal">

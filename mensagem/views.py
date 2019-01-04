@@ -46,7 +46,25 @@ def marcar_lido(request, num):
     mensagem.por_ler = False
     mensagem.save()
 
-    
     messages.success(request, 'Messagem marcada como lida')
 
     return redirect('/painel/mensagem')
+
+def todas_mensagens(request):
+    return render(request, 'mensagem/todas.html', {
+        'departamentos' : Departamentos.objects.all(),
+        
+        'feed': Mensagem.objects.filter(por_ler=True).count(),
+        'mensagens': Mensagem.objects.all(),
+        'feedcandidato': Candidato.objects.filter(novo=True).count(),
+        'candidatos': Candidato.objects.filter(novo=True),
+    })
+
+def eliminar_mensagem(request, num):
+    mensagem = Mensagem.objects.get(id=num)
+    mensagem.delete()
+
+    messages.warning(request, 'Mensagem eliminada com sucesso.')
+
+    return redirect('/painel/mensagem/todas/')
+

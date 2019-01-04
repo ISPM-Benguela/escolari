@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
+from django.contrib import messages
 from departamentos.models import Departamentos
 from anolectivo.models import AnoLectivo
 from django.shortcuts import get_object_or_404
@@ -27,7 +28,8 @@ def cadastrar_anolectivo(request):
     if request.method == 'POST':
         if form.is_valid():
             form.save()
-    return HttpResponseRedirect('/ano')
+    messages.success(request, 'Ano lectivo cadastrado com sucesso.')
+    return HttpResponseRedirect('/painel/ano')
 
 def editar_anolectivo(request, nome):
     instance = get_object_or_404(AnoLectivo, ano=nome)
@@ -36,7 +38,8 @@ def editar_anolectivo(request, nome):
     if request.method == 'POST':
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/ano')
+            messages.success(request, 'Ano lectivo actualizado com sucesso.')
+            return HttpResponseRedirect('/painel/ano')
     contexto = {
         "instance" : instance,
         "form" : form,
@@ -52,7 +55,8 @@ def eliminar_anolectivo(request, nome):
     obj = AnoLectivo.objects.get(ano=nome)
     if obj:
         obj.delete()
-        return HttpResponseRedirect('/ano')
+        messages.warning(request, 'Ano lectivo eliminado com sucesso. ')
+        return HttpResponseRedirect('/painel/ano')
     return HttpResponseRedirect('/ano')
 
 def actualizar_anolectivo(request, nome):

@@ -1,10 +1,12 @@
 from django.conf.urls import url, include
 
 from painel import views as visao
+from usuarios import views as usuario
 
 urlpatterns = [
 
     url(r'^$', visao.inicio, name="painel"),
+    url(r'^perfil/(?P<num>[-\w]+)/$', usuario.perfil , name="perfil"),
     url(r'^funcionarios/', include('funcionarios.urls')),
     url(r'^candidato/', include('candidato.urls')),
     url(r'^departamentos/', include('departamentos.urls')),

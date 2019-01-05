@@ -158,17 +158,12 @@
 						</a>
 
 							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-								<li>
-									<a href="#">
-										<i class="ace-icon fa fa-cog"></i>
-										Configuração
-									</a>
-								</li>
+								
 
 								<li>
-									<a href="profile.html">
+									<a href="{% url 'perfil' user.perfil.id %}">
 										<i class="ace-icon fa fa-user"></i>
-										Perfile
+										Pefil
 									</a>
 								</li>
 

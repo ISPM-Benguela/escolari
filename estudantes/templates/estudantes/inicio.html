@@ -2,7 +2,7 @@
 {% extends "layouts/painel.html" %}
 {% load staticfiles %}
 {% load bootstrap %}
-{% block title %}painel de funcionarios{% endblock %}
+{% block title %}painel de estudantes{% endblock %}
 
 {% block head %}
 
@@ -17,7 +17,7 @@
 						<ul class="breadcrumb">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Inicio</a>
+								<a href="{% url 'painel' %}">Inicio</a>
 							</li>
 
 							<li class="active">Lista dos estudantes</li>
@@ -43,6 +43,8 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
+
+								{% include 'includes/mensagens.html' %}
 								<h4 class="pink">
 									<i class="ace-icon fa fa-hand-o-right icon-animated-hand-pointer blue"></i>
 									<a href="#modal-table" role="button" class="btn btn-primary" data-toggle="modal"> Cadastrar Estudante</a>
@@ -96,15 +98,15 @@
 														<td>
 															<div class="hidden-sm hidden-xs action-buttons">
 																<a class="blue" href="{% url 'pagarpropina' estudante.user %}">
-																	<i class="ace-icon fa fa-money bigger-130"></i>
+																	Pagar propina <i class="ace-icon fa fa-money bigger-130"></i>
 																</a>
 
 																<a class="green" href="{% url 'pagamento' %}">
-																	<i class="ace-icon fa fa-pencil bigger-130"></i>
+																	Editar <i class="ace-icon fa fa-pencil bigger-130"></i>
 																</a>
 
 																<a class="red" href="#">
-																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
+																	Eliminar <i class="ace-icon fa fa-trash-o bigger-130"></i>
 																</a>
 															</div>
 

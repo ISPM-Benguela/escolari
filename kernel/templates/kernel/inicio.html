@@ -264,7 +264,7 @@
     </div>
        {% for evento in eventos %}
         <div class="col-md-3 col-xs-3 gallery-grid gallery1">
-          <a href="/media/{{ evento.imagem }}" class="swipebox"><img width="350" height="350" src="{% static 'img/g1.jpg' %}" width="600" height="420" class="img-responsive" alt="{{ evento.nome }}">
+          <a href="/media/{{ evento.imagem }}" class="swipebox"><img width="350" height="350" src="/media/{{ evento.imagem }}" width="600" height="420" class="img-responsive" alt="{{ evento.nome }}">
             <div class="textbox">
             <h4>{{ evento.titulo }}</h4>
              <small style="color: #fff;">{{ evento.local }}</small>
@@ -273,7 +273,7 @@
         </a>
         </div>
        {% endfor %}
-        <div class="clearfix"> </div>
+        <div class="clearfix" style="margin-bottom: 19px;"> </div>
 </section>
 <!-- //gallery -->
 <!-- team -->

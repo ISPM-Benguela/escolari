@@ -1,4 +1,5 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
+from django.contrib import messages
 from candidato.models import Candidato
 from departamentos.models import Departamentos
 from candidato.forms import CandidatoForm
@@ -30,8 +31,8 @@ def enviar_candidatura(request):
 
         if form.is_valid():
             form.save()
-
-            return HttpResponse("candidatura enviada com sucesso!")
+            messages.success(request, 'Candidatura enviada com sucess.')
+            return redirect('inicio')
         else:
             return HttpResponse("Ocorreu um erro")
 

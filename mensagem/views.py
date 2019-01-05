@@ -26,9 +26,11 @@ def inicio(request):
         confirmar.save()
 
         if confirmar:
-            return HttpResponse("mensagrm enviada")
+            messages.success(request, 'Mensagem enviada com sucesso aguarda a respota.')
+            return redirect('inicio')
         else:
-            return HttpResponse("nao enviada")
+            messages.warning(request, 'Algo corrreu mal, mensagem nao enviada.')
+            return render('inicio')
 
 
 

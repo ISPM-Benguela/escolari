@@ -66,6 +66,7 @@
   <div class="col-md-6 w3l_about_bottom_right one">
     <div class="abt-w3l">
       <div class="header-w3l">
+       {% include 'includes/label.html' %}
         <h2>Candidaturas</h2>
         <form action="{% url 'enviarcandidatura' %}" method="post" class="mod2">
          {% csrf_token %}
@@ -424,6 +425,7 @@
     <div class="w3l-form">
       <h3 class="w3l-title">Escreve para nós</h3>
       <div class="contact-grid1">
+       {% include 'includes/label.html' %}
         <div class="contact-top1">
           <form action="{% url 'mensagem' %}" method="post">
             {% csrf_token %}

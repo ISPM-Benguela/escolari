@@ -49,9 +49,7 @@ def editar_anolectivo(request, nome):
     return render(request, 'ano/editar.html', contexto )
 
 def eliminar_anolectivo(request, nome):
-    mensagens = []
-    erro = False 
-    sucesso = False 
+    
     obj = AnoLectivo.objects.get(ano=nome)
     if obj:
         obj.delete()

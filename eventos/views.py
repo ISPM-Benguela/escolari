@@ -1,4 +1,5 @@
-from django.shortcuts import render,  HttpResponse
+from django.shortcuts import render,  HttpResponse, redirect
+from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from departamentos.models import Departamentos
 from eventos.models import Eventos
@@ -23,9 +24,6 @@ def todos(request):
         'candidatos': Candidato.objects.filter(novo=True),
 
     }
-
-    if request.method == 'POST':
-        return HttpResponse('cadastro')
     return render(request, 'eventos/index.html', contexto)
 
 def cadastrar_evento(request):
@@ -37,14 +35,12 @@ def cadastrar_evento(request):
         form = EventoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return redirect('/eventos')
+            messages.success(request, 'Evento cadastrado com sucesso.')
+        return redirect('/painel/eventos')
     else:
-        mensagens.append('Algo ocorreu mal')
-        erro = True 
-        return render(request, 'eventos/index.html',{
-            'erro': erro,
-            'mensagens': mensagens,
-        })
+        messages.warning(request, 'Algo correu mal evento nao criado.')
+        return redirect('/painel/eventos')
+
 def editar_eventos(request, num):
     instance = Eventos.objects.get(id=num)
 
@@ -66,13 +62,8 @@ def remover_eventos(request, num):
     sucesso = False 
     obj = Eventos.objects.get(id=num)
     obj.delete()
-        
-    return render(request, 'eventos/index.html', {
-        'sucesso' : True,
-        'messagem': 'Evento Eliminado com sucesso',
-        'form': EventoForm,
-        'eventos' : Eventos.objects.all(),
-    })
+    messages.warning(request, 'Evento eliminado com sucesso.')
+    return redirect('/painel/eventos')
 
 def actualizar_eventos(request, num):
     return HttpResponse("actualizar evtnto")

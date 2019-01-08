@@ -1,4 +1,5 @@
 from django.shortcuts import render , HttpResponse, redirect
+from django.contrib import messages
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
 from  django.contrib.auth.models import User
@@ -16,10 +17,26 @@ from candidato.models import Candidato
 def todos(request):
 
     if request.method == 'POST':
-        form = UserCreationForm(request.POST or None)
-        if form.is_valid():
-            form.save()
-            return redirect('/funcionarios')
+        nome = request.POST.get('nome','')
+        departamento = request.POST.get('departamento','')
+        senha = request.POST.get('senha','')
+
+        
+        dep = get_object_or_404(Departamentos, id=departamento)
+
+        user = User.objects.create(username=nome, password=senha)
+        perfil = Perfil.objects.get(id=user.id)
+
+       
+        perfil.departamento = dep
+        perfil.tipo_perfil = 'P'
+
+        perfil.save()
+        
+        messages.success(request, 'Vamos agora cadastrar fncionarios')
+        return redirect('/painel/funcionarios')
+        
+        
     
     return render(request, 'funcionarios/index.html', {
         'funcionarios' : Perfil.objects.filter(

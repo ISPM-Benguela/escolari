@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^$', visao.inicio, name="painel"),
     url(r'^perfil/(?P<num>[-\w]+)/$', usuario.perfil , name="perfil"),
     url(r'^funcionarios/', include('funcionarios.urls')),
+    url(r'^disciplina/', include('disciplinas.urls')),
     url(r'^candidato/', include('candidato.urls')),
     url(r'^departamentos/', include('departamentos.urls')),
     url(r'^turmas/', include('salas.urls')),

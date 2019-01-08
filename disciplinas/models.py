@@ -5,7 +5,7 @@ from cursos.models import Cursos
 class Disciplina(models.Model):
     nome = models.CharField(max_length=255)
     estudante = models.ManyToManyField(User, blank=True)
-    cursos = models.ForeignKey(Cursos, blank=True, null=True)
+    cursos = models.ManyToManyField(Cursos, blank=True, null=True)
     nota = models.FloatField(default=0, blank=True)
 
     class Meta:

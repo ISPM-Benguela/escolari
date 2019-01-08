@@ -1,3 +1,10 @@
 from django.shortcuts import render
+from departamentos.models import Departamentos
+from disciplinas.forms import DisciplinaForm
 
-# Create your views here.
+
+def inicio(request):
+    return  render(request, 'disciplinas/inicio.html', {
+        'departamentos' : Departamentos.objects.all(),
+        'form' : DisciplinaForm,
+    })

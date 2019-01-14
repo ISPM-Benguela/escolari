@@ -71,10 +71,11 @@
 														</th>
 														<th>Nome</th>
 														<th>Turmas</th>
-														<th class="hidden-480">Ano lectivo</th>
+														<th>Nivel</th>
+														<th class="ace-icon fa fa-clock-o bigger-110 hidden-480">Ano lectivo</th>
 
 														<th>
-															<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+															<i class=""></i>
 															curso
 														</th>
 
@@ -88,16 +89,18 @@
 													<tr>
 
 														<td>
-															<a href="#">{{ estudante.user.username }} </a>
+															<a href="#">{{ estudante.get_estudante }} </a>
 														</td>
 														<td>{{ estudante.turma.get_turma }}</td>
 														<td class="hidden-480">{{ estudante.turma.get_nivel }} </td>
+														<td>{{ estudante.turma.get_ano }}</td>
+														
 														<td>{{ estudante.turma.get_curso }}</td>
 
 
 														<td>
 															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="{% url 'pagarpropina' estudante.user %}">
+																<a class="blue" href="">
 																	Pagar propina <i class="ace-icon fa fa-money bigger-130"></i>
 																</a>
 
@@ -164,6 +167,14 @@
 												{% csrf_token %}
 												<div class="form-group">
 													<input type="text" name="nome" class="form-control" placeholder="Nome do estudante" />
+												</div>
+												<div class="form-group">
+													<select name="turma" class="form-control">
+														<option >>----- Selecionar um turma ----<</option>
+														{% for turma in turmas %}
+														 <option value="{{ turma.id }}"> Turma: {{  turma.nome }} </option>
+														{% endfor %}
+													</select>
 												</div>
 												<div class="form-group">
 													<input type="password" class="form-control" name="senha" placeholder="Senha do estudante" />

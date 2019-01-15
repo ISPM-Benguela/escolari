@@ -33,7 +33,7 @@ class Turmas(models.Model):
         verbose_name_plural = "turmas"
         
     def __str__(self):
-        return "turma: %s, curso: %s" % (self.nome, self.curso)
+        return "turma: %s, curso: %s, periodo: %s" % (self.nome, self.curso, self.get_periodo())
     @property
     def get_turma(self):
         return "%s" % self.nome
@@ -47,3 +47,15 @@ class Turmas(models.Model):
     @property
     def get_nivel(self):
          return "%s" % self.nivel
+
+   
+    def get_periodo(self):
+        if self.periodo == 'M':
+            return "Manha"
+        elif self.periodo == 'N':
+            return "Noite"
+        elif self.periodo == 'T':
+            return "Tarde"
+        else:
+            return "Nao definido"
+        

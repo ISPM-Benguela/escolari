@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from meses.models import Meses
 from anolectivo.models import AnoLectivo
 from propinas.models import Propinas
+from estudantes.models import Estudantes
 import datetime
 
 
@@ -13,6 +14,7 @@ import datetime
 def inicio(request):
     return render(request, 'propinas/inicio.html',{
         'departamentos' : Departamentos.objects.all(),
+        'estudantes' : Estudantes.objects.all(),
     })
 
 @login_required

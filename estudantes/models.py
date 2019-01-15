@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User 
 from salas.models import Turmas
 from usuarios.models import Perfil
+from disciplinas.models import Disciplina
 
 class Estudantes(models.Model):
     peril = models.ForeignKey(Perfil, default="")
@@ -10,6 +11,7 @@ class Estudantes(models.Model):
     sobre_nome = models.CharField(max_length=255, blank=True, null=True)
     telefone = models.CharField(max_length=20, blank=True, null=True)
     propinas = models.IntegerField(default=0)
+    disciplinas = models.ManyToManyField(Disciplina, blank=True)
 
     class Meta:
         verbose_name = "Estudante"

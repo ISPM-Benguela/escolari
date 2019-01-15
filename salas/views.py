@@ -9,10 +9,12 @@ from candidato.models import Candidato
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login , authenticate
 from django.contrib.auth.models import User
+from estudantes.models import Estudantes
 from usuarios.forms import EstudanteForm
 from candidato.models import Candidato
 from mensagem.models import Mensagem
 from usuarios.models import Perfil
+from django.db.models import Q
 
 def todos(request):
     turmas = Turmas.objects.all()
@@ -46,10 +48,12 @@ def cadastrar_turma(request):
     return HttpResponse("nao")
     
 
-def visualizar_turma(request, turma):
-    turma = get_object_or_404(Turmas, nome=turma)
+def visualizar_turma(request, num):
+    turma = get_object_or_404(Turmas, id=num)
+    estudantes = Estudantes.objects.filter(
+        Q(turma=turma)
+    )
 
-    estudantes = turma.estudante.all()
     
     return render(request, 'turmas/turma.html',{
         'departamentos' : Departamentos.objects.all(),

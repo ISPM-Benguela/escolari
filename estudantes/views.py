@@ -14,6 +14,7 @@ from django.contrib.auth.models import User
 from  usuarios.models import Perfil
 from salas.models import Turmas
 from estudantes.models import Estudantes
+from disciplinas.models import Disciplina
 
 def inicio(request):
     queryset = Perfil.objects.filter(tipo_perfil='E')
@@ -71,7 +72,10 @@ def cadastrar_estudante_turma(request):
 
 
 def visualizar_estudante(request, num):
-    estudante = get_object_or_404(User, id=num)
+    estudante = get_object_or_404(Estudantes, id=num)
+    queryset = Disciplina.objects.filter(curso=estudante.turma.curso)
+    
 
-    contex
-    return HttpResponse(num) 
+    return render(request, 'estudantes/cada.html', {
+        'disciplinas' : queryset,
+    })

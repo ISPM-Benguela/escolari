@@ -11,9 +11,9 @@
 						<ul class="breadcrumb">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">painel de  controle</a>
+								<a href="{% url 'painel' %}">painel de  controle</a>
 							</li>
-							<li class="active">gestao de turmas</li>
+							<li class="active">gestao de disciplinas</li>
 						</ul><!-- /.breadcrumb -->
 					</div>
 
@@ -21,10 +21,10 @@
 
 						<div class="page-header">
 							<h1>
-								Turmas disponeis
+								Disciplina disponel
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									lista das turmas disponiveis
+									lista das disciplinas
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
@@ -46,7 +46,7 @@
                                         <h4 class="modal-title" id="myModalLabel">Cadastrar disciplina</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="" method="post">
+                                        <form action="{% url 'cadastrardisciplina' %}" method="post">
 											{% csrf_token %}
 											{{ form|bootstrap  }}
 
@@ -70,26 +70,25 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Disciplina</th>
-                                                            <th>Curso</th>
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tfoot>
                                                         <tr>
                                                             <th>Disciplina</th>
-                                                            <th>Curso</th>
                                                             <th>Action</th>
                                                         </tr>
                                                     </tfoot>
                                   <tbody>
-                                <tr>
-                                <td>Nome</td>
-                                <td>Descricao</td>
-                                <td>
-                                    <a href="" class="btn btn-info btn-xs"><i class="fa fa-pencil" title="Edit"></i> </a>
-                                    <a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash-o" title="Delete"></i> </a>
-                                </td>
-                            </tr>
+                                  {% for disciplina in disciplinas %}
+                                        <tr>
+                                        <td>{{ disciplina.nome }}</td>
+                                        <td>
+                                            <a href="" class="btn btn-info btn-xs"><i class="fa fa-pencil" title="Edit"></i> </a>
+                                            <a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash-o" title="Delete"></i> </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
                         </tbody>
                     </table>
                 </div>

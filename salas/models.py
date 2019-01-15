@@ -25,7 +25,7 @@ class Turmas(models.Model):
     ano = models.ForeignKey(AnoLectivo, blank=True, null=True)
     nivel = models.ForeignKey(Nivel, blank=True, null=True)
     disciplina = models.ManyToManyField(Disciplina, blank=True)
-    estudante = models.ManyToManyField(User, blank=True, null=True)
+    responsavel = models.ForeignKey(User, blank=True, null=True)
     periodo = models.CharField('Tipo de peerfil', max_length=1, choices=PERI, default=ESCOLHER,  blank=True, null=True)
 
     class Meta:
@@ -58,4 +58,7 @@ class Turmas(models.Model):
             return "Tarde"
         else:
             return "Nao definido"
+    
+    def get_responsavel(self):
+        return self.responsavel
         

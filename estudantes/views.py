@@ -61,7 +61,8 @@ def cadastrar_estudante(request):
             
             return HttpResponseRedirect('/painel/estudantes')
 
-    return HttpResponse('algo')
+    messages.warning(request, 'Algo ocorreu mal tenta mais tarde')
+    return HttpResponseRedirect('/painel/estudantes')
 
 def cadastrar_estudante_turma(request):
     form = EstudanteForm(request.POST)

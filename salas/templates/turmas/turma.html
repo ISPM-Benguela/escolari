@@ -47,7 +47,7 @@
 
           <div class="row">
             <div class="col-xs-12">
-             
+             {% include 'includes/mensagens.html' %}
               <!-- PAGE CONTENT BEGINS -->
               <div class="clearfix">
                 
@@ -70,6 +70,7 @@
                             <i class="ace-icon fa fa-circle light-green"></i>
                             &nbsp;
                             <span class="white">Turma: {{ turma.nome }}</span>
+                            
                           </a>
                         </div>
                       </div>
@@ -79,7 +80,7 @@
 
                     <div class="profile-contact-info">
                       <div class="profile-contact-links align-left">
-                        
+                        <span>Responsavel: {{ turma.get_responsavel }}</span>
                       </div>
 
                       <div class="space-6"></div>
@@ -98,34 +99,30 @@
                     <div class="widget-box transparent">
                       <div class="widget-header widget-header-small">
 
-                        <form action="{% url 'cadastrturma' %}" method="POST">
-                        {% csrf_token %}
-                          
-                          <div class="form-group">
-                          <label>Nome</label>
-                            <input type="text" name="nome" class="form-control" />
-                          </div>
-                          <div class="form-group">
-                          <label>Sobrenome</label>
-                            <input type="text" name="sobrenome" class="form-control" />
-                          </div>
-                          
-                          <input type="hidden" name="turma" value="{{ turma.id }}" />
-
-                          <div class="form-group">
-                          <label>Email</label>
-                            <input type="text" name="email" class="form-control" />
-                          </div>
-                           
-                          <div class="from-group">
-                            <input type="submit" class="btn btn-primary" value="Cadastrar">  
-                          </div>
-                        </form>
+                        <form action="{% url 'turmacadastraestudante' %}" method="post">
+												{% csrf_token %}
+												<div class="form-group">
+                          <label>NOME DO ESTUDANTE</label>
+													<input type="text" name="nome" class="form-control" placeholder="Nome do estudante" />
+												</div>
+												<div class="form-group">
+                        <label>TURMA</label>
+														<input type="text" value="{{ turma.nome }}" class="form-control" placeholder="Nome do estudante" />
+                            <input type="hidden" name="turma" value="{{ turma.id }}" />
+                      	</div>
+                        <div class="form-group">
+                        <label>CURSO E PERIODO</label>
+														<input type="text" value="{{ turma.get_curso }} | {{ turma.get_periodo }}" class="form-control" disable="true">
+												</div>
+												<div class="form-group">
+													<input type="submit" class="btn btn-primary" value="Cadastrar estudante na turma {{ turma.nome }}" />
+												</div>
+											</form>
 
                         <div style="margin-bottom: 10px;"></div>
                         <h4 class="widget-title blue smaller">
                           <i class="ace-icon fa fa-users"></i>
-                          {% trans "Lista de estudantes da turma " %} ({{ turma.nome }} ) 
+                          {% trans "Lista de estudantes da turma " %} ({{ turma.nome }} ) ano lectivo: {{ turma.get_ano }}
                         </h4>
                         
 
@@ -148,10 +145,10 @@
                             <div class="profile-activity clearfix">
                               <div>
                                 Estudante:
-                                <a class="user" href=""> {{ estudante.username }} </a>
+                                <a class="user" href=""> {{ estudante.peril }} </a>
                                 <div class="time">
                                   <i class="ace-icon fa fa-clock bigger-110"></i>
-                                  Numero de matricula: {{ estudante.id }}
+                                  Numero de matricula: {{ estudante.id }} 
                                 </div>
                                 
 

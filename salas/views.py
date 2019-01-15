@@ -15,6 +15,7 @@ from candidato.models import Candidato
 from mensagem.models import Mensagem
 from usuarios.models import Perfil
 from django.db.models import Q
+from django.contrib import messages
 
 def todos(request):
     turmas = Turmas.objects.all()
@@ -66,3 +67,31 @@ def visualizar_turma(request, num):
         'feedcandidato': Candidato.objects.filter(novo=True).count(),
         'candidatos': Candidato.objects.filter(novo=True),
     })
+def cadastrar_estudante_turma(request):
+    if request.method == 'POST':
+        if not request.POST.get('nome') or not request.POST.get('turma'):
+            messages.warning(request, 'O campo nome nao deve estar vazio.')
+            return HttpResponseRedirect('/painel/turmas/visualizar/%s/' % request.POST.get('turma'))
+        else:
+            _nome = request.POST.get('nome')
+            _senha = "password"
+            _turma = request.POST.get('turma')
+
+            turma = Turmas.objects.get(id=_turma)
+            user = User.objects.create(username=_nome, password=_senha)
+            perfil = Perfil.objects.get(id=user.id)
+            perfil.tipo_perfil = 'E'
+            perfil.save()
+
+            estudante = Estudantes()
+            estudante.peril = perfil
+            estudante.turma = turma
+            estudante.nome = user.username
+            estudante.save()
+
+            messages.success(request, 'Estudante cadastrado com sucesso.')
+            return HttpResponseRedirect('/painel/turmas/visualizar/%s/' % request.POST.get('turma'))
+    
+    messages.warning(request, 'Ops! houve um erro tentar mais tarde')
+    return HttpResponseRedirect('painel/turmas')
+    

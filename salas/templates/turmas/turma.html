@@ -23,14 +23,7 @@
             <li class="active">{{ turma.nome }}</li>
           </ul><!-- /.breadcrumb -->
 
-          <div class="nav-search" id="nav-search">
-            <form class="form-search">
-              <span class="input-icon">
-                <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-                <i class="ace-icon fa fa-search nav-search-icon"></i>
-              </span>
-            </form>
-          </div><!-- /.nav-search -->
+          
         </div>
 
         <div class="page-content">
@@ -148,7 +141,7 @@
                                 <a class="user" href=""> {{ estudante.peril }} </a>
                                 <div class="time">
                                   <i class="ace-icon fa fa-clock bigger-110"></i>
-                                  Numero de matricula: {{ estudante.id }} 
+                                  Numero de matricula: {{ estudante.id }} | Prestações de propinas: {{ estudante.get_prestacoes }}
                                 </div>
                                 
 
@@ -156,7 +149,7 @@
 
 
                               <div class="tools action-buttons">
-                                <a href="/estudantes/visualizar/{{ estudante.id }}" class="blue">
+                                <a href="/painel/estudantes/visualizar/{{ estudante.id }}" class="blue">
                                   <i class="ace-icon fa fa-edit bigger-125"></i>
                                 </a>
 

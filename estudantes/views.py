@@ -79,4 +79,5 @@ def visualizar_estudante(request, num):
 
     return render(request, 'estudantes/cada.html', {
         'disciplinas' : queryset,
+        'estudante' : estudante,
     })

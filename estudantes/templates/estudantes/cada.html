@@ -1,5 +1,236 @@
-<ul>
-{% for disciplina in disciplinas %}
-    <li>{{ disciplina.nome }}</li>
-{% endfor %}
-</ul>
+{% extends "layouts/painel.html" %}
+
+{% load i18n %}
+{% load bootstrap %}
+
+{% block title %}{{ request.user.username }} - {% trans "Propinas" %}{% endblock %}
+
+{% load staticfiles %}
+
+{% block principal %}
+<div class="main-content">
+      <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+          <ul class="breadcrumb">
+            <li>
+              <i class="ace-icon fa fa-home home-icon"></i>
+              <a href="{% url 'painel' %}">{% trans "Inicio" %}</a>
+            </li>
+
+            <li>
+              <a href="#">{% trans "Pagina unica do estudante" %}</a>
+            </li>
+            <li class="active">{{ estudante.nome }}</li>
+          </ul><!-- /.breadcrumb -->
+
+          
+        </div>
+
+        <div class="page-content">
+
+          <div class="page-header">
+            <h1>
+              Pagina unica do estudante
+              <small>
+                <i class="ace-icon fa fa-angle-double-right"></i>
+                 {{ estudante.nome }}
+              </small>
+            </h1>
+          </div><!-- /.page-header -->
+
+          <div class="row">
+            <div class="col-xs-12">
+             {% include 'includes/mensagens.html' %}
+              <!-- PAGE CONTENT BEGINS -->
+              <div class="clearfix">
+                
+              </div>
+
+
+              <div>
+                <div id="user-profile-1" class="user-profile row">
+                  <div class="col-xs-12 col-sm-3 center">
+                    <div>
+                      <span class="profile-picture">
+                        <img id="avatar" class="editable img-responsive" alt="{{ estudante.username }}" width="180" height="200" src="{% static 'img/log.png' %}" />
+                      </span>
+
+                      <div class="space-4"></div>
+
+                      <div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+                        <div class="inline position-relative">
+                          <a href="#" class="user-title-label dropdown-toggle" data-toggle="dropdown">
+                            <i class="ace-icon fa fa-circle light-green"></i>
+                            &nbsp;
+                            <span class="white">Turma: {{ estudante.turma.get_turma }}</span>
+                            
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="space-6"></div>
+
+                    <div class="profile-contact-info">
+                      <div class="profile-contact-links align-left">
+                        <span>Estudante: {{ estudante.get_estudante }}</span>
+                      </div>
+
+                      <div class="space-6"></div>
+                    </div>
+
+                    <div class="hr hr12 dotted"></div>
+                  </div>
+
+                  <div class="col-xs-12 col-sm-9">
+
+                    <div class="space-12">
+                    </div>
+                    
+                    <div class="space-20"></div>
+
+                    <div class="widget-box transparent">
+                      <div class="widget-header widget-header-small">
+
+        
+                            <div class="btn-group" role="group" aria-label="...">
+                                <button type="button" class="btn btn-success">Confirmar matricula</button>
+                                <button type="button" class="btn btn-primary">Pagar progina</button>
+                                <button type="button" class="btn btn-default">Estado: Estando</button>
+                            </div>
+                       
+
+                        <div style="margin-bottom: 10px;"></div>
+                        <h4 class="widget-title blue smaller">
+                          <i class="ace-icon fa fa-users"></i>
+                          Pauta do estudante: {{ estudante.get_estudante }}
+                        </h4>
+                        
+
+                        <div class="widget-toolbar action-buttons">
+                          <a href="#" data-action="reload">
+                            <i class="ace-icon fa fa-refresh blue"></i>
+                          </a>
+                            &nbsp;
+                          <a href="#" class="pink">
+                            <i class="ace-icon fa fa-trash-o"></i>
+                          </a>
+                        </div>
+                      </div>
+
+                      <div class="widget-body">
+                        <div class="widget-main padding-8">
+                          <h3 class="widget-title blue smaller">Pauta do 1º Semestre</h3>
+
+                          <table class="table table-hover">
+                            <tr>
+                                <th>Disciplina</th>
+                                <th>Avalicao</th>
+                                <th>Nota</th>
+                                <th>Media</th>
+                                <th>Estado</th>
+                                <th>Accao</th>
+                            </tr>
+                            <tr>
+                                <td>Matematica</td>
+                                <td>14</td>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>Aprovado</td>
+                                <td>
+                                    <a href="" class="fa fa-edit"> Publicar nota</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Quimica</td>
+                                <td>14</td>
+                                <td>12</td>
+                                <td>---</td>
+                                <td>estudando</td>
+                                <td>
+                                    <a href="" class="fa fa-edit"> Publicar nota</a>
+                                </td>
+                            </tr>
+                        </table>
+                        <hr>
+                        <h3 class="widget-title blue smaller">Pauta do 2º Semestre</h3>
+
+                          <table class="table table-hover">
+                            <tr>
+                                <th>Disciplina</th>
+                                <th>Avalicao</th>
+                                <th>Nota</th>
+                                <th>Media</th>
+                                <th>Estado</th>
+                            </tr>
+                            <tr>
+                                <td>Matematica</td>
+                                <td>14</td>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>Aprovado</td>
+                            </tr>
+                            <tr>
+                                <td>Quimica</td>
+                                <td>14</td>
+                                <td>12</td>
+                                <td>---</td>
+                                <td>estudando</td>
+                            </tr>
+                        </table>
+
+                        <hr>
+                        <h3 class="widget-title blue smaller">Pauta do 3º Semestre</h3>
+
+                          <table class="table table-hover">
+                            <tr>
+                                <th>Disciplina</th>
+                                <th>Avalicao</th>
+                                <th>Nota</th>
+                                <th>Media</th>
+                                <th>Estado</th>
+                            </tr>
+                            <tr>
+                                <td>Matematica</td>
+                                <td>14</td>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>Aprovado</td>
+                            </tr>
+                            <tr>
+                                <td>Quimica</td>
+                                <td>14</td>
+                                <td>12</td>
+                                <td>---</td>
+                                <td>estudando</td>
+                            </tr>
+                        </table>
+
+                        <div class="jumbotron">
+                            <h4>Estando: Aprovado</h4>
+                            <h4>Media: 14
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="space-6"></div>
+
+                    <div class="center">
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div><!-- /.well -->
+
+
+                  </div><!-- /.span -->
+                </div><!-- /.user-profile -->
+              </div>
+
+              <!-- PAGE CONTENT ENDS -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.page-content -->
+      </div>
+{% endblock %}

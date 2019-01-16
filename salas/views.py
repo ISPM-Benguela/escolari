@@ -74,7 +74,7 @@ def cadastrar_estudante_turma(request):
             return HttpResponseRedirect('/painel/turmas/visualizar/%s/' % request.POST.get('turma'))
         else:
             _nome = request.POST.get('nome')
-            _senha = "password"
+            _senha = "senha"
             _turma = request.POST.get('turma')
 
             turma = Turmas.objects.get(id=_turma)

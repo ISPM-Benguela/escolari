@@ -31,21 +31,15 @@ def todos(request):
     })
 
 def cadastrar_turma(request):
-
-    senha = '1cristo2bom3'
+    turma = TurmaForm(request.POST)
 
     if request.method == 'POST':
-        _nome = request.POST.get('nome')
-        _sobrenome = request.POST.get('sobrenome')
-        _turma = request.POST.get('turma')
-        _email = request.POST.get('email')
-
-        user = User(username=_nome)
-        user.set_password(senha)
-        user.save()
-
-        if user:
-            return HttpResponse(user.perfil.turma.get_turma)
+        if turma.is_valid():
+            messages.success(request, 'Turma cadastrado com sucesso.')
+            turma.save()
+        else:
+            messages.success(request, 'Formulario vaio')
+        return HttpResponseRedirect('/painel/turmas')
     return HttpResponse("nao")
     
 
@@ -67,6 +61,35 @@ def visualizar_turma(request, num):
         'feedcandidato': Candidato.objects.filter(novo=True).count(),
         'candidatos': Candidato.objects.filter(novo=True),
     })
+
+def editar_turma(request, num=None):
+    turma = get_object_or_404(Turmas, id=num)
+    form = TurmaForm(request.POST or None, instance=turma)
+
+    estudantes = Estudantes.objects.filter(
+        Q(turma=turma)
+    )
+
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Turma actualizado com sucesso.')
+            return HttpResponseRedirect('/painel/turmas')
+    
+    return render(request, 'turmas/editar.html',{
+        'departamentos' : Departamentos.objects.all(),
+        'form' : form,
+        'turma': turma,
+        'estudantes' : estudantes,
+        'feed': Mensagem.objects.filter(por_ler=True).count(),
+        'mensagens': Mensagem.objects.filter(por_ler=True),
+        'feedcandidato': Candidato.objects.filter(novo=True).count(),
+        'candidatos': Candidato.objects.filter(novo=True),
+    })
+
+def eliminar_turma(request, num):
+    return HttpResponse('eliminar turma')
+
 def cadastrar_estudante_turma(request):
     if request.method == 'POST':
         if not request.POST.get('nome') or not request.POST.get('turma'):

@@ -31,6 +31,7 @@
 
 						<div class="row">
 							<div class="col-xs-12">
+							{% include 'includes/mensagens.html' %}
 								<!-- PAGE CONTENT BEGINS -->
                                 <button type="submit" data-toggle="modal" data-target="#myModal" class="btn btn-primary" style="margin-bottom: 20px;" >Cadastrar turma <i class="fa fa-plus"></i></button>
 								
@@ -69,7 +70,7 @@
 										  
 											<div class="thumbnail">
 												<img src="{% static 'img/log.png' %}" />
-												<div class="caption">
+												<div class="caption" style="border-top: 1px solid #ccc;">
 													<h3>Sala: {{ turma.get_turma }}</h3>
 													<h3>Nivel: {{ turma.get_nivel }}</h3>
 													 <p>Curso: <span class="badge">{{ turma.curso }}</span></p>
@@ -81,11 +82,14 @@
 															Manha
 														{% endif %}
 														{% if turma.periodo == 'T' %}
-															Manha
+															Tarde
 														{% endif %}
 													 </span></p>
 													 <p>Responsavel: <span class="badge badge-success">{{ turma.responsavel }}</span></p>
-													  <a href="{% url 'turmavisual' turma.id %}" class="btn btn-danger"><span class="fa fa-eye"></span> visualizar</a>
+													  <a href="{% url 'turmavisual' turma.id %}" class="btn btn-primary"><span class="fa fa-eye"></span> visualizar</a>
+													  <a href="{% url 'turmaedita' turma.id %}" class="btn btn-success"><span class="fa fa-pencil"></span> Editar</a>
+													  <a href="{% url 'turmaelimina' turma.id %}" class="btn btn-danger"><span class="fa fa-trash"></span> Eliminar</a>
+													  
 												</div>
 											</div>
 											

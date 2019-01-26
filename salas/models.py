@@ -20,13 +20,13 @@ class Turmas(models.Model):
     )
 
 
-    nome = models.CharField(max_length=255)
+    nome = models.CharField('Nome da sala',max_length=255)
+    numero_sala = models.IntegerField('Número da sala',default=0, blank=True, null=True)
     curso = models.ForeignKey(Cursos, blank=True, null=True)
     ano = models.ForeignKey(AnoLectivo, blank=True, null=True)
     nivel = models.ForeignKey(Nivel, blank=True, null=True)
-    disciplina = models.ManyToManyField(Disciplina, blank=True)
     responsavel = models.ForeignKey(User, blank=True, null=True)
-    periodo = models.CharField('Tipo de peerfil', max_length=1, choices=PERI, default=ESCOLHER,  blank=True, null=True)
+    periodo = models.CharField('Periodo da turma', max_length=1, choices=PERI, default=ESCOLHER,  blank=True, null=True)
 
     class Meta:
         verbose_name = "Turma"

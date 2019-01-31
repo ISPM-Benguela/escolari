@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^propinas/', include('propinas.urls')),
     url(r'^mensagem/', include('mensagem.urls')),
     url(r'^cursos/', include('cursos.urls')),
+    url(r'^nivel/', include('nivel.urls')),
     url(r'^ano/', include('anolectivo.urls')),
     url(r'^eventos/', include('eventos.urls')),
 ]

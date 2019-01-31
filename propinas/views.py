@@ -7,6 +7,7 @@ from meses.models import Meses
 from anolectivo.models import AnoLectivo
 from propinas.models import Propinas
 from estudantes.models import Estudantes
+from propinas.forms import PropinasForm
 import datetime
 
 
@@ -18,12 +19,13 @@ def inicio(request):
     })
 
 @login_required
-def pagar_propinas(request, nome):
+def pagar_propinas(request, num):
 
-    estudante = get_object_or_404(User, username=nome)
+    estudante = get_object_or_404(Estudantes, id=num)
 
     return render(request, 'propinas/pagamentos.html',{
         'departamentos' : Departamentos.objects.all(),
+        'form': PropinasForm(),
         'estudante' : estudante,
         'meses': Meses.objects.all(),
         'anolectivos': AnoLectivo.objects.all(),

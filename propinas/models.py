@@ -5,9 +5,10 @@ from anolectivo.models import AnoLectivo
 
 class Propinas(models.Model):
     estundante = models.ForeignKey(User)
-    mes = models.ForeignKey(Meses)
+    mes = models.ManyToManyField(Meses, default="", blank=True)
     ano = models.ForeignKey(AnoLectivo)
     propina = models.IntegerField(default=0)
+    total_propinas = models.IntegerField(default=0)
    # propina = models.DecimalField(decimal_places=2, default=0)
 
     def __str__(self):

@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User 
 from salas.models import Turmas
 from usuarios.models import Perfil
 from disciplinas.models import Disciplina

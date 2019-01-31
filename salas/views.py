@@ -88,7 +88,11 @@ def editar_turma(request, num=None):
     })
 
 def eliminar_turma(request, num):
-    return HttpResponse('eliminar turma')
+    turma = get_object_or_404(Turmas, id=num)
+    turma.delete()
+
+    messages.success(request, 'Turma eliminado com sucesso.')
+    return HttpResponseRedirect('/painel/turmas')
 
 def cadastrar_estudante_turma(request):
     if request.method == 'POST':

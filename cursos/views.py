@@ -5,6 +5,7 @@ from cursos.models import Cursos
 from candidato.models import Candidato
 from mensagem.models import Mensagem
 from cursos.forms import CursoForm
+from django.contrib import messages
 
 
 def todos(request):
@@ -25,6 +26,7 @@ def cadastrar_curso(request):
         form = CursoForm(request.POST)
         if form.is_valid():
             form.save()
+        messages.success(request, 'Curso cadastrado com sucesso.')    
         return HttpResponseRedirect('/painel/cursos')
     return HttpResponse('acadad')
     
@@ -35,6 +37,7 @@ def editar_curso(request, id):
     if request.method == 'POST':
         if form.is_valid():
             form.save()
+            messages.success(request, 'Curso actualizado com sucesso.')
             return HttpResponseRedirect('/painel/cursos')
     contexto = {
         "instance" : instance,
@@ -51,6 +54,6 @@ def editar_curso(request, id):
 def eliminar_curso(request, id):
     instance = get_object_or_404(Cursos, id=id)
     instance.delete()
-
-    return HttpResponseRedirect('cursos')
+    messages.warning(request, 'Curso eliminado com sucesso.')
+    return HttpResponseRedirect('/painel/cursos')
     

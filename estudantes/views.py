@@ -15,6 +15,7 @@ from  usuarios.models import Perfil
 from salas.models import Turmas
 from estudantes.models import Estudantes
 from disciplinas.models import Disciplina
+from estudantes.forms import EstudanteForm
 
 def inicio(request):
     queryset = Perfil.objects.filter(tipo_perfil='E')
@@ -80,4 +81,5 @@ def visualizar_estudante(request, num):
     return render(request, 'estudantes/cada.html', {
         'disciplinas' : queryset,
         'estudante' : estudante,
+        'form' : EstudanteForm(),
     })

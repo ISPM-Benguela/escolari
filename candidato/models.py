@@ -13,8 +13,8 @@ class Candidato(models.Model):
     )
 
     nome = models.CharField(max_length=255)
-    sobrenome = models.CharField(max_length=255)
-    noBI = models.CharField(max_length=100)
+    sobrenome = models.CharField("Sobrenome ",max_length=255)
+    noBI = models.CharField("Telefone", max_length=100)
     candidatura = models.CharField( max_length=1, choices=CANDIDATURA, default=ESTUDANTE,  blank=True, null=True)
     data = models.DateTimeField(auto_now_add=True)
     novo = models.BooleanField(default=True)

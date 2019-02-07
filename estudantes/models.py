@@ -8,8 +8,9 @@ class Estudantes(models.Model):
     peril = models.ForeignKey(Perfil, default="")
     turma = models.ForeignKey(Turmas, blank=True, null=True)
     nome = models.CharField(max_length=255, blank=True, null=True)
+    primeiro_nome = models.CharField(max_length=255, blank=True, null=True)
     sobre_nome = models.CharField(max_length=255, blank=True, null=True)
-    telefone = models.CharField(max_length=20, blank=True, null=True)
+    nome_encarregado = models.CharField(max_length=255, blank=True, null=True)
     propinas = models.IntegerField(default=0)
     disciplinas = models.ManyToManyField(Disciplina, blank=True)
 
@@ -26,7 +27,10 @@ class Estudantes(models.Model):
     def get_curso(self):
         return "%s" % self.turma.curso
     def get_estudante(self):
-        return "%s" % self.peril
+        if not self.primeiro_nome or not self.sobre_nome:
+            return "%s" % self.peril 
+        else:
+            return "%s %s" % (self.primeiro_nome, self.sobre_nome) 
     
     def get_prestacoes(self):
         return self.propinas

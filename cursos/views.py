@@ -39,6 +39,7 @@ def editar_curso(request, id):
             form.save()
             messages.success(request, 'Curso actualizado com sucesso.')
             return HttpResponseRedirect('/painel/cursos')
+            
     contexto = {
         "instance" : instance,
         "form" : form,

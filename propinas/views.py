@@ -1,5 +1,6 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from departamentos.models import Departamentos
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
@@ -35,34 +36,13 @@ def pagar_propinas(request, num):
 
 @login_required
 def cadastrar_pagamento(request):
-    pagamento = None
+
+    form = PropinasForm(request.POST or None)
 
     if request.method == 'POST':
-        aluno = request.POST.get('estudante')
-        ano = request.POST.get('ano')
-        mes = request.POST.get('mes')
-        propina = request.POST.get('propina')
-        
-        # Instancias
-        _aluno = get_object_or_404(User, username=aluno)
-        _mes = get_object_or_404(Meses, id=mes)
-        _ano = get_object_or_404(AnoLectivo, id=ano)
-
-        if not Propinas.objects.filter(mes=_mes).exists():
-            pagamento = Propinas.objects.create(
-                estundante=_aluno,
-                mes=_mes,
-                ano=_ano,
-                propina=propina
-
-             )
-        else:
-            return HttpResponse("mes ja existe")
-
-        if pagamento:
-            return HttpResponse("pago")
-        else:
-            return HttpResponse("nao pago")
-        #return HttpResponse("estudante: %s, anolectivo: %s, mes: %s, propina: %s" % (aluno, ano, mes, propina))
-    return HttpResponse("pagamento")
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Propina registado com sucesso.')
+            return HttpResponseRedirect('painel/propinas')
+    return HttpResponse("Nao vem do post")
 

@@ -4,6 +4,7 @@ from cursos.models import Cursos
 from disciplinas.models import Disciplina
 from anolectivo.models import AnoLectivo
 from nivel.models import Nivel
+from usuarios.models import *
 
 class Turmas(models.Model):
 
@@ -25,8 +26,9 @@ class Turmas(models.Model):
     curso = models.ForeignKey(Cursos, blank=True, null=True)
     ano = models.ForeignKey(AnoLectivo, blank=True, null=True)
     nivel = models.ForeignKey(Nivel, blank=True, null=True)
-    responsavel = models.ForeignKey(User, blank=True, null=True)
+    professores = models.ManyToManyField(User, blank=True)
     periodo = models.CharField('Periodo da turma', max_length=1, choices=PERI, default=ESCOLHER,  blank=True, null=True)
+ 
 
     class Meta:
         verbose_name = "Turma"

@@ -27,10 +27,9 @@ class Perfil(models.Model):
     departamento = models.ForeignKey(Departamentos, blank=True, null=True)
     primeiro_nome = models.CharField(_('Primeiro nome'), max_length=250, blank=True, null=True, default="")
     segundo_nome = models.CharField(_('Segundo nome'), max_length=250, blank=True, null=True, default="")
-    tipo_perfil = models.CharField(_('Tipo de peerfil'), max_length=1, choices=PERFIL, default=FUNCIONARIO,  blank=True, null=True)
+    tipo_perfil = models.CharField(_('Tipo de perfil'), max_length=1, choices=PERFIL, default=FUNCIONARIO,  blank=True, null=True)
     morada  = models.CharField(_('nome da turma'), max_length=250, blank=True, null=True, default="")
     foto = models.FileField(default='perfil/default.jpg', upload_to='perfil/', blank=True, null=True)
-    disciplina = models.ManyToManyField(Disciplina, blank=True)
     # perfil do estudante
 
     turma = models.ForeignKey(Turmas, blank=True,  null=True)

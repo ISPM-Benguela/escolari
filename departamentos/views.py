@@ -11,7 +11,7 @@ def todos(request):
     return render(request, 'departamentos/todos.html', {
         'funcionarios': User.objects.all(),
         'departamentos': Departamentos.objects.all(),
-
+         'form' : DepartamentoForm(),
         'feed': Mensagem.objects.filter(por_ler=True).count(),
         'mensagens': Mensagem.objects.filter(por_ler=True),
         'feedcandidato': Candidato.objects.filter(novo=True).count(),
@@ -22,7 +22,7 @@ def cradastrar_departamento(request):
         form = DepartamentoForm(request.POST or None)
         if form.is_valid():
             form.save()
-        return redirect('deparmentos')
+        return redirect('/painel/deparmentos')
     return HttpResponse("NO OK")
 
 def editar_departamento(request, nome):

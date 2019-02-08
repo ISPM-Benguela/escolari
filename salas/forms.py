@@ -4,4 +4,4 @@ from salas.models import Turmas
 class TurmaForm(forms.ModelForm):
     class Meta:
         model = Turmas
-        fields = ('nome','numero_sala', 'ano','curso','nivel','periodo','responsavel',)
+        fields = ('nome','numero_sala', 'ano','curso','nivel','periodo','professores',)

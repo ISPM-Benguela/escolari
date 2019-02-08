@@ -6,6 +6,7 @@ class Disciplina(models.Model):
     nome = models.CharField(max_length=255, blank=True, null=True)
     nota = models.FloatField(default=0, blank=True)
     curso = models.ManyToManyField(Cursos, blank=True)
+    professor = models.ForeignKey(User, blank=True, null=True)
     
 
     class Meta:

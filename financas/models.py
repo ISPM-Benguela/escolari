@@ -20,6 +20,9 @@ class Pagamento(models.Model):
     class Meta:
         verbose_name = "Pagamento"
         verbose_name_plural = "Pagamentos"
+
+    def __str__(self):
+        return self.valor
     
     def get_propina(self):
-        return self.valor
+        return "%s" % self.valor

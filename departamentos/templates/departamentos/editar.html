@@ -23,15 +23,7 @@
             <li class="active">{{ departamento.nome }}</li>
           </ul><!-- /.breadcrumb -->
 
-          <div class="nav-search" id="nav-search">
-            <form class="form-search">
-              <span class="input-icon">
-                <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-                <i class="ace-icon fa fa-search nav-search-icon"></i>
-              </span>
-            </form>
-          </div><!-- /.nav-search -->
-        </div>
+          
 
         <div class="page-content">
           <div class="ace-settings-container" id="ace-settings-container">
@@ -66,15 +58,10 @@
                         {{ form|bootstrap }}
                         <input type="hidden" name="depart" value="{{ departamento.nome }}">
                         <div class="form-group pull-right">
-                          <input type="submit" class="btn btn-default" value="{% trans 'Criar Turma' %}">
+                          <input type="submit" class="btn btn-default" value="{% trans 'Actualizar' %}">
                         </div>
                         <div class="clearfix"></div>
                       </form>
-
-                  </div>
-
-                  <div class="modal-footer no-margin-top">
-                    
 
                   </div>
                 </div><!-- /.modal-content -->
@@ -92,16 +79,6 @@
               <div style="padding-bottom: 15px;"></div>
               <!-- PAGE CONTENT BEGINS -->
               <div class="clearfix">
-                <!--
-                <div class="pull-left alert alert-success no-margin alert-dismissable">
-                  <button type="button" class="close" data-dismiss="alert">
-                    <i class="ace-icon fa fa-times"></i>
-                  </button>
-
-                  <i class="ace-icon fa fa-umbrella bigger-120 blue"></i>
-                  Click on the image below or on profile fields to edit them ...
-                </div>
-              -->
                 <div class="pull-right">
 
                   
@@ -155,6 +132,19 @@
 
                     <div class="widget-box transparent">
                       <div class="widget-header widget-header-small">
+                        {% if departamento.nome == 'Financas' %}
+
+                            <h2>Financas</h2>
+                        {% elif departamento.nome == 'Pedagogia' %}
+                              <h2>Pedagoria</h2>
+                        {% endif %}
+
+                        <div class="btn-group" role="group" aria-label="...">
+                                <button type="button" class="btn btn-success">Confirmar matricula</button>
+                                <button type="button" class="btn btn-primary">Pagar progina</button>
+                                <button type="button" class="btn btn-default">Estado: Estando</button>
+                        </div>
+                         <div style="margin-bottom: 10px;"></div>
                         <h4 class="widget-title blue smaller">
                           <i class="ace-icon fa fa-users sucess"></i>
                           Departamento {{ departamento.nome }}

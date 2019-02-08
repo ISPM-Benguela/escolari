@@ -7,4 +7,8 @@ urlpatterns = [
     url(r'^cadastrar/', apresenta.cradastrar_departamento, name="criadeparta"),
     url(r'^editar/(?P<nome>[-\w]+)/$', apresenta.editar_departamento, name="editardeparta"),
     url(r'^actualizar/(?P<nome>[-\w]+)/$', apresenta.actualizar_departamento, name="actualizar"),
+    url(r'^eliminar/(?P<nome>[-\w]+)/$', apresenta.eliminar_departamento, name="eliminar"),
 ]
+
+
+

@@ -1,175 +1,99 @@
+
 {% extends "layouts/painel.html" %}
-
-{% load i18n %}
-{% load bootstrap %}
-
-{% block title %}{{ request.user.username }} - {% trans "Propinas" %}{% endblock %}
-
 {% load staticfiles %}
+{% load bootstrap %}
+{% block title %}painel de funcionarios{% endblock %}
+
+{% block head %}
+
+ <link rel="stylesheet" href="{% static 'css/estudantes.css' %}">
+{% endblock %}
 
 {% block principal %}
-<div class="main-content">
-      <div class="main-content-inner">
-        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
-          <ul class="breadcrumb">
-            <li>
-              <i class="ace-icon fa fa-home home-icon"></i>
-              <a href="{% url 'inicio' %}">{% trans "Inicio" %}</a>
-            </li>
 
-            <li>
-              <a href="#">{% trans "Pagina unica do" %}</a>
-            </li>
-            <li class="active">{{ estudante.username }}</li>
-          </ul><!-- /.breadcrumb -->
-        </div>
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a href="#">Home</a>
+							</li>
 
-        <div class="page-content">
-
-          <div class="page-header">
-            <h1>
-              Registo de propinas do estudante
-              <small>
-                <i class="ace-icon fa fa-angle-double-right"></i>
-                 {{ estudante.username }}
-              </small>
-            </h1>
-          </div><!-- /.page-header -->
-
-          <div class="row">
-            <div class="col-xs-12">
-             
-              <!-- PAGE CONTENT BEGINS -->
-              <div class="clearfix">
-                
-              </div>
+							<li>
+								<a href="#">Other Pages</a>
+							</li>
+							<li class="active">Blank Page</li>
+						</ul><!-- /.breadcrumb -->
 
 
-              <div>
-                <div id="user-profile-1" class="user-profile row">
-                  <div class="col-xs-12 col-sm-3 center">
-                    <div>
-                      <span class="profile-picture">
-                        <img id="avatar" class="editable img-responsive" alt="{{ estudante.username }}" width="180" height="200" src="/media/perfil/default.jpg" />
-                      </span>
+					<div class="page-content">
 
-                      <div class="space-4"></div>
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+                <form class="form-horizontal" action="{% url 'pagarpropina' estudante.id %}" method="POST" role="form">
+									
+									{% csrf_token %}
+									<div class="form-group">
+										<label class="col-sm-3 control-label " for="form-field-1"> Estudante </label>
 
-                      <div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
-                        <div class="inline position-relative">
-                          <a href="#" class="user-title-label dropdown-toggle" data-toggle="dropdown">
-                            <i class="ace-icon fa fa-circle light-green"></i>
-                            &nbsp;
-                            <span class="white">{{ estudante.username }}</span>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
+										<div class="col-sm-9">
+											<input type="text" name="estudante" value="{{ estudante.get_estudante }}" placeholder="Estudante" class="col-xs-10 col-sm-5" />
+										</div>
+									</div>
 
-                    <div class="space-6"></div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> Ano Lectivo</label>
 
-                    <div class="profile-contact-info">
-                      <div class="profile-contact-links align-left">
-                        
-                      </div>
+										<div class="col-sm-9">
+										
+											<select   class="col-xs-10 col-sm-5" name="ano" required>
+											    <option value="">---- Selecionar ano Lectivo</option>
+												{% for cada in ano %}
+												   <option value="{{ cada.id }}">{{ cada.ano }}</option>
+												{% endfor %}
+											</select>
+										</div>
+									</div>
 
-                      <div class="space-6"></div>
-                    </div>
+									<div class="space-4"></div>
 
-                    <div class="hr hr12 dotted"></div>
-                  </div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Prestações </label>
 
-                  <div class="col-xs-12 col-sm-9">
+										<div class="col-sm-9">
+											<input type="number" id="form-field-2" name="prestacao" placeholder=" ex: 2 ( Prestações )" class="col-xs-10 col-sm-5" required />
+										
+										</div>
+									</div>
 
-                    <div class="space-12">
-                    </div>
-                    
-                    <div class="space-20"></div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> Mês</label>
 
-                    <div class="widget-box transparent">
-                      <div class="widget-header widget-header-small">
+										<div class="col-sm-9">
+										
+											<select   class="col-xs-10 col-sm-5" name="mes" required>
+											    <option value="">---- Selecionar Mes do pagamento ---</option>
+												{% for cada in mes %}
+												   <option value="{{ cada.id }}">{{ cada.mes }}</option>
+												{% endfor %}
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-9">
+										
+											<input type="submit" value="Cadastrar" style="margin-left: 32%; margin-bottom: 20px;" class="btn btn-primary" />
+										</div>
+									</div>
+                               </form> 
+                                <div class="clearfix"></div>
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
 
-                        <form action="{% url 'pagamento' %}" method="POST">
-                        {% csrf_token %}
-                         {{ form|bootstrap }}
-
-                         <div class="form">
-                           <input type="submit" value="confirmar pagamento" class="btn btn-primary" />
-                         </div>
-                        </form>
-                        <h4 class="widget-title blue smaller">
-                          <i class="ace-icon fa fa-money"></i>
-                          {% trans "Registo do meses pagos por estudante" %} {{ estudante.username }} 
-                        </h4>
-                        
-
-                        <div class="widget-toolbar action-buttons">
-                          <a href="#" data-action="reload">
-                            <i class="ace-icon fa fa-refresh blue"></i>
-                          </a>
-                            &nbsp;
-                          <a href="#" class="pink">
-                            <i class="ace-icon fa fa-trash-o"></i>
-                          </a>
-                        </div>
-                      </div>
-
-                      <div class="widget-body">
-                        <div class="widget-main padding-8">
-                          {% if propinas %}
-                          {% for propina in propinas %}
-                            <div id="profile-feed-1" class="profile-feed">
-                            <div class="profile-activity clearfix">
-                              <div>
-                                Propina do mes
-                                <a class="user" href=""> {{ propina.mes }} </a>
-                                .
-                                Pago
-
-                                <div class="time">
-                                  <i class="ace-icon fa fa-money bigger-110"></i>
-                                  Valor: {{ propina.propina }}
-                                </div>
-
-                              </div>
-
-
-                              <div class="tools action-buttons">
-                                <a href="#" class="blue">
-                                  <i class="ace-icon fa fa-edit bigger-125"></i>
-                                </a>
-
-                                <a href="#" class="red">
-                                  <i class="ace-icon fa fa-times bigger-125"></i>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                          {% endfor %}
-                          {% else %}
-                            <h3>Ainda nao pagou nenhuma propina</h3>
-                          {% endif %}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="space-6"></div>
-
-                    <div class="center">
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </div><!-- /.well -->
-
-
-                  </div><!-- /.span -->
-                </div><!-- /.user-profile -->
-              </div>
-
-              <!-- PAGE CONTENT ENDS -->
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.page-content -->
-      </div>
 {% endblock %}

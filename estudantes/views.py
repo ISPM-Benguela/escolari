@@ -52,7 +52,7 @@ def cadastrar_estudante(request):
             perfil.save()
 
             estudante = Estudantes()
-            estudante.peril = perfil
+            estudante.perfil = perfil
             estudante.turma = turma
             estudante.nome = user.username
             estudante.save()

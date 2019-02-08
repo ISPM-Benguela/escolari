@@ -5,7 +5,7 @@ from usuarios.models import Perfil
 from disciplinas.models import Disciplina
 
 class Estudantes(models.Model):
-    peril = models.ForeignKey(Perfil, default="")
+    perfil = models.ForeignKey(Perfil, default="")
     turma = models.ForeignKey(Turmas, blank=True, null=True)
     nome = models.CharField(max_length=255, blank=True, null=True)
     primeiro_nome = models.CharField(max_length=255, blank=True, null=True)
@@ -28,7 +28,7 @@ class Estudantes(models.Model):
         return "%s" % self.turma.curso
     def get_estudante(self):
         if not self.primeiro_nome or not self.sobre_nome:
-            return "%s" % self.peril 
+            return "%s" % self.perfil
         else:
             return "%s %s" % (self.primeiro_nome, self.sobre_nome) 
     

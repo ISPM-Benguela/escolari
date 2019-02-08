@@ -134,16 +134,17 @@
                       <div class="widget-header widget-header-small">
                         {% if departamento.nome == 'Financas' %}
 
-                            <h2>Financas</h2>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <a href=""  class="btn btn-success"><i class="fa fa-money"></i> Pagamento propina</a>
+                                <a href=""  class="btn btn-primary"><i class="fa fa-group"></i> Confirmação</a>
+                                
+                        </div>
                         {% elif departamento.nome == 'Pedagogia' %}
-                              <h2>Pedagoria</h2>
+                              <a href="{% url 'turmas' %}"  class="btn btn-success"><i class="fa fa-money"></i> Marticular estudante</a>
+                              <a href=""  class="btn btn-primary"><i class="fa fa-user"></i> Confirmação estudante</a>
                         {% endif %}
 
-                        <div class="btn-group" role="group" aria-label="...">
-                                <button type="button" class="btn btn-success">Confirmar matricula</button>
-                                <button type="button" class="btn btn-primary">Pagar progina</button>
-                                <button type="button" class="btn btn-default">Estado: Estando</button>
-                        </div>
+                        
                          <div style="margin-bottom: 10px;"></div>
                         <h4 class="widget-title blue smaller">
                           <i class="ace-icon fa fa-users sucess"></i>

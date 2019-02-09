@@ -14,6 +14,8 @@ from anolectivo.models import AnoLectivo
 from candidato.models import Candidato
 from mensagem.models import Mensagem
 from anolectivo.models import AnoLectivo
+from financas.models import Pagamento
+import  decimal
 
 
 @login_required
@@ -28,8 +30,18 @@ def inicio(request):
 def pagar_propinas(request, num):
     
     estudante = get_object_or_404(Estudantes, id=num)
+    pagamento = get_object_or_404(Pagamento, tipo_servico='P')
     if request.method == 'POST':
-        return HttpResponse("vem do formulrios")
+        _prestacao = request.POST['prestacao']
+        
+
+        if _prestacao < "0":
+            messages.warning(request, "Numero de Prestação não pode ser um número negativo.")
+            return HttpResponseRedirect('/painel/propinas/pagar/%s/' % estudante.id)
+        
+        apagar = pagamento.valor * decimal.Decimal(_prestacao)
+
+        return HttpResponse(apagar)
     return render(request, 'propinas/pagamentos.html', {
         'form' : PropinasForm(),
         'feed': Mensagem.objects.filter(por_ler=True).count(),

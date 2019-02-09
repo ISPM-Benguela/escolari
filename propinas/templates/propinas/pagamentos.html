@@ -32,7 +32,8 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
-                <form class="form-horizontal" action="{% url 'pagarpropina' estudante.id %}" method="POST" role="form">
+								{% include "includes/mensagens.html" %}
+               					 <form class="form-horizontal" action="{% url 'pagarpropina' estudante.id %}" method="POST" role="form">
 									
 									{% csrf_token %}
 									<div class="form-group">

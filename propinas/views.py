@@ -16,7 +16,9 @@ from mensagem.models import Mensagem
 from anolectivo.models import AnoLectivo
 from financas.models import Pagamento
 import  decimal
-
+from io import BytesIO
+from django.template.loader import get_template
+import xhtml2pdf.pisa as pisa
 
 @login_required
 def inicio(request):
@@ -31,8 +33,11 @@ def pagar_propinas(request, num):
     
     estudante = get_object_or_404(Estudantes, id=num)
     pagamento = get_object_or_404(Pagamento, tipo_servico='P')
+    
     if request.method == 'POST':
         _prestacao = request.POST['prestacao']
+        _mes = request.POST['mes']
+        _ano = request.POST['ano']
         
 
         if _prestacao < "0":
@@ -41,7 +46,19 @@ def pagar_propinas(request, num):
         
         apagar = pagamento.valor * decimal.Decimal(_prestacao)
 
-        return HttpResponse(apagar)
+        return render(request, "propinas/confirmar.html", {
+        'form' : PropinasForm(),
+        'feed': Mensagem.objects.filter(por_ler=True).count(),
+        'mensagens': Mensagem.objects.filter(por_ler=True),
+        'feedcandidato': Candidato.objects.filter(novo=True).count(),
+        'candidatos': Candidato.objects.filter(novo=True),
+        'estudante': estudante,
+        'ano' : AnoLectivo.objects.get(id=_ano),
+        'mes' : Meses.objects.get(id=_mes),
+        'apagar' : apagar,
+        'prestacao' : _prestacao,
+        
+    })
     return render(request, 'propinas/pagamentos.html', {
         'form' : PropinasForm(),
         'feed': Mensagem.objects.filter(por_ler=True).count(),
@@ -60,9 +77,11 @@ def cadastrar_pagamento(request):
     form = PropinasForm(request.POST or None)
 
     if request.method == 'POST':
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Propina registado com sucesso.')
-            return HttpResponseRedirect('painel/propinas')
+        _mes = request.POST['mes']
+        _apagar = request.POST['apagar']
+        _estudante = request.POST['estudante']
+        _prestacao = request.POST['prestacao']
+        _ano = request.POST['ano']
+
     return HttpResponse("Nao vem do post")
 

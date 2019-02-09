@@ -50,4 +50,7 @@ class Perfil(models.Model):
     def get_propina(self, id):
        # return Propinas.objects.latest()
         return Propinas.objects.all()
+    
+    def get_full_name(self):
+        return "%s %s" % (self.primeiro_nome, self.segundo_nome)
        

@@ -12,7 +12,8 @@
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
+		<!--[if !IE]> -->
+		<script src="{% static 'assets/js/jquery.min.js' %}"></script>
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %} " />
 		<link rel="stylesheet" href="{% static 'assets/font-awesome/4.5.0/css/font-awesome.min.css' %}" />
@@ -469,8 +470,7 @@
 
 		<!-- basic scripts -->
 
-		<!--[if !IE]> -->
-		<script src="{% static 'assets/js/jquery-2.1.4.min.js' %}"></script>
+		
 
 		<!-- <![endif]-->
 
@@ -719,6 +719,7 @@
 			})
 		</script>
 		<!--  TABLE STATIC FILES -->
-	
+		 <!-- Datatables -->
+    
 	</body>
 </html>

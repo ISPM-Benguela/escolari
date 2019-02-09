@@ -1,0 +1,95 @@
+
+{% extends "layouts/painel.html" %}
+{% load staticfiles %}
+{% load bootstrap %}
+{% block title %}painel de cntrole{% endblock %}
+
+{% block head %}
+
+ <link rel="stylesheet" href="{% static 'css/test.css' %}">
+ <!-- Datatables -->
+    <link href="{% static 'admin/css/dataTables.bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'admin/css/buttons.bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'admin/css/fixedHeader.bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'admin/css/responsive.bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'admin/css/scroller.bootstrap.min.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block principal %}
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a href="#">Home</a>
+							</li>
+
+							<li>
+								<a href="#">Other Pages</a>
+							</li>
+							<li class="active">Blank Page</li>
+						</ul><!-- /.breadcrumb -->
+
+						<div class="nav-search" id="nav-search">
+							<form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+							</form>
+						</div><!-- /.nav-search -->
+					</div>
+
+					<div class="page-content">
+
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+                                   <div class="confirmar">
+                                   
+                                     <h3>CONFIRMAR O PAGAMENTO</h3>
+
+                                     <div class="row">
+                                       <form class="form" action="{% url 'pagamento' %}" method="POST">
+                                       {% csrf_token %}
+                                          <div class="form-group">
+                                             <label>Valor a pagar</label>
+                                             <input type="text" name="valor" value="{{ apagar }}" class="form-control"  /> 
+                                          </div>
+                                          <div class="form-group">
+                                             <label>Estudante</label>
+                                             <input type="text" name="estudante" value="{{ estudante.perfil }}" class="form-control"  /> 
+                                          </div>
+                                          <div class="form-group">
+                                             <label>Prestacoes</label>
+                                             <input type="number" name="prest" value="{{ prestacao }}" class="form-control"  /> 
+                                          </div>
+                                          <div class="form-group">
+                                             <label>Mes</label>
+                                             <input type="text" name="prest" value="{{ mes.mes }}" class="form-control"  /> 
+                                          </div>
+                                          <div class="form-group">
+                                             <label>Mes</label>
+                                             <input type="number" name="prest" value="{{ ano.ano }}" class="form-control"  /> 
+                                          </div>
+                                          <div class="form-group">
+                                             <input type="submit" class="btn btn-primary" value="Confirmar pagamento" />
+                                          </div>
+                                       </form>
+                                     </div>
+                                   </div>
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+             <script>
+
+{% endblock %}
+
+{% block script %}
+ 
+ 
+{% endblock %}

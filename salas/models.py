@@ -22,7 +22,7 @@ class Turmas(models.Model):
 
 
     nome = models.CharField('Nome da sala',max_length=255)
-    numero_sala = models.IntegerField('Número da sala',default=0, blank=True, null=True)
+    numero_sala = models.PositiveIntegerField('Número da sala',default=0, blank=True, null=True)
     curso = models.ForeignKey(Cursos, blank=True, null=True)
     ano = models.ForeignKey(AnoLectivo, blank=True, null=True)
     nivel = models.ForeignKey(Nivel, blank=True, null=True)

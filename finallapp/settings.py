@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'mensagem',
     'painel',
     'financas',
+    'prestacao',
 ]
 
 MIDDLEWARE = [

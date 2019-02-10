@@ -1,3 +1,4 @@
 from django.contrib import admin
+from prestacao.models import Prestacao
 
-# Register your models here.
+admin.site.register(Prestacao)
